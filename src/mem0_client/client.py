@@ -25,6 +25,10 @@ DEFAULT_USER_AGENT = (
 _SEARCH_TOOLS = ("search_memories", "search", "mem0_search")
 _ADD_TOOLS = ("add_memory", "add_memories", "add")
 _LIST_TOOLS = ("get_memories", "list_memories", "list")
+_HANDOFF_TOOLS = ("handoff",)
+_DECISION_TOOLS = ("decision",)
+_GOTCHA_TOOLS = ("gotcha",)
+_GET_TOOLS = ("get",)
 
 
 class Mem0Error(RuntimeError):
@@ -89,6 +93,8 @@ class Mem0Client:
         user_id: str | None = None,
         top_k: int = 5,
         threshold: float | None = None,
+        meta_json: str | None = None,
+        include_session_logs: bool = False,
     ) -> list[dict[str, Any]]:
         uid = user_id or self.config.user_id
         if self.config.rest_url:
@@ -110,6 +116,10 @@ class Mem0Client:
         }
         if threshold is not None:
             args["threshold"] = threshold
+        if meta_json:
+            args["meta_json"] = meta_json
+        if include_session_logs:
+            args["include_session_logs"] = True
         data = self._call_tool(_SEARCH_TOOLS, args)
         return _as_results(data)
 
@@ -164,6 +174,68 @@ class Mem0Client:
             {"user_id": uid, "top_k": top_k, "filters": {"user_id": uid}},
         )
         return _as_results(data)
+
+    def get(self, memory_id: str) -> dict[str, Any]:
+        return _as_dict(self._call_tool(_GET_TOOLS, {"memory_id": memory_id}))
+
+    def handoff(
+        self,
+        *,
+        project: str,
+        verdict: str,
+        done: str,
+        status: str,
+        next_steps: str,
+        gotchas: str = "无",
+        evidence: str = "",
+        user_id: str | None = None,
+    ) -> dict[str, Any]:
+        uid = user_id or self.config.user_id
+        return _as_dict(
+            self._call_tool(
+                _HANDOFF_TOOLS,
+                {
+                    "project": project,
+                    "verdict": verdict,
+                    "done": done,
+                    "status": status,
+                    "next_steps": next_steps,
+                    "gotchas": gotchas,
+                    "evidence": evidence,
+                    "user_id": uid,
+                },
+            )
+        )
+
+    def decision(
+        self,
+        text: str,
+        *,
+        project: str | None = None,
+        user_id: str | None = None,
+    ) -> dict[str, Any]:
+        args: dict[str, Any] = {
+            "text": text,
+            "user_id": user_id or self.config.user_id,
+        }
+        if project:
+            args["project"] = project
+        return _as_dict(self._call_tool(_DECISION_TOOLS, args))
+
+    def gotcha(
+        self,
+        text: str,
+        *,
+        project: str | None = None,
+        user_id: str | None = None,
+    ) -> dict[str, Any]:
+        args: dict[str, Any] = {
+            "text": text,
+            "user_id": user_id or self.config.user_id,
+        }
+        if project:
+            args["project"] = project
+        return _as_dict(self._call_tool(_GOTCHA_TOOLS, args))
 
     def list_tools(self) -> list[str]:
         self._ensure_mcp()
