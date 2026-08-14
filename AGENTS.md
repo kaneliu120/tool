@@ -102,7 +102,7 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
 3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
 
-**Vendor CLIs (GCP / Apify / Cloudflare / VPS): do not paste tokens into Dashboard secrets.** Kane authorizes in the browser (`gcloud auth login --no-launch-browser`, `apify login --method console`, `wrangler login --device` / `cf auth login`). Login state lives on that VM (`~/.config/gcloud`, `~/.apify`, wrangler/`cf` OAuth files, `~/.ssh`). It does **not** copy from the Mac and does **not** survive a new agent unless an environment snapshot is taken after login.
+**Vendor CLIs on this ephemeral Cloud Agent are deferred.** Kane’s preferred operator path is a **private overlay** (Mac + Cloud Agent + OVH `vps-b85e86d3`) and run `gcloud` / `apify` / `cf` on the VPS bastion, not four separate logins on every new agent. `MEM0_API_KEY` stays a Dashboard secret because public MCP has no overlay yet.
 
 Validate this checkout:
 
@@ -133,17 +133,28 @@ docker buildx version
 
 Do **not** start a second nested `dockerd` when `:2375` already answers.
 
-### Cloud CLIs — browser OAuth (no Dashboard tokens)
+### Operator private network (deferred; preferred)
 
-Binaries come from `install.sh`. **Do not ask Kane to paste API tokens / SA JSON / SSH private keys into Runtime Secrets.** On a live Cloud Agent, start the vendor web login and let Kane authorize:
+Do **not** log this Cloud Agent into GCP / Apify / Cloudflare / VPS one-by-one. Kane wants those hosts on one **operator overlay**, then the agent SSHes into the durable VPS.
 
-| Need | CLI | How Kane authorizes |
+```
+Mac ──┐
+Cloud Agent ── overlay ── OVH vps-b85e86d3 (bastion)
+                            ├── Mem0 REST :8888 (today: ssh -N mem0 on Mac)
+                            ├── egress-control :8891
+                            └── already: cloudflared → worker.opendata.best / mem0-mcp.opendata.best
+```
+
+| Plane | What | Overlay? |
 |---|---|---|
-| GCP Cloud Run | `gcloud` / `gsutil` | `gcloud auth login --no-launch-browser --update-adc` — open the Google URL, paste the verification code back into this agent. Default project `woker-260722`. |
-| Apify | `apify` | `apify login --method console` — Console URL callbacks to **this VM** `localhost` (open it in the Cloud Agent Computer / Chrome, not only on the Mac). |
-| Cloudflare | `wrangler login --device` (remote-safe); `cf auth login` uses `localhost` callback | Device: https://dash.cloudflare.com/oauth2/device/verify + one-time code. `cf` localhost callback only works in VM Chrome. |
-| VPS | `ssh` | This VM generates `~/.ssh/ovhcloud_ca_ed25519`. Kane adds the **public** key via OVH/web `authorized_keys`. Do not commit the IP or the private key. Host alias `vps-b85e86d3`. |
-| Worker HTTP | curl / httpx | Not a browser login. |
+| Operator | Mac, Cloud Agent, VPS SSH, Mem0 REST, egress admin | Yes — this is the 私域网 |
+| Data | Apify Actor → Cloud Run worker → `https://worker.opendata.best` → target site | No. Apify and GCP Console stay SaaS. Do not put scrape egress on the overlay. |
+
+VPS already speaks **Cloudflare Tunnel**. Default fabric to evaluate next (not installed on this VM): Cloudflare Zero Trust / WARP (or a dedicated `cloudflared` access hop) so the agent reaches VPS private services without pasting `VPS_SSH_KEY`. Tailscale/Headscale is the fallback if WARP enrollment is worse for ephemeral Cloud Agents.
+
+Join still needs **one** enrollment (WARP/Tailscale auth, or a short-lived join key). That is not four vendor OAuths. Do not snapshot overlay node identity into git. New agents must re-join or boot from a snapshot Kane explicitly approves.
+
+Until the overlay exists: mock gateway only. Do not start `gcloud`/`apify`/`cf`/`wrangler` login on this VM.
 
 `.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
 
