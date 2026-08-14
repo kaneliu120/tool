@@ -98,12 +98,70 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 
 ### What you still configure in the Dashboard (not git)
 
-1. Runtime Secret `MEM0_API_KEY`
+1. Runtime Secret `MEM0_API_KEY` (MCP/REST; not a vendor CLI login)
 2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
 3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
+
+**Vendor CLI login is parked until Kane asks.** Do not start `gcloud` / `apify` / `cf` / `wrangler` OAuth on this VM, and do not install or log those CLIs in on the bastion unattended. Overlay (Mac + Cloud Agent + OVH `vps-b85e86d3`) plus Mesh SSH is enough for operator reachability. `MEM0_API_KEY` stays a Dashboard secret because public MCP has no overlay yet.
 
 Validate this checkout:
 
 ```bash
 python3 scripts/check_cursor_agent_config.py
 ```
+
+## Cloud Agent runtime (this Ubuntu VM)
+
+Repo-managed config: `.cursor/environment.json`.
+
+| Phase | Script | Role |
+|---|---|---|
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `.venv`; `pip install -e ".[dev]"` |
+| `start` | `./.cursor/start.sh` | Optional secret activation via `cloud-auth.sh`; idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
+| `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
+
+This Cloud image often **does not** auto-start `terminals`. Rely on `start`, or run `./.cursor/start.sh` yourself.
+
+The VM exposes Docker Engine on `tcp://127.0.0.1:2375` **without** `/var/run/docker.sock`. After `install.sh`, use:
+
+```bash
+export DOCKER_HOST="${DOCKER_HOST:-tcp://127.0.0.1:2375}"
+docker version
+docker compose version
+docker buildx version
+```
+
+Do **not** start a second nested `dockerd` when `:2375` already answers.
+
+### Operator private network (Cloudflare Mesh)
+
+Mac + two OVH boxes are already Mesh peers (Mac `100.96.0.2`, camoufox-worker-01 `.1`, bastion `vps-b85e86d3` `.3`). Data-plane `cloudflared` tunnels stay public. **Do not `warp-cli connect` on a Cloud Agent until settings are TunnelOnly + Include `100.96.0.0/12`.** Default client settings are Mode Warp + Exclude `100.64.0.0/10` (swallows Mesh and can steal the default route). Guard: `python3 .cursor/warp_mesh_guard.py`.
+
+This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp` **on this VM’s Computer** (Mac browser enrolls the Mac, not the agent). After registration: `warp-cli --accept-tos settings | python3 .cursor/warp_mesh_guard.py`, then `warp-cli --accept-tos connect`. Default route must stay on `eth0`.
+
+Overlay SSH to the bastion is verified: `ssh vps-b85e86d3-mesh` (Host alias, `IdentitiesOnly` + `IdentityFile ~/.ssh/ovhcloud_ca_ed25519`, key comment `cursor-cloud-bc-6b19916e`). Naked `ssh ubuntu@100.96.0.3` without `-i` fails because it never offers that key. Access SSH is not published; public `:22` remains a fallback. This VM’s pubkey is **not** on camoufox-worker-01.
+
+Vendor CLI login on the bastion is **parked**. The bastion currently has Docker + `cloudflared` on PATH, but **not** `gcloud` / `apify` / `cf` / `wrangler`. Next Cloud Agent work on this VM should use the repo (gateway, pytest, Docker `:2375`, Mesh SSH), not vendor consoles.
+
+`.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
+
+### Ready for the next task (this run)
+
+Leave `rea-gateway` and `warp-svc` running. Do not `warp-cli disconnect`. Do not close bastion `:22`.
+
+| Check | Expected |
+|---|---|
+| `curl -sS http://127.0.0.1:8080/healthz` | `{"ok":true,"providers":["mock_fixture"]}` |
+| `DOCKER_HOST=tcp://127.0.0.1:2375 docker version` | client + server |
+| `ssh vps-b85e86d3-mesh hostname` | `vps-b85e86d3` |
+| `python3 scripts/check_cursor_agent_config.py` | `"ok": true` |
+
+```bash
+./.cursor/start.sh
+curl -sS http://127.0.0.1:8080/healthz
+.venv/bin/python scripts/test_html_provider.py --provider mock_fixture
+.venv/bin/python scripts/run_canary_local.py
+.venv/bin/pytest -q
+```
+
+`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome is on this image for VM desktop use, not as the product HTML provider.
