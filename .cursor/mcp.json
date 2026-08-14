@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mem0-selfhost": {
+      "url": "https://mem0-mcp.opendata.best/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:MEM0_API_KEY}",
+        "X-API-Key": "${env:MEM0_API_KEY}"
+      }
+    }
+  }
+}
