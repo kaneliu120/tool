@@ -25,6 +25,7 @@ dev = [
 [project.scripts]
 rea-gateway = "rea_unblocker.gateway.app:main"
 rea-kasada-probe = "rea_unblocker.recorder.probe:main"
+mem0ctl = "mem0_client.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
