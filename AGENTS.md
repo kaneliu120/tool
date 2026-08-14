@@ -6,20 +6,28 @@ This VM cannot use macOS Keychain or `ssh -N mem0` to `localhost:8888`. Kane's M
 
 ### Call the memory system
 
-1. Public health (no key): `python scripts/mem0ctl.py health`
+1. Public health (no key): `python3 scripts/mem0ctl.py health`
 2. Authenticated search/add needs **`MEM0_API_KEY`** (user REST/MCP key, not the admin `/configure` key).
 3. Default scope: `user_id=kane`. Do **not** use stdlib `urllib` against the public host (Cloudflare 1010). Use `mem0ctl` / `httpx` / `curl`.
 4. Do **not** use the official `mem0ai` Python client against this self-hosted stack.
 5. Never commit API keys, Atlas URIs, or NVIDIA/Voyage tokens.
 
 ```bash
-# no auth
-python scripts/mem0ctl.py health
+# no auth — system python3 re-execs into .venv when httpx is missing
+python3 scripts/mem0ctl.py health
 
 # requires MEM0_API_KEY in the Cloud Agent secret store
-python scripts/mem0ctl.py search "hiking Taipei"
-python scripts/mem0ctl.py add --raw "handoff note"
-python scripts/mem0ctl.py list
+python3 scripts/mem0ctl.py search "hiking Taipei"
+python3 scripts/mem0ctl.py add --raw "handoff note"
+python3 scripts/mem0ctl.py list
+python3 scripts/mem0ctl.py handoff \
+  --project 'tool' \
+  --verdict '一句话结论' \
+  --done '做了什么' \
+  --status '当前真实状态' \
+  --gotchas '无' \
+  --next '下一步' \
+  --evidence '路径/命令'
 ```
 
 Python:
@@ -49,6 +57,11 @@ Cloud Agents **do not** load `~/.cursor/` from the laptop. This repo checkout is
 
 ### Skills (`.cursor/skills/`)
 
+Cloud Agents **often do not inject** project skills into the available-skills list
+(plugin / Cursor built-ins still appear). Treat the table as the catalog and
+**Read** the `SKILL.md` when the task matches. Always-apply rule:
+`.cursor/rules/project-skills.mdc`.
+
 | Skill | Cloud |
 |---|---|
 | `mem0-selfhost` | Yes — use `scripts/mem0ctl.py` + HTTP MCP |
@@ -69,11 +82,14 @@ Command hooks only, after the VM is writable:
 - `stop` → `.cursor/hooks/mem0_stop_handoff.py` (follow-up uses `python3 scripts/mem0ctl.py`)
 - `preCompact` → `.cursor/hooks/mem0_precompact.py`
 
-**Not on Cloud:** `sessionStart`, `sessionEnd`, prompt-based hooks, Tab hooks, MCP execution hooks. Mem0 recall at start comes from always-apply rule `mem0-mandatory.mdc` + this file.
+**Not on Cloud:** `sessionStart`, `sessionEnd`, prompt-based hooks, Tab hooks, MCP execution hooks. Mem0 recall at start comes from always-apply rule `mem0-mandatory.mdc` + this file. The **first** Cloud prompt can be submitted while the VM is still read-only, so `beforeSubmitPrompt` may not run for that message — later turns do.
+
+Command hooks are invoked as `python3 .cursor/hooks/…` from the **repo root**. They only need the stdlib. `mem0ctl` (used by the stop follow-up) re-execs `.venv` so system `python3` works after `install`.
 
 ### Rules (`.cursor/rules/*.mdc`, alwaysApply)
 
 - `mem0-mandatory.mdc`
+- `project-skills.mdc`
 - `apify-actor-cloud-run-development.mdc`
 - `apify-cloud-smoke-random.mdc`
 - `apify-publish-tasks.mdc`
@@ -85,3 +101,9 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 1. Runtime Secret `MEM0_API_KEY`
 2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
 3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
+
+Validate this checkout:
+
+```bash
+python3 scripts/check_cursor_agent_config.py
+```

@@ -1,0 +1,23 @@
+---
+description: Project skill index — Cloud Agents often do not auto-inject .cursor/skills
+alwaysApply: true
+---
+
+# Project skills (read by path)
+
+Cloud Agents frequently **omit** `.cursor/skills/*/SKILL.md` from the
+available-skills list. When the task matches, **Read** the file before acting.
+Full table: `AGENTS.md`.
+
+| Task | Read |
+|---|---|
+| Memory / 交接 / 偏好 / 上次 | `.cursor/skills/mem0-selfhost/SKILL.md` |
+| Apify Actor + Cloud Run worker | `.cursor/skills/apify-actor-cloud-run-development/SKILL.md` |
+| Publish Actor Tasks / Examples | `.cursor/skills/apify-publish-tasks/SKILL.md` |
+| Page recon / 页面调研 | `.cursor/skills/website-page-research/SKILL.md` (no Mac Chrome) |
+| Camoufox SIGSEGV / gen2 | `.cursor/skills/camoufox-cloud-run/SKILL.md` |
+| Bright Data / Risk Bypass | `.cursor/skills/bright-data-riskbypass/SKILL.md` |
+
+Redirects only (do not expand): `cloud-run-apify-actor`, `migrate-apify-actor-worker`, `apify-actor-free-tier-limits`.
+
+Stubs on this VM: `reverse-skill` (no `/Users/kane/Projects/reverse-skill`), `use-my-browser` (no AppleScript).

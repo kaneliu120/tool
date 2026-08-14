@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""beforeSubmitPrompt: allow, but stamp intent for lookup-heavy prompts.
+"""beforeSubmitPrompt: allow, stamp lookup-heavy prompts for later hooks.
 
-Cannot inject agent context here — enforcement is via user rule + sessionStart.
+Cloud Agents skip this hook on the first read-only prompt. It cannot inject
+Mem0 context (no additional_context on this event; sessionStart is desktop-only).
+Recall is enforced by always-apply ``mem0-mandatory.mdc`` + AGENTS.md.
 Blocks only when MEM0_FORCE_BLOCK=1 (debug). Otherwise always continue.
 """
 
@@ -38,8 +40,6 @@ def main() -> None:
         )
         return
 
-    # Always allow — mandatory recall is instructed by sessionStart + user rule.
-    # Marker file for stop-hook awareness (best-effort).
     try:
         marker = os.path.expanduser("~/.cursor/mem0-state/last-prompt.txt")
         os.makedirs(os.path.dirname(marker), exist_ok=True)

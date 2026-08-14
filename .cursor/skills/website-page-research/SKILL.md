@@ -12,15 +12,20 @@ description: >-
 
 # Website Page Research (Chrome session → Chinese report)
 
+**Cloud Agent:** no AppleScript Chrome and no `/Users/kane`. Do not call `osascript`
+or follow [`../use-my-browser/SKILL.md`](../use-my-browser/SKILL.md) on this VM.
+Use the VM desktop / Playwright, or HTTP probes + `scripts/` in this skill.
+Write the report under `/tmp` or the workspace — not macOS Downloads.
+
 The product of this skill is **not** a pretty Markdown essay. It is:
 
 1. a **coverage matrix** (markets × categories × services)
 2. a **per-surface channel contract** (primary layer, ready signal, identity keys, pager keys, gate)
 3. measured **engineering inputs** a worker can implement without re-browsing
 
-Call the user's **real Google Chrome**, probe live pages, contrast non-browser HTTP, write the report under Downloads.
+Call the user's **real Google Chrome** on macOS (see Cloud Agent note above). Probe live pages, contrast non-browser HTTP, write the report under Downloads (Mac) or `/tmp` (Cloud).
 
-Browser bridge: read and follow [`../use-my-browser/SKILL.md`](../use-my-browser/SKILL.md) first (`chrome_js_bridge.py`, prove-bridge, exact-prefix retarget). **Chrome is one session — never parallel page-context probes** (tabs mix).
+**macOS only:** read and follow [`../use-my-browser/SKILL.md`](../use-my-browser/SKILL.md) first (`chrome_js_bridge.py`, prove-bridge, exact-prefix retarget). **Chrome is one session — never parallel page-context probes** (tabs mix).
 
 Exemplar reports (method, not URL dogma):
 
