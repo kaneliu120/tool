@@ -8,6 +8,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# Cloud VM: Engine on :2375, no docker.sock. Harmless if docker is unused.
+if [[ ! -S /var/run/docker.sock ]] \
+  && curl -sf --max-time 1 http://127.0.0.1:2375/version >/dev/null 2>&1; then
+  export DOCKER_HOST="${DOCKER_HOST:-tcp://127.0.0.1:2375}"
+fi
+
 PORT="${REA_GATEWAY_PORT:-8080}"
 HOST="${REA_GATEWAY_HOST:-0.0.0.0}"
 SESSION="${REA_GATEWAY_TMUX_SESSION:-rea-gateway}"

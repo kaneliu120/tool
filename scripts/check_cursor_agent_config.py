@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -147,6 +148,8 @@ def check_mcp_and_env(errors: list[str], notes: list[str]) -> None:
     ports = env.get("ports") or []
     if not any(isinstance(p, dict) and p.get("port") == 8080 for p in ports):
         _fail(errors, "environment.json must declare gateway port 8080")
+    if shutil.which("docker") is None:
+        notes.append("docker CLI not on PATH (install.sh should add docker.io on Linux Cloud VMs)")
 
 
 def check_hook_runtime(errors: list[str], notes: list[str]) -> None:

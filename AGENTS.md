@@ -114,11 +114,22 @@ Repo-managed config: `.cursor/environment.json`.
 
 | Phase | Script | Role |
 |---|---|---|
-| `install` | `./.cursor/install.sh` | `python3-venv` if missing, `.venv`, `pip install -e ".[dev]"` |
-| `start` | `./.cursor/start.sh` | Idempotent mock gateway on `:8080`, then **returns** |
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing, Docker CLI/compose/buildx if missing, `.venv`, `pip install -e ".[dev]"` |
+| `start` | `./.cursor/start.sh` | Idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
 | `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
 
 This Cloud image often **does not** auto-start `terminals`. Rely on `start`, or run `./.cursor/start.sh` yourself.
+
+The VM exposes Docker Engine on `tcp://127.0.0.1:2375` **without** `/var/run/docker.sock`. After `install.sh`, use:
+
+```bash
+export DOCKER_HOST="${DOCKER_HOST:-tcp://127.0.0.1:2375}"
+docker version
+docker compose version
+docker buildx version
+```
+
+Do **not** start a second nested `dockerd` when `:2375` already answers.
 
 ```bash
 ./.cursor/start.sh
