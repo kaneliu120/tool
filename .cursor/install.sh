@@ -36,6 +36,41 @@ EOF
   fi
 fi
 
+# nvm Node (apify / cf / wrangler). Cloud image ships nvm at ~/.nvm.
+if [[ -d "${HOME}/.nvm/versions/node" ]]; then
+  NODE_BIN="$(ls -d "${HOME}/.nvm/versions/node"/v*/bin 2>/dev/null | sort -V | tail -1 || true)"
+  if [[ -n "${NODE_BIN}" ]]; then
+    export PATH="${NODE_BIN}:${PATH}"
+    if [[ -f "${HOME}/.bashrc" ]] && ! grep -q 'CURSOR_NVM_NODE_PATH' "${HOME}/.bashrc"; then
+      cat >> "${HOME}/.bashrc" << 'EOF'
+# CURSOR_NVM_NODE_PATH
+if [ -d "$HOME/.nvm/versions/node" ]; then
+  _cursor_nvm_bin="$(ls -d "$HOME/.nvm/versions/node"/v*/bin 2>/dev/null | sort -V | tail -1 || true)"
+  if [ -n "$_cursor_nvm_bin" ]; then
+    case ":$PATH:" in *":$_cursor_nvm_bin:"*) ;; *) export PATH="$_cursor_nvm_bin:$PATH" ;; esac
+  fi
+  unset _cursor_nvm_bin
+fi
+EOF
+    fi
+  fi
+fi
+
+if ! command -v gcloud >/dev/null 2>&1; then
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+    | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
+    | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list >/dev/null
+  sudo apt-get update -qq
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y google-cloud-cli
+fi
+
+if command -v npm >/dev/null 2>&1; then
+  command -v apify >/dev/null 2>&1 || npm install -g apify-cli
+  command -v cf >/dev/null 2>&1 || npm install -g cf
+  command -v wrangler >/dev/null 2>&1 || npm install -g wrangler
+fi
+
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/pip install -e ".[dev]"

@@ -99,8 +99,9 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 ### What you still configure in the Dashboard (not git)
 
 1. Runtime Secret `MEM0_API_KEY`
-2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
-3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
+2. Optional Runtime Secrets for live deploy: `APIFY_TOKEN`, `GCP_SA_JSON`, `CLOUDFLARE_API_TOKEN`, `VPS_SSH_KEY`, `VPS_SSH_HOST`, `WORKER_AUTH`
+3. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
+4. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
 
 Validate this checkout:
 
@@ -114,8 +115,8 @@ Repo-managed config: `.cursor/environment.json`.
 
 | Phase | Script | Role |
 |---|---|---|
-| `install` | `./.cursor/install.sh` | `python3-venv` if missing, Docker CLI/compose/buildx if missing, `.venv`, `pip install -e ".[dev]"` |
-| `start` | `./.cursor/start.sh` | Idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `.venv`; `pip install -e ".[dev]"` |
+| `start` | `./.cursor/start.sh` | Optional secret activation via `cloud-auth.sh`; idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
 | `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
 
 This Cloud image often **does not** auto-start `terminals`. Rely on `start`, or run `./.cursor/start.sh` yourself.
@@ -130,6 +131,20 @@ docker buildx version
 ```
 
 Do **not** start a second nested `dockerd` when `:2375` already answers.
+
+### Cloud CLIs vs Dashboard secrets
+
+Binaries are installed by `install.sh`. **Login does not copy from the Mac.** Add Runtime Secrets at [cursor.com/dashboard/cloud-agents](https://cursor.com/dashboard/cloud-agents), then start a **new** agent. This VM currently has only `MEM0_API_KEY`.
+
+| Need | CLI on this VM | Secret (env) | Notes |
+|---|---|---|---|
+| VPS / egress-control | `ssh` (already in image) | `VPS_SSH_KEY`, `VPS_SSH_HOST`, optional `VPS_SSH_USER` | Mac key is `~/.ssh/ovhcloud_ca_ed25519`; Host alias `vps-b85e86d3`. **Do not commit the IP.** No extra CLI. |
+| Apify Actor push/call | `apify` | `APIFY_TOKEN` | `apify` reads the env var; no `apify login` / Keychain. |
+| GCP Cloud Run | `gcloud` / `gsutil` | `GCP_SA_JSON` (SA JSON text), optional `GCP_PROJECT` | Default project `woker-260722`. Mac `gcloud auth login` does **not** apply here. |
+| Cloudflare (opendata.best) | `cf` (preferred), `wrangler` | `CLOUDFLARE_API_TOKEN` | `cf` and wrangler both read this env var. Do not use wrangler OAuth on Cloud. |
+| Worker HTTP | curl / httpx | `WORKER_AUTH` | Not a CLI. |
+
+`start.sh` sources `.cursor/cloud-auth.sh`: if those secrets exist it activates gcloud and writes the SSH key; missing secrets leave the mock gateway running.
 
 ```bash
 ./.cursor/start.sh

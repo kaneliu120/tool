@@ -145,6 +145,13 @@ def check_mcp_and_env(errors: list[str], notes: list[str]) -> None:
         _fail(errors, "missing .cursor/install.sh")
     elif not os.access(CURSOR / "install.sh", os.X_OK):
         _fail(errors, ".cursor/install.sh is not executable")
+    if not (CURSOR / "cloud-auth.sh").is_file():
+        _fail(errors, "missing .cursor/cloud-auth.sh")
+    elif not os.access(CURSOR / "cloud-auth.sh", os.X_OK):
+        _fail(errors, ".cursor/cloud-auth.sh is not executable")
+    start_text = (CURSOR / "start.sh").read_text(encoding="utf-8")
+    if "cloud-auth.sh" not in start_text:
+        _fail(errors, ".cursor/start.sh must source cloud-auth.sh")
     ports = env.get("ports") or []
     if not any(isinstance(p, dict) and p.get("port") == 8080 for p in ports):
         _fail(errors, "environment.json must declare gateway port 8080")

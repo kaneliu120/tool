@@ -14,6 +14,9 @@ if [[ ! -S /var/run/docker.sock ]] \
   export DOCKER_HOST="${DOCKER_HOST:-tcp://127.0.0.1:2375}"
 fi
 
+# shellcheck source=/dev/null
+. "$(dirname "$0")/cloud-auth.sh"
+
 PORT="${REA_GATEWAY_PORT:-8080}"
 HOST="${REA_GATEWAY_HOST:-0.0.0.0}"
 SESSION="${REA_GATEWAY_TMUX_SESSION:-rea-gateway}"
