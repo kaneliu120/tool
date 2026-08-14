@@ -1,0 +1,18 @@
+---
+description: 
+alwaysApply: true
+---
+
+# Apify Publish Tasks
+
+When the user asks to create/publish **Actor Tasks**, **Publish Task**, public
+**Examples** landing pages, SEO example tasks, or 发布/公开 Task:
+
+1. Read and follow **`apify-publish-tasks`**
+   (`.cursor/skills/apify-publish-tasks/SKILL.md` + `reference.md`).
+2. **Default batch size: 10** tasks per Actor unless the user specifies another
+   count (hard cap 50/Actor).
+3. Create via API; **publish only via Console** (Chrome /
+   `use-my-browser`（Cloud Agent 上不可用，改用 VM 浏览器）) — do not claim public API publish works.
+4. Parent agent may spawn subagents for research / API create / verify; keep
+   Console publish on the shared Chrome session serialized.
