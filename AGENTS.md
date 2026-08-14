@@ -137,9 +137,11 @@ Do **not** start a second nested `dockerd` when `:2375` already answers.
 
 Mac + two OVH boxes are already Mesh peers (Mac `100.96.0.2`, camoufox-worker-01 `.1`, bastion `vps-b85e86d3` `.3`). Data-plane `cloudflared` tunnels stay public. **Do not `warp-cli connect` on a Cloud Agent until settings are TunnelOnly + Include `100.96.0.0/12`.** Default client settings are Mode Warp + Exclude `100.64.0.0/10` (swallows Mesh and can steal the default route). Guard: `python3 .cursor/warp_mesh_guard.py`.
 
-This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp` **on this VM’s Computer** (Mac browser enrolls the Mac, not the agent). After registration: `warp-cli --accept-tos settings | python3 .cursor/warp_mesh_guard.py`, then `warp-cli --accept-tos connect`. Default route must stay on `eth0`. Overlay SSH still needs this VM’s pubkey on the bastion (`authorized_keys`); Access SSH is not published yet.
+This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp` **on this VM’s Computer** (Mac browser enrolls the Mac, not the agent). After registration: `warp-cli --accept-tos settings | python3 .cursor/warp_mesh_guard.py`, then `warp-cli --accept-tos connect`. Default route must stay on `eth0`.
 
-Do **not** log this Cloud Agent into GCP / Apify / Cloudflare Console one-by-one. After Mesh/SSH to the bastion, run those CLIs there.
+Overlay SSH to the bastion is verified: `ssh vps-b85e86d3-mesh` (Host alias, `IdentitiesOnly` + `IdentityFile ~/.ssh/ovhcloud_ca_ed25519`, key comment `cursor-cloud-bc-6b19916e`). Naked `ssh ubuntu@100.96.0.3` without `-i` fails because it never offers that key. Access SSH is not published; public `:22` remains a fallback. This VM’s pubkey is **not** on camoufox-worker-01.
+
+Do **not** log this Cloud Agent into GCP / Apify / Cloudflare Console one-by-one. After Mesh/SSH to the bastion, run those CLIs there. The bastion currently has Docker + `cloudflared` on PATH, but **not** `gcloud` / `apify` / `cf` / `wrangler`.
 
 `.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
 
