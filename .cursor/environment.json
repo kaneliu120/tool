@@ -1,11 +1,12 @@
 {
   "name": "REA Kasada HTML Unblocker Toolkit",
   "install": "./.cursor/install.sh",
+  "start": "./.cursor/start.sh",
   "terminals": [
     {
       "name": "gateway (mock provider)",
-      "command": "REA_INCLUDE_MOCK=1 .venv/bin/uvicorn rea_unblocker.gateway.app:app --host 0.0.0.0 --port 8080",
-      "description": "FastAPI HTML provider gateway on :8080 with the fixture (mock) provider enabled for local integration. POST /v1/fetch-html, GET /healthz."
+      "command": "./.cursor/start.sh --attach",
+      "description": "FastAPI HTML provider gateway on :8080 with the fixture (mock) provider enabled for local integration. POST /v1/fetch-html, GET /healthz. start.sh is idempotent and tails logs in this terminal."
     }
   ],
   "ports": [

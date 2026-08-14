@@ -107,3 +107,25 @@ Validate this checkout:
 ```bash
 python3 scripts/check_cursor_agent_config.py
 ```
+
+## Cloud Agent runtime (this Ubuntu VM)
+
+Repo-managed config: `.cursor/environment.json`.
+
+| Phase | Script | Role |
+|---|---|---|
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing, `.venv`, `pip install -e ".[dev]"` |
+| `start` | `./.cursor/start.sh` | Idempotent mock gateway on `:8080`, then **returns** |
+| `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
+
+This Cloud image often **does not** auto-start `terminals`. Rely on `start`, or run `./.cursor/start.sh` yourself.
+
+```bash
+./.cursor/start.sh
+curl -sS http://127.0.0.1:8080/healthz
+.venv/bin/python scripts/test_html_provider.py --provider mock_fixture
+.venv/bin/python scripts/run_canary_local.py
+.venv/bin/pytest -q
+```
+
+`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome is on this image for VM desktop use, not as the product HTML provider.

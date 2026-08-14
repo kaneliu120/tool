@@ -133,7 +133,20 @@ def check_mcp_and_env(errors: list[str], notes: list[str]) -> None:
         _fail(errors, "mcp.json mem0-selfhost url must end with /mcp")
     env = json.loads((CURSOR / "environment.json").read_text(encoding="utf-8"))
     if env.get("install") != "./.cursor/install.sh":
-        notes.append(f"environment.json install is {env.get('install')!r}")
+        _fail(errors, f"environment.json install must be ./.cursor/install.sh, got {env.get('install')!r}")
+    if env.get("start") != "./.cursor/start.sh":
+        _fail(errors, f"environment.json start must be ./.cursor/start.sh, got {env.get('start')!r}")
+    if not (CURSOR / "start.sh").is_file():
+        _fail(errors, "missing .cursor/start.sh")
+    elif not os.access(CURSOR / "start.sh", os.X_OK):
+        _fail(errors, ".cursor/start.sh is not executable")
+    if not (CURSOR / "install.sh").is_file():
+        _fail(errors, "missing .cursor/install.sh")
+    elif not os.access(CURSOR / "install.sh", os.X_OK):
+        _fail(errors, ".cursor/install.sh is not executable")
+    ports = env.get("ports") or []
+    if not any(isinstance(p, dict) and p.get("port") == 8080 for p in ports):
+        _fail(errors, "environment.json must declare gateway port 8080")
 
 
 def check_hook_runtime(errors: list[str], notes: list[str]) -> None:
