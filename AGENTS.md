@@ -133,28 +133,13 @@ docker buildx version
 
 Do **not** start a second nested `dockerd` when `:2375` already answers.
 
-### Operator private network (deferred; preferred)
+### Operator private network (Cloudflare Mesh)
 
-Do **not** log this Cloud Agent into GCP / Apify / Cloudflare / VPS one-by-one. Kane wants those hosts on one **operator overlay**, then the agent SSHes into the durable VPS.
+Mac + two OVH boxes are already Mesh peers (Mac `100.96.0.2`, camoufox-worker-01 `.1`, bastion `vps-b85e86d3` `.3`). Data-plane `cloudflared` tunnels stay public. **Do not `warp-cli connect` on a Cloud Agent until settings are TunnelOnly + Include `100.96.0.0/12`.** Default client settings are Mode Warp + Exclude `100.64.0.0/10` (swallows Mesh and can steal the default route). Guard: `python3 .cursor/warp_mesh_guard.py`.
 
-```
-Mac ──┐
-Cloud Agent ── overlay ── OVH vps-b85e86d3 (bastion)
-                            ├── Mem0 REST :8888 (today: ssh -N mem0 on Mac)
-                            ├── egress-control :8891
-                            └── already: cloudflared → worker.opendata.best / mem0-mcp.opendata.best
-```
+This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp`, then `warp-cli debug access-reauth` until the guard passes, then connect. Prefer `warp-cli connector new <TOKEN>` for a Linux Mesh node (same as OVH). Access SSH is not published yet; public `:22` is still open.
 
-| Plane | What | Overlay? |
-|---|---|---|
-| Operator | Mac, Cloud Agent, VPS SSH, Mem0 REST, egress admin | Yes — this is the 私域网 |
-| Data | Apify Actor → Cloud Run worker → `https://worker.opendata.best` → target site | No. Apify and GCP Console stay SaaS. Do not put scrape egress on the overlay. |
-
-VPS already speaks **Cloudflare Tunnel**. Default fabric to evaluate next (not installed on this VM): Cloudflare Zero Trust / WARP (or a dedicated `cloudflared` access hop) so the agent reaches VPS private services without pasting `VPS_SSH_KEY`. Tailscale/Headscale is the fallback if WARP enrollment is worse for ephemeral Cloud Agents.
-
-Join still needs **one** enrollment (WARP/Tailscale auth, or a short-lived join key). That is not four vendor OAuths. Do not snapshot overlay node identity into git. New agents must re-join or boot from a snapshot Kane explicitly approves.
-
-Until the overlay exists: mock gateway only. Do not start `gcloud`/`apify`/`cf`/`wrangler` login on this VM.
+Do **not** log this Cloud Agent into GCP / Apify / Cloudflare Console one-by-one. After Mesh/SSH to the bastion, run those CLIs there.
 
 `.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
 

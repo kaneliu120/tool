@@ -17,6 +17,20 @@ fi
 # shellcheck source=/dev/null
 . "$(dirname "$0")/cloud-auth.sh"
 
+# WARP daemon if the CLI is present. Never warp-cli connect from start.sh.
+if command -v warp-svc >/dev/null 2>&1 && [[ ! -S /run/cloudflare-warp/warp_service ]]; then
+  if command -v tmux >/dev/null 2>&1; then
+    if [[ -f /exec-daemon/tmux.portal.conf ]]; then
+      _tmux() { tmux -f /exec-daemon/tmux.portal.conf "$@"; }
+    else
+      _tmux() { tmux "$@"; }
+    fi
+    if ! _tmux has-session -t '=warp-svc' 2>/dev/null; then
+      _tmux new-session -d -s warp-svc -- bash -lc 'exec sudo warp-svc >>/tmp/warp-svc.log 2>&1'
+    fi
+  fi
+fi
+
 PORT="${REA_GATEWAY_PORT:-8080}"
 HOST="${REA_GATEWAY_HOST:-0.0.0.0}"
 SESSION="${REA_GATEWAY_TMUX_SESSION:-rea-gateway}"

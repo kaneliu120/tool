@@ -71,6 +71,15 @@ if command -v npm >/dev/null 2>&1; then
   command -v wrangler >/dev/null 2>&1 || npm install -g wrangler
 fi
 
+# Cloudflare Access client. Do not apt-install cloudflare-warp here: this
+# image is not systemd PID 1, and naked warp-cli connect can steal the
+# default route. Mesh join is manual (see AGENTS.md).
+if ! command -v cloudflared >/dev/null 2>&1; then
+  curl -fsSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 \
+    -o /tmp/cloudflared
+  sudo install -m 755 /tmp/cloudflared /usr/local/bin/cloudflared
+fi
+
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/pip install -e ".[dev]"
