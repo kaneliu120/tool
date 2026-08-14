@@ -137,7 +137,7 @@ Do **not** start a second nested `dockerd` when `:2375` already answers.
 
 Mac + two OVH boxes are already Mesh peers (Mac `100.96.0.2`, camoufox-worker-01 `.1`, bastion `vps-b85e86d3` `.3`). Data-plane `cloudflared` tunnels stay public. **Do not `warp-cli connect` on a Cloud Agent until settings are TunnelOnly + Include `100.96.0.0/12`.** Default client settings are Mode Warp + Exclude `100.64.0.0/10` (swallows Mesh and can steal the default route). Guard: `python3 .cursor/warp_mesh_guard.py`.
 
-This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp`, then `warp-cli debug access-reauth` until the guard passes, then connect. Prefer `warp-cli connector new <TOKEN>` for a Linux Mesh node (same as OVH). Access SSH is not published yet; public `:22` is still open.
+This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo` works. `warp-svc` is not systemd PID 1 — start it in tmux (`sudo warp-svc`). Enroll org `opendata-best` at `https://opendata-best.cloudflareaccess.com/warp` **on this VM’s Computer** (Mac browser enrolls the Mac, not the agent). After registration: `warp-cli --accept-tos settings | python3 .cursor/warp_mesh_guard.py`, then `warp-cli --accept-tos connect`. Default route must stay on `eth0`. Overlay SSH still needs this VM’s pubkey on the bastion (`authorized_keys`); Access SSH is not published yet.
 
 Do **not** log this Cloud Agent into GCP / Apify / Cloudflare Console one-by-one. After Mesh/SSH to the bastion, run those CLIs there.
 
