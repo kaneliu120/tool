@@ -98,10 +98,11 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 
 ### What you still configure in the Dashboard (not git)
 
-1. Runtime Secret `MEM0_API_KEY`
-2. Optional Runtime Secrets for live deploy: `APIFY_TOKEN`, `GCP_SA_JSON`, `CLOUDFLARE_API_TOKEN`, `VPS_SSH_KEY`, `VPS_SSH_HOST`, `WORKER_AUTH`
-3. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
-4. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
+1. Runtime Secret `MEM0_API_KEY` (MCP/REST; not a vendor CLI login)
+2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
+3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
+
+**Vendor CLIs (GCP / Apify / Cloudflare / VPS): do not paste tokens into Dashboard secrets.** Kane authorizes in the browser (`gcloud auth login --no-launch-browser`, `apify login --method console`, `wrangler login --device` / `cf auth login`). Login state lives on that VM (`~/.config/gcloud`, `~/.apify`, wrangler/`cf` OAuth files, `~/.ssh`). It does **not** copy from the Mac and does **not** survive a new agent unless an environment snapshot is taken after login.
 
 Validate this checkout:
 
@@ -132,19 +133,19 @@ docker buildx version
 
 Do **not** start a second nested `dockerd` when `:2375` already answers.
 
-### Cloud CLIs vs Dashboard secrets
+### Cloud CLIs — browser OAuth (no Dashboard tokens)
 
-Binaries are installed by `install.sh`. **Login does not copy from the Mac.** Add Runtime Secrets at [cursor.com/dashboard/cloud-agents](https://cursor.com/dashboard/cloud-agents), then start a **new** agent. This VM currently has only `MEM0_API_KEY`.
+Binaries come from `install.sh`. **Do not ask Kane to paste API tokens / SA JSON / SSH private keys into Runtime Secrets.** On a live Cloud Agent, start the vendor web login and let Kane authorize:
 
-| Need | CLI on this VM | Secret (env) | Notes |
-|---|---|---|---|
-| VPS / egress-control | `ssh` (already in image) | `VPS_SSH_KEY`, `VPS_SSH_HOST`, optional `VPS_SSH_USER` | Mac key is `~/.ssh/ovhcloud_ca_ed25519`; Host alias `vps-b85e86d3`. **Do not commit the IP.** No extra CLI. |
-| Apify Actor push/call | `apify` | `APIFY_TOKEN` | `apify` reads the env var; no `apify login` / Keychain. |
-| GCP Cloud Run | `gcloud` / `gsutil` | `GCP_SA_JSON` (SA JSON text), optional `GCP_PROJECT` | Default project `woker-260722`. Mac `gcloud auth login` does **not** apply here. |
-| Cloudflare (opendata.best) | `cf` (preferred), `wrangler` | `CLOUDFLARE_API_TOKEN` | `cf` and wrangler both read this env var. Do not use wrangler OAuth on Cloud. |
-| Worker HTTP | curl / httpx | `WORKER_AUTH` | Not a CLI. |
+| Need | CLI | How Kane authorizes |
+|---|---|---|
+| GCP Cloud Run | `gcloud` / `gsutil` | `gcloud auth login --no-launch-browser --update-adc` — open the Google URL, paste the verification code back into this agent. Default project `woker-260722`. |
+| Apify | `apify` | `apify login --method console` — Console URL callbacks to **this VM** `localhost` (open it in the Cloud Agent Computer / Chrome, not only on the Mac). |
+| Cloudflare | `wrangler login --device` (remote-safe); `cf auth login` uses `localhost` callback | Device: https://dash.cloudflare.com/oauth2/device/verify + one-time code. `cf` localhost callback only works in VM Chrome. |
+| VPS | `ssh` | This VM generates `~/.ssh/ovhcloud_ca_ed25519`. Kane adds the **public** key via OVH/web `authorized_keys`. Do not commit the IP or the private key. Host alias `vps-b85e86d3`. |
+| Worker HTTP | curl / httpx | Not a browser login. |
 
-`start.sh` sources `.cursor/cloud-auth.sh`: if those secrets exist it activates gcloud and writes the SSH key; missing secrets leave the mock gateway running.
+`.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
 
 ```bash
 ./.cursor/start.sh
