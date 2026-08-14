@@ -102,7 +102,7 @@ User Rules in Cursor Settings still apply to Cloud sessions (account-level). Tea
 2. HTTP MCP `mem0-selfhost` on [cursor.com/agents](https://cursor.com/agents)
 3. Re-open a **new** Cloud Agent on this branch after push — existing runs will not pick up new git files until they clone this revision.
 
-**Vendor CLIs on this ephemeral Cloud Agent are deferred.** Kane’s preferred operator path is a **private overlay** (Mac + Cloud Agent + OVH `vps-b85e86d3`) and run `gcloud` / `apify` / `cf` on the VPS bastion, not four separate logins on every new agent. `MEM0_API_KEY` stays a Dashboard secret because public MCP has no overlay yet.
+**Vendor CLI login is parked until Kane asks.** Do not start `gcloud` / `apify` / `cf` / `wrangler` OAuth on this VM, and do not install or log those CLIs in on the bastion unattended. Overlay (Mac + Cloud Agent + OVH `vps-b85e86d3`) plus Mesh SSH is enough for operator reachability. `MEM0_API_KEY` stays a Dashboard secret because public MCP has no overlay yet.
 
 Validate this checkout:
 
@@ -141,9 +141,20 @@ This image often has `/dev/net/tun` but unprivileged `TUNSETIFF` is EPERM; `sudo
 
 Overlay SSH to the bastion is verified: `ssh vps-b85e86d3-mesh` (Host alias, `IdentitiesOnly` + `IdentityFile ~/.ssh/ovhcloud_ca_ed25519`, key comment `cursor-cloud-bc-6b19916e`). Naked `ssh ubuntu@100.96.0.3` without `-i` fails because it never offers that key. Access SSH is not published; public `:22` remains a fallback. This VM’s pubkey is **not** on camoufox-worker-01.
 
-Do **not** log this Cloud Agent into GCP / Apify / Cloudflare Console one-by-one. After Mesh/SSH to the bastion, run those CLIs there. The bastion currently has Docker + `cloudflared` on PATH, but **not** `gcloud` / `apify` / `cf` / `wrangler`.
+Vendor CLI login on the bastion is **parked**. The bastion currently has Docker + `cloudflared` on PATH, but **not** `gcloud` / `apify` / `cf` / `wrangler`. Next Cloud Agent work on this VM should use the repo (gateway, pytest, Docker `:2375`, Mesh SSH), not vendor consoles.
 
 `.cursor/cloud-auth.sh` remains a no-op fallback if env vars happen to exist; it is **not** the intended Cloud login path.
+
+### Ready for the next task (this run)
+
+Leave `rea-gateway` and `warp-svc` running. Do not `warp-cli disconnect`. Do not close bastion `:22`.
+
+| Check | Expected |
+|---|---|
+| `curl -sS http://127.0.0.1:8080/healthz` | `{"ok":true,"providers":["mock_fixture"]}` |
+| `DOCKER_HOST=tcp://127.0.0.1:2375 docker version` | client + server |
+| `ssh vps-b85e86d3-mesh hostname` | `vps-b85e86d3` |
+| `python3 scripts/check_cursor_agent_config.py` | `"ok": true` |
 
 ```bash
 ./.cursor/start.sh
