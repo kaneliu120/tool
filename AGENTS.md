@@ -49,6 +49,8 @@ with Mem0Client() as mem0:
 
 Optional env: `MEM0_MCP_URL` (default `https://mem0-mcp.opendata.best`), `MEM0_USER_ID` (default `kane`), `MEM0_REST_URL` (only if an SSH tunnel to REST `:8888` exists).
 
+Memory-system evolution (stale-fact probes, skill env contracts, write-path supersede) is specified in `docs/MEM0_EVOLUTION_PLAN.md`. New sessions should follow that packet; do not copy Alloomi LoRA/Engram, and do not apply extraction-worker W3 while lineage is active.
+
 Local Cursor IDE can use `.cursor/mcp.json` with `${env:MEM0_API_KEY}`.
 
 ## Skills / hooks / rules copied from Kane's Mac
