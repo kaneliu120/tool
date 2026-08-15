@@ -124,9 +124,14 @@ python3 scripts/mem0ctl.py health
 
 WP-D 探针变绿之后
   WP-E  经验短条目（helpful/harmful），禁止整篇 skill 自生成入库
+
+代码库域（独立文档，不插队 memories）
+  见 docs/MEM0_CODE_DOMAIN_PLAN.md
+  WP-K0  本仓库夹具探针（可与 WP-A/B/C 并行）
+  WP-K1+ 符号切片 / 派生 wiki / 文件 hash 作废（extraction-worker；lineage 未停只许影子集合）
 ```
 
-并行规则：WP-A/B/C 与 lineage **可以**同时进行。WP-D 与 lineage **不可以**同时 apply 索引/批量写边。
+并行规则：WP-A/B/C 与 lineage **可以**同时进行。WP-D 与 lineage **不可以**同时 apply 索引/批量写边。WP-K0 与 WP-A/B/C **可以**同时进行。WP-K1+ 与 WP-D **可以**同时（不同集合），不可与 lineage 全量写边抢同一 indexer。
 
 ---
 
@@ -287,7 +292,7 @@ Revert 上述 md/mdc。不改 Mem0 服务。
 
 ### 7.1 范围
 
-只动 **`mem0_unified.memories`**。不要对 `code_chunks` / `wiki` / `rag` 做 supersede（静态语料）。
+只动 **`mem0_unified.memories`**。不要对 **一次性导入** 的 `code_chunks` / `wiki` / `rag` 做 supersede（静态语料）。tracked 仓的符号切片与 `wiki.derived` 作废见 [`MEM0_CODE_DOMAIN_PLAN.md`](MEM0_CODE_DOMAIN_PLAN.md)，不要写进本 WP-D PR。
 
 ### 7.2 数据模型（最小）
 
@@ -379,7 +384,16 @@ handoff project=mem0-extraction-worker。
 ```
 仅当 lineage remaining≈0：W3 similar_to。
 下一版 current 才吃 rag_extract_skip。
-code_symbols 走 tree-sitter，不要 LangExtract。
+code_symbols 走 tree-sitter，不要 LangExtract。完整排期见 docs/MEM0_CODE_DOMAIN_PLAN.md（WP-K0 在 tool 仓即可开工）。
+```
+
+### 会话 4 — 代码库域（不要和会话 2 的 WP-D 抢同一 PR）
+
+```
+先读 docs/MEM0_CODE_DOMAIN_PLAN.md。
+无 Atlas：只做 WP-K0。
+有 Atlas：lineage 未停则影子集合 + 仅 mem0-selfhost；禁止接 codewiki.google；禁止 LangExtract；禁止 drop 历史滑窗。
+handoff project=mem0-extraction-worker 或 tool（看改了哪个仓）。
 ```
 
 ---
@@ -396,6 +410,7 @@ code_symbols 走 tree-sitter，不要 LangExtract。
 | 不要先做 | Alloomi SEA；ACE 整本重写；Memory-R1 训练 |
 | 现网债 | memory `0e49bbda` |
 | 方向 | memory `0be2145d`；gotcha `6434e754` |
+| 代码库域形态 | `docs/MEM0_CODE_DOMAIN_PLAN.md`；决策 `b197ed86`；gotcha `a99e22e0` |
 
 ---
 
