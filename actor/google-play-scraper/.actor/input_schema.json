@@ -1,0 +1,156 @@
+{
+  "title": "Google Play Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "description": "Scrape Google Play apps (search, category, home, developer, detail, data safety). Free Apify plan users: up to 10 runs of this Actor and up to 200 results per run. These limits are set by the Actor developer (not Apify). Upgrade to a paid Apify plan for unlimited runs. Package ids must come from live Play links — this Actor does not invent them.",
+  "properties": {
+    "mode": {
+      "title": "Mode",
+      "description": "Play surface. search/category/home/developer use first-pack HTML. detail/datasafety need live packageIds.",
+      "type": "string",
+      "enum": ["search", "category", "home", "developer", "detail", "datasafety"],
+      "default": "search",
+      "prefill": "search"
+    },
+    "q": {
+      "title": "Search query",
+      "description": "Play search q. Used when mode=search. Empty {} uses this default so platform auto-test SUCCEEDED.",
+      "type": "string",
+      "default": "flashlight",
+      "prefill": "flashlight",
+      "editor": "textfield"
+    },
+    "category": {
+      "title": "Category CODE",
+      "description": "Play category such as GAME, SPORTS, TRAVEL_AND_LOCAL. Required for mode=category.",
+      "type": "string",
+      "enum": [
+        "GAME",
+        "SPORTS",
+        "TRAVEL_AND_LOCAL",
+        "FAMILY",
+        "VIDEO_PLAYERS",
+        "WEATHER",
+        "FOOD_AND_DRINK",
+        "EDUCATION",
+        "COMICS",
+        "BOOKS_AND_REFERENCE",
+        "SOCIAL",
+        "LIFESTYLE",
+        "ENTERTAINMENT",
+        "PHOTOGRAPHY",
+        "PRODUCTIVITY",
+        "SHOPPING",
+        "ART_AND_DESIGN",
+        "AUTO_AND_VEHICLES",
+        "BEAUTY",
+        "BUSINESS",
+        "COMMUNICATION",
+        "DATING",
+        "EVENTS",
+        "FINANCE",
+        "HEALTH_AND_FITNESS",
+        "HOUSE_AND_HOME",
+        "LIBRARIES_AND_DEMO",
+        "MAPS_AND_NAVIGATION",
+        "MEDICAL",
+        "MUSIC_AND_AUDIO",
+        "NEWS_AND_MAGAZINES",
+        "PARENTING",
+        "PERSONALIZATION",
+        "TOOLS",
+        "ANDROID_WEAR",
+        "GAME_ACTION",
+        "GAME_ADVENTURE",
+        "GAME_ARCADE",
+        "GAME_BOARD",
+        "GAME_CASUAL",
+        "GAME_EDUCATIONAL",
+        "GAME_SIMULATION"
+      ]
+    },
+    "developerId": {
+      "title": "Developer id",
+      "description": "Numeric /store/apps/dev?id= value from a live detail page.",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "packageIds": {
+      "title": "Package ids",
+      "description": "Live Play package names from a previous search (do not invent). Used for detail/datasafety.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "detailUrls": {
+      "title": "Detail URLs",
+      "description": "Live https://play.google.com/store/apps/details?id=… links.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "c": {
+      "title": "Search catalog",
+      "description": "Play search c=. Only apps is opened (c=games returned 404 this session).",
+      "type": "string",
+      "enum": ["apps", "games"],
+      "default": "apps",
+      "prefill": "apps"
+    },
+    "market": {
+      "title": "Market preset",
+      "description": "us = hl=en gl=US (opened). ph = hl=zh-CN gl=PH (opened). Other presets are 未验证.",
+      "type": "string",
+      "enum": ["us", "ph", "gb", "au", "jp", "tw", "de", "fr", "in", "br", "ca", "sg"],
+      "default": "us",
+      "prefill": "us"
+    },
+    "hl": {
+      "title": "Language (hl)",
+      "description": "Play hl BCP-47. Overrides market preset when set.",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "gl": {
+      "title": "Country (gl)",
+      "description": "Play gl ISO country. Overrides market preset. Unopened countries are accepted with a warning.",
+      "type": "string",
+      "editor": "textfield"
+    },
+    "maxResults": {
+      "title": "Max results (max 1,000; free users capped at 200/run)",
+      "description": "Maximum results this run (1–1,000). Free Apify plan users: also limited to 10 total runs of this Actor (Actor developer policy).",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 10,
+      "prefill": 10
+    },
+    "enrichDetails": {
+      "title": "Enrich list rows with detail JSON-LD",
+      "type": "boolean",
+      "default": false,
+      "prefill": false
+    },
+    "includeDataSafety": {
+      "title": "Include data-safety summary",
+      "description": "Fetches /store/apps/datasafety for each detail row (partial field tree).",
+      "type": "boolean",
+      "default": false,
+      "prefill": false
+    },
+    "includeReviews": {
+      "title": "Include reviews overlay (not collected)",
+      "description": "Review bodies are not scraped. Enabling only adds a warning (no batchexecute forge).",
+      "type": "boolean",
+      "default": false,
+      "prefill": false
+    },
+    "workerBaseUrl": {
+      "title": "Worker base URL (optional)",
+      "type": "string",
+      "description": "Override worker origin for this run. Default: Actor env WORKER_BASE_URL. Must be https:// and allowlisted (*.run.app or localhost).",
+      "editor": "textfield",
+      "sectionCaption": "Advanced"
+    }
+  },
+  "required": ["mode", "q", "c", "market", "maxResults"]
+}

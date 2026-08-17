@@ -1,0 +1,93 @@
+{
+  "primaryMarket": "us",
+  "queryPool": [
+    "flashlight",
+    "period tracker",
+    "subway timetable",
+    "ocr scanner",
+    "language tutor"
+  ],
+  "queryKey": "q",
+  "maxResults": 3,
+  "cells": [
+    {
+      "market": "us",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ph",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ph",
+        "hl": "zh-CN",
+        "gl": "PH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-sports",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "SPORTS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ph",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ph",
+        "hl": "zh-CN",
+        "gl": "PH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    }
+  ]
+}

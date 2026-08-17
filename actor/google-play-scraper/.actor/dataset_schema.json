@@ -1,0 +1,45 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "packageId": { "type": "string", "description": "Play package name (primary key)" },
+    "name": { "type": "string" },
+    "type": { "type": "string" },
+    "status": { "type": "string" },
+    "country": { "type": "string" },
+    "authority": { "type": "string" },
+    "listingUrl": { "type": "string" },
+    "developer": { "type": "string" },
+    "ratingValue": { "type": "number" },
+    "installs": { "type": "string" }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "name",
+          "packageId",
+          "developer",
+          "ratingValue",
+          "installs",
+          "country",
+          "channel",
+          "listingUrl"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "name": { "label": "Name" },
+          "packageId": { "label": "Package" },
+          "developer": { "label": "Developer" },
+          "ratingValue": { "label": "Rating" },
+          "installs": { "label": "Installs" },
+          "country": { "label": "Country" },
+          "channel": { "label": "Channel" },
+          "listingUrl": { "label": "URL", "format": "link" }
+        }
+      }
+    }
+  }
+}

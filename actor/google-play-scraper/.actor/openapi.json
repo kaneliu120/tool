@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "google-play-scraper",
+    "version": "0.0.1",
+    "description": "Standby façade. Scrapes run against the Cloud Run worker."
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Health",
+        "responses": { "200": { "description": "ok" } }
+      },
+      "post": {
+        "summary": "Standby notice",
+        "responses": { "200": { "description": "ok" } }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "responses": { "200": { "description": "ok" } }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "summary": "OpenAPI",
+        "responses": { "200": { "description": "spec" } }
+      }
+    }
+  }
+}
