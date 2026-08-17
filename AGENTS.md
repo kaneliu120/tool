@@ -174,42 +174,28 @@ curl -sS http://127.0.0.1:8080/healthz
 | Phase 1 page probe | `.venv/bin/python .cursor/skills/website-page-research/scripts/playwright_page_probe.py --url URL --js generic` |
 | Inventory | `python3 scripts/check_recon_actor_env.py` |
 | Thin Actor / worker factory | Skill scripts under `.cursor/skills/apify-actor-cloud-run-development/scripts/` |
-| `~/Projects/google run worker` and `~/Projects/Apify Actors` | **Not on this VM and not on public GitHub** (see below) |
+| `~/Projects/google run worker` and `~/Projects/Apify Actors` | **Present on this VM** (2026-08-17): Apify `apify pull` 109 Actors + Cloud Run `build-source-location` zips 103 workers. **Not** a GitHub clone. Refresh: `python3 scripts/pull_actor_worker_peers.py` |
 | `gcloud` deploy (`woker-260722`) | User login **done** as `kaneliu10@gmail.com`; project `woker-260722`. Not ADC. Do not start another OAuth unless Kane asks |
 | Camoufox / Patchright worker runtimes | Not installed on the Agent snapshot (worker image / Mac worker repo) |
 
 Do **not** claim Mac Chrome recon works here. Do **not** install Camoufox into this Cloud snapshot. Random Apify smoke still uses `random_smoke_input.py` — never README prefills.
 
-### Worker / Actor peer trees (GitHub search, 2026-08-17)
+### Worker / Actor peer trees
 
-`scaffold_worker.sh` / `scaffold_actor.sh` expect:
+`scaffold_worker.sh` / `scaffold_actor.sh` default roots:
 
-- `$HOME/Projects/google run worker/<peer>/` (Dockerfile + `src/`)
-- `$HOME/Projects/Apify Actors/<peer>/` (`.actor/actor.json`)
+- `$HOME/Projects/google run worker/<peer>/`
+- `$HOME/Projects/Apify Actors/<peer>/`
 
-This Cloud Agent **cannot clone those trees today**:
-
-1. `gh repo list kaneliu120` (16 public repos) has no worker/Actor monorepo. Guessed names (`google-run-worker`, `apify-actors`, `zillow-com`, `egress-control`, `mem0-selfhost`) 404.
-2. Cloud environment `repos` is only `github.com/kaneliu120/tool`.
-3. Apify owner acts are `sourceType=SOURCE_FILES` with **no** `gitRepoUrl` (not git-linked).
-4. Mem0 code index still sees Mac folders named `google run worker` and `Apify Actors` — that is local disk indexing, not a GitHub remote.
-5. GitHub user `kaneliu10` has 0 public repos; this Agent’s `gh` token cannot list that account’s private repos. Cloud Run on `woker-260722` has **103** services (source-deploy images), which is not a git checkout.
-
-Kane pointed at `https://github.com/kaneliu120/actor.git` (2026-08-17). This Agent’s GitHub App installation can **only** see `kaneliu120/tool` (`GET /installation/repositories` total=1). `GET /repos/kaneliu120/actor` returns **404** (missing **or** private and not granted). Clone did not happen.
-
-To clone on the next Cloud Agent run: add `github.com/kaneliu120/actor` to the Cursor environment / GitHub App repo access (same way `tool` is attached), then:
+**This VM (2026-08-17):** downloaded from Apify + GCP, not GitHub.
 
 ```bash
-mkdir -p "$HOME/Projects"
-git clone https://github.com/kaneliu120/actor.git "$HOME/Projects/actor"
-# if the tree is Apify Actors/<name>/ inside the repo:
-export ACTORS_ROOT="$HOME/Projects/actor/Apify Actors"
-# else if each actor is a top-level folder:
-export ACTORS_ROOT="$HOME/Projects/actor"
+python3 scripts/pull_actor_worker_peers.py
+# 109 Actors (105 have src/worker_client.py), 103 Cloud Run source zips
+# assert_cwd worker zillow-com / apartments-com / bayt-com — OK
+# assert_cwd actor zillow-group-scraper / walmart-scraper — OK
 ```
 
-- Push the Mac trees to GitHub and add those repos to the Cloud Agent environment, or
-- Give this Agent a GitHub identity that can clone the private remotes (without replacing the Cursor `gh` token used to push `tool`), or
-- Paste the repo URLs in chat.
+GitHub `kaneliu120/actor.git` is still **404** to this Agent’s GitHub App (installation only has `tool`). Do not call the HOME trees a git clone. `_shared/` is **not** in per-service Cloud Run zips; `scaffold_worker.sh` will warn and skip `sync_shared.sh`.
 
-Do not invent empty peer directories. Do not dump Apify `SOURCE_FILES` into `~/Projects` and call them GitHub clones.
+Verified peers: `zillow-com` (http), `apartments-com` (camoufox), `bayt-com` (patchright), `zillow-group-scraper` (thin Actor). There is no live Apify actor named `zillow-scraper`; the factory peer on this account is `zillow-group-scraper`.

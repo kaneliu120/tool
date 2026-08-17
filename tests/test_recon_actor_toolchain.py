@@ -67,7 +67,14 @@ def test_check_recon_actor_env_script() -> None:
     assert report["mac_chrome_bridge"] is False
 
 
-def test_actor_skill_gates_exist() -> None:
+def test_pull_actor_worker_peers_script_exists() -> None:
+    path = ROOT / "scripts" / "pull_actor_worker_peers.py"
+    assert path.is_file()
+    text = path.read_text(encoding="utf-8")
+    assert "Apify Actors" in text
+    assert "google run worker" in text
+    assert "build-source-location" in text
+
     skill = ROOT / ".cursor" / "skills" / "apify-actor-cloud-run-development"
     for rel in (
         "scripts/assert_cwd.sh",
