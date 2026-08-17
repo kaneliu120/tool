@@ -68,7 +68,7 @@ Cloud Agents **often do not inject** project skills into the available-skills li
 | `apify-actor-cloud-run-development` (+ redirects) | Yes as methodology; Kane's `~/Projects/google run worker` paths are **not** on this VM |
 | `apify-publish-tasks` | Yes; Console publish needs a browser (VM desktop, not Mac Chrome) |
 | `bright-data-riskbypass` / `camoufox-cloud-run` | Yes as docs |
-| `website-page-research` | Partial — no AppleScript Chrome |
+| `website-page-research` | Phase 0 `http_contrast.sh`; Phase 1 `playwright_page_probe.py` + system Chrome. No AppleScript |
 | `reverse-skill` | Router only — full pack not in this clone |
 | `use-my-browser` | **Stub only** — do not `osascript` |
 
@@ -116,7 +116,7 @@ Repo-managed config: `.cursor/environment.json`.
 
 | Phase | Script | Role |
 |---|---|---|
-| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `.venv`; `pip install -e ".[dev]"` |
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `rsync`/`jq`; `.venv`; `pip install -e ".[dev,recon]"` (Playwright + `curl_cffi`) |
 | `start` | `./.cursor/start.sh` | Optional secret activation via `cloud-auth.sh`; idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
 | `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
 
@@ -164,4 +164,18 @@ curl -sS http://127.0.0.1:8080/healthz
 .venv/bin/pytest -q
 ```
 
-`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome is on this image for VM desktop use, not as the product HTML provider.
+`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome on this image is the **page-recon** browser (`playwright_page_probe.py` `channel=chrome`), not the REA Kasada HTML provider.
+
+### Page recon + Actor/worker toolchain (this VM)
+
+| Need | Cloud Agent |
+|---|---|
+| Phase 0 HTTP contrast | `bash .cursor/skills/website-page-research/scripts/http_contrast.sh URL` |
+| Phase 1 page probe | `.venv/bin/python .cursor/skills/website-page-research/scripts/playwright_page_probe.py --url URL --js generic` |
+| Inventory | `python3 scripts/check_recon_actor_env.py` |
+| Thin Actor / worker factory | Skill scripts under `.cursor/skills/apify-actor-cloud-run-development/scripts/` |
+| `~/Projects/google run worker` and `~/Projects/Apify Actors` | **Not on this VM** — `scaffold_*.sh` cannot copy peers until those trees exist |
+| `gcloud` deploy (`woker-260722`) | CLI is installed; **no credentialed account**. Do not start `gcloud auth login` unless Kane asks |
+| Camoufox / Patchright worker runtimes | Not installed on the Agent snapshot (worker image / Mac worker repo) |
+
+Do **not** claim Mac Chrome recon works here. Do **not** install Camoufox into this Cloud snapshot. Random Apify smoke still uses `random_smoke_input.py` — never README prefills.
