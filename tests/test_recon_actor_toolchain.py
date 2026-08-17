@@ -75,6 +75,8 @@ def test_pull_actor_worker_peers_script_exists() -> None:
     assert "google run worker" in text
     assert "build-source-location" in text
 
+
+def test_actor_skill_gates_exist() -> None:
     skill = ROOT / ".cursor" / "skills" / "apify-actor-cloud-run-development"
     for rel in (
         "scripts/assert_cwd.sh",
