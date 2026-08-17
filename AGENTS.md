@@ -195,7 +195,18 @@ This Cloud Agent **cannot clone those trees today**:
 4. Mem0 code index still sees Mac folders named `google run worker` and `Apify Actors` — that is local disk indexing, not a GitHub remote.
 5. GitHub user `kaneliu10` has 0 public repos; this Agent’s `gh` token cannot list that account’s private repos. Cloud Run on `woker-260722` has **103** services (source-deploy images), which is not a git checkout.
 
-To make scaffold work on Cloud Agents, Kane needs one of:
+Kane pointed at `https://github.com/kaneliu120/actor.git` (2026-08-17). This Agent’s GitHub App installation can **only** see `kaneliu120/tool` (`GET /installation/repositories` total=1). `GET /repos/kaneliu120/actor` returns **404** (missing **or** private and not granted). Clone did not happen.
+
+To clone on the next Cloud Agent run: add `github.com/kaneliu120/actor` to the Cursor environment / GitHub App repo access (same way `tool` is attached), then:
+
+```bash
+mkdir -p "$HOME/Projects"
+git clone https://github.com/kaneliu120/actor.git "$HOME/Projects/actor"
+# if the tree is Apify Actors/<name>/ inside the repo:
+export ACTORS_ROOT="$HOME/Projects/actor/Apify Actors"
+# else if each actor is a top-level folder:
+export ACTORS_ROOT="$HOME/Projects/actor"
+```
 
 - Push the Mac trees to GitHub and add those repos to the Cloud Agent environment, or
 - Give this Agent a GitHub identity that can clone the private remotes (without replacing the Cursor `gh` token used to push `tool`), or
