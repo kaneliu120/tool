@@ -48,7 +48,9 @@ ICON_RE = re.compile(
     re.I,
 )
 NAME_SPAN_RE = re.compile(r'<span[^>]*class="[^"]*DdYX5[^"]*"[^>]*>([^<]+)</span>', re.I)
+NAME_DIV_RE = re.compile(r'<div class="Epkrse[^"]*">([^<]+)</div>', re.I)
 DEV_SPAN_RE = re.compile(r'<span[^>]*class="[^"]*wMUdtb[^"]*"[^>]*>([^<]+)</span>', re.I)
+ICON_ALT_RE = re.compile(r'alt="Icon image ([^"]+)"', re.I)
 CONTAINS_ADS_RE = re.compile(r"Contains ads", re.I)
 H2_RE = re.compile(r"<h2[^>]*class=\"q1rIdc\"[^>]*>([^<]+)</h2>", re.I)
 
@@ -160,13 +162,22 @@ def parse_search_cards(html: str, *, channel: str, hl: str, gl: str) -> list[dic
         if not pkg or pkg in seen:
             continue
         seen.add(pkg)
-        name_m = NAME_SPAN_RE.search(inner)
+        name_m = NAME_SPAN_RE.search(inner) or NAME_DIV_RE.search(inner)
+        name = unescape(name_m.group(1)).strip() if name_m else ""
+        if not name:
+            alt_m = ICON_ALT_RE.search(inner)
+            if alt_m:
+                name = unescape(alt_m.group(1)).strip()
+        if not name:
+            texts = [unescape(t).strip() for t in re.findall(r">([^<]{2,80})<", inner)]
+            skip = {"star", "•"}
+            name = next((t for t in texts if t.lower() not in skip and not re.fullmatch(r"[0-9.]+", t)), pkg)
         dev_m = DEV_SPAN_RE.search(inner)
         rated = RATED_RE.search(inner)
         item: dict[str, Any] = {
             "listingId": pkg,
             "packageId": pkg,
-            "name": unescape(name_m.group(1)).strip() if name_m else pkg,
+            "name": name or pkg,
             "type": "app",
             "status": "listed",
             "country": gl,

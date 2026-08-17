@@ -35,6 +35,14 @@ def test_search_card_keep():
     assert row["imageUrl"]
 
 
+def test_sports_card_epkrse_name():
+    html = _read("sports_card.html")
+    items = parse_search_cards(html, channel="category", hl="en", gl="US")
+    assert items[0]["listingId"] == "com.bamnetworks.mobile.android.ballpark"
+    assert items[0]["name"] == "MLB Ballpark"
+    assert items[0]["ratingValue"] == 4.1
+
+
 def test_category_card_clash():
     html = _read("category_card.html")
     items = parse_search_cards(html, channel="category", hl="en", gl="US")
