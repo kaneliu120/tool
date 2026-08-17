@@ -196,6 +196,6 @@ python3 scripts/pull_actor_worker_peers.py
 # assert_cwd actor zillow-group-scraper / walmart-scraper — OK
 ```
 
-GitHub `kaneliu120/actor.git` is still **404** to this Agent’s GitHub App (installation only has `tool`). Do not call the HOME trees a git clone. `_shared/` is **not** in per-service Cloud Run zips; `scaffold_worker.sh` will warn and skip `sync_shared.sh`.
+GitHub `kaneliu120/actor.git` is still **404** to this Agent’s GitHub App (installation only has `tool`). Do not call the HOME trees a git clone. Per-service Cloud Run zips omit `_shared/`; `scripts/pull_actor_worker_peers.py` **recovers** `_shared/` from copies already in worker `src/` (donor `airbnb-com`) and writes `sync_shared.sh`. That recovery is **not** Kane’s Mac git original — replace it if the laptop tree differs.
 
-Verified peers: `zillow-com` (http), `apartments-com` (camoufox), `bayt-com` (patchright), `zillow-group-scraper` (thin Actor). There is no live Apify actor named `zillow-scraper`; the factory peer on this account is `zillow-group-scraper`.
+Verified peers: `zillow-com` (http), `apartments-com` (camoufox), `bayt-com` (patchright), `zillow-group-scraper` (thin Actor). There is no live Apify actor named `zillow-scraper`; the factory peer on this account is `zillow-group-scraper`. Not-thin Apify pulls (no `src/worker_client.py`): `booking-airbnb-scraper`, `craigslist-housing-scraper`, `phone-number-intelligence`, `us-real-estate-scraper`.

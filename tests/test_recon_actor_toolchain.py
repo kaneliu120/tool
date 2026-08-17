@@ -74,6 +74,38 @@ def test_pull_actor_worker_peers_script_exists() -> None:
     assert "Apify Actors" in text
     assert "google run worker" in text
     assert "build-source-location" in text
+    assert "recover_shared" in text
+
+
+def test_recover_shared_from_worker_copies(tmp_path: Path) -> None:
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "pull_actor_worker_peers", ROOT / "scripts" / "pull_actor_worker_peers.py"
+    )
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    donor = tmp_path / "airbnb-com" / "src"
+    donor.mkdir(parents=True)
+    for name in mod.SHARED_FILES:
+        (donor / name).write_text(f"# {name}\n", encoding="utf-8")
+    dest = tmp_path / "new-com"
+    (dest / "src").mkdir(parents=True)
+    report = mod.recover_shared(tmp_path)
+    assert report["ok"] is True
+    assert report["donor"] == "airbnb-com"
+    script = tmp_path / "_shared" / "sync_shared.sh"
+    assert script.is_file()
+    proc = subprocess.run(
+        ["bash", str(script), "new-com"],
+        cwd=tmp_path,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert (dest / "src" / "egress_control_client.py").is_file()
 
 
 def test_actor_skill_gates_exist() -> None:

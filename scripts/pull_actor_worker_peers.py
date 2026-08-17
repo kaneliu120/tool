@@ -20,10 +20,46 @@ import zipfile
 from pathlib import Path
 
 HOME = Path.home()
-ACTORS_ROOT = HOME / "Projects" / "Apify Actors"
-WORKERS_ROOT = HOME / "Projects" / "google run worker"
-SKIP_NAMES = {".env", ".env.local", ".env.production", "credentials.json", "service-account.json"}
+ACTORS_ROOT = Path(os.environ.get("ACTORS_ROOT") or (HOME / "Projects" / "Apify Actors"))
+WORKERS_ROOT = Path(os.environ.get("WORKERS_ROOT") or (HOME / "Projects" / "google run worker"))
+SKIP_NAMES = {
+    ".env",
+    ".env.local",
+    ".env.production",
+    "credentials.json",
+    "service-account.json",
+    "=",
+}
 SKIP_SUFFIXES = {".pem", ".p12"}
+SHARED_FILES = (
+    "egress_control_client.py",
+    "proxy_provider.py",
+    "run_telemetry.py",
+    "zyte_api.py",
+)
+SYNC_SHARED_SH = """#!/usr/bin/env bash
+# Recovered from Cloud Run per-service source copies. Not the Mac git original.
+set -euo pipefail
+SHARED="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(cd "$SHARED/.." && pwd)"
+DEST="${1:-}"
+[[ -n "$DEST" ]] || { echo "usage: $0 <worker-name-or-path>" >&2; exit 2; }
+if [[ -d "$DEST/src" ]]; then
+  OUT="$DEST"
+elif [[ -d "$ROOT/$DEST/src" ]]; then
+  OUT="$ROOT/$DEST"
+else
+  echo "FAIL: no worker src at $DEST" >&2
+  exit 1
+fi
+mkdir -p "$OUT/src"
+for f in egress_control_client.py proxy_provider.py run_telemetry.py zyte_api.py; do
+  if [[ -f "$SHARED/$f" ]]; then
+    cp "$SHARED/$f" "$OUT/src/$f"
+  fi
+done
+echo "OK synced shared modules into $OUT/src"
+"""
 
 
 def run(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
@@ -112,7 +148,7 @@ def pull_workers() -> dict:
                 with zipfile.ZipFile(local_zip) as zf:
                     for info in zf.infolist():
                         base = Path(info.filename).name
-                        if base in SKIP_NAMES or Path(info.filename).suffix in SKIP_SUFFIXES:
+                        if not base or base in SKIP_NAMES or Path(info.filename).suffix in SKIP_SUFFIXES:
                             continue
                         zf.extract(info, dest)
             except zipfile.BadZipFile as exc:
@@ -128,11 +164,48 @@ def pull_workers() -> dict:
     }
 
 
+def recover_shared(workers_root: Path | None = None) -> dict:
+    """Rebuild _shared/ from copies already inside worker src/ (GCS zips omit it)."""
+    root = workers_root or WORKERS_ROOT
+    shared = root / "_shared"
+    donors: list[str] = []
+    for peer in root.iterdir():
+        if not peer.is_dir() or peer.name.startswith("_"):
+            continue
+        if all((peer / "src" / name).is_file() for name in SHARED_FILES):
+            donors.append(peer.name)
+    preferred = "airbnb-com" if "airbnb-com" in donors else (donors[0] if donors else "")
+    if not preferred:
+        return {"ok": False, "error": "no worker has all shared src copies", "donor": None}
+    donor = root / preferred
+    shared.mkdir(parents=True, exist_ok=True)
+    copied: list[str] = []
+    for name in SHARED_FILES:
+        src = donor / "src" / name
+        dest = shared / name
+        shutil.copy2(src, dest)
+        copied.append(name)
+    script = shared / "sync_shared.sh"
+    script.write_text(SYNC_SHARED_SH, encoding="utf-8")
+    script.chmod(0o755)
+    note = shared / "RECOVERED.md"
+    note.write_text(
+        "Recovered from Cloud Run per-service zip copies "
+        f"(donor `{preferred}`).\n"
+        "Not Kane's Mac `google run worker/_shared` git tree. "
+        "If the Mac original differs, replace this directory.\n",
+        encoding="utf-8",
+    )
+    return {"ok": True, "donor": preferred, "copied": copied, "donors": len(donors)}
+
+
 def main() -> int:
-    report = {"actors": pull_actors(), "workers": pull_workers()}
+    report = {
+        "actors": pull_actors(),
+        "workers": pull_workers(),
+        "shared": recover_shared(),
+    }
     print(json.dumps(report, indent=2, ensure_ascii=False))
-    actors_ok = report["actors"].get("ok")
-    workers_ok = report["workers"].get("ok")
     # Partial success is still useful.
     return 0 if (report["actors"].get("pulled") or report["workers"].get("pulled")) else 1
 
