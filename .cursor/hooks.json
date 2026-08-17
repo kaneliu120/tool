@@ -4,7 +4,7 @@
     "beforeSubmitPrompt": [
       {
         "command": "python3 .cursor/hooks/mem0_before_prompt.py",
-        "matcher": "UserPromptSubmit"
+        "timeout": 10
       }
     ],
     "stop": [
@@ -16,7 +16,8 @@
     ],
     "preCompact": [
       {
-        "command": "python3 .cursor/hooks/mem0_precompact.py"
+        "command": "python3 .cursor/hooks/mem0_precompact.py",
+        "timeout": 10
       }
     ]
   }

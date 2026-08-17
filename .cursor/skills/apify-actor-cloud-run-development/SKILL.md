@@ -12,7 +12,9 @@ description: >-
 
 # Apify Actor + Cloud Run development (unified)
 
-**Source of truth:** this skill directory (`~/.cursor/skills/apify-actor-cloud-run-development/` or `~/.agents/skills/…`).  
+**Source of truth:** this skill directory in the current checkout
+(`.cursor/skills/apify-actor-cloud-run-development/` on Cloud Agents;
+`~/.cursor/skills/apify-actor-cloud-run-development/` or `~/.agents/skills/…` on the laptop).
 `Apify Actors/docs/CLOUD_RUN_ACTOR_DEVELOPMENT_STANDARD.md` and `google run worker/docs/…` are **mirrors** — edit here first, then copy. Do not three-way edit.
 
 Thin Actor / thick worker / egress-control. Replaces split skills `cloud-run-apify-actor`, `migrate-apify-actor-worker`, `apify-actor-free-tier-limits` (redirect stubs).

@@ -105,6 +105,8 @@ def test_mcp_search_discovers_tools() -> None:
                         "tools": [
                             {"name": "search_memories"},
                             {"name": "add_memory"},
+                            {"name": "handoff"},
+                            {"name": "get"},
                         ]
                     },
                     rpc_id=2,
@@ -112,6 +114,7 @@ def test_mcp_search_discovers_tools() -> None:
             if payload["method"] == "tools/call":
                 assert payload["params"]["name"] == "search_memories"
                 assert payload["params"]["arguments"]["query"] == "Kane deploy"
+                assert payload["params"]["arguments"]["meta_json"] == '{"kind":"handoff"}'
                 return _rpc_result(
                     {
                         "content": [
@@ -131,7 +134,7 @@ def test_mcp_search_discovers_tools() -> None:
         Mem0Config(api_key="test-key", mcp_url="https://mem0-mcp.opendata.best")
     )
     client._http = httpx.Client(transport=httpx.MockTransport(handler))
-    results = client.search("Kane deploy")
+    results = client.search("Kane deploy", meta_json='{"kind":"handoff"}')
     assert results[0]["memory"] == "Cloud Run worker"
     assert calls[:4] == [
         "initialize",
@@ -139,6 +142,42 @@ def test_mcp_search_discovers_tools() -> None:
         "tools/list",
         "tools/call",
     ]
+
+
+def test_mcp_handoff_calls_handoff_tool() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        payload = json.loads(request.content)
+        if payload["method"] == "initialize":
+            return _rpc_result({"protocolVersion": "2025-03-26", "capabilities": {}})
+        if payload["method"] == "notifications/initialized":
+            return httpx.Response(202)
+        if payload["method"] == "tools/list":
+            return _rpc_result({"tools": [{"name": "handoff"}]}, rpc_id=2)
+        if payload["method"] == "tools/call":
+            assert payload["params"]["name"] == "handoff"
+            args = payload["params"]["arguments"]
+            assert args["project"] == "tool"
+            assert args["next_steps"] == "open PR"
+            return _rpc_result(
+                {"content": [{"type": "text", "text": json.dumps({"id": "h1"})}]},
+                rpc_id=3,
+            )
+        raise AssertionError(payload)
+
+    client = Mem0Client(
+        Mem0Config(api_key="test-key", mcp_url="https://mem0-mcp.opendata.best")
+    )
+    client._http = httpx.Client(transport=httpx.MockTransport(handler))
+    result = client.handoff(
+        project="tool",
+        verdict="hooks were incomplete",
+        done="added handoff CLI",
+        status="fixed",
+        next_steps="open PR",
+        gotchas="system python3 lacked httpx",
+        evidence="pytest",
+    )
+    assert result["id"] == "h1"
 
 
 def test_unauthorized_is_mem0_error() -> None:
@@ -154,6 +193,14 @@ def test_unauthorized_is_mem0_error() -> None:
     client._http = httpx.Client(transport=httpx.MockTransport(handler))
     with pytest.raises(Mem0Error, match="401"):
         client.health()
+
+
+def test_cli_handoff_help_exits_zero() -> None:
+    from mem0_client.cli import main
+
+    with pytest.raises(SystemExit) as exc:
+        main(["handoff", "--help"])
+    assert exc.value.code == 0
 
 
 def test_live_public_healthz() -> None:
