@@ -157,6 +157,22 @@ def check_mcp_and_env(errors: list[str], notes: list[str]) -> None:
         _fail(errors, "environment.json must declare gateway port 8080")
     if shutil.which("docker") is None:
         notes.append("docker CLI not on PATH (install.sh should add docker.io on Linux Cloud VMs)")
+    install_text = (CURSOR / "install.sh").read_text(encoding="utf-8")
+    if '".[dev,recon]"' not in install_text and "'.[dev,recon]'" not in install_text:
+        _fail(errors, ".cursor/install.sh must pip install .[dev,recon]")
+    if "rsync" not in install_text:
+        _fail(errors, ".cursor/install.sh must install rsync")
+    probe = (
+        CURSOR
+        / "skills"
+        / "website-page-research"
+        / "scripts"
+        / "playwright_page_probe.py"
+    )
+    if not probe.is_file():
+        _fail(errors, "missing website-page-research/scripts/playwright_page_probe.py")
+    if not (ROOT / "scripts" / "check_recon_actor_env.py").is_file():
+        _fail(errors, "missing scripts/check_recon_actor_env.py")
 
 
 def check_hook_runtime(errors: list[str], notes: list[str]) -> None:

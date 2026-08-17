@@ -9,14 +9,20 @@ cd "$(dirname "$0")/.."
 # support needed to create a virtualenv. Install it only when missing.
 if ! python3 -c "import venv, ensurepip" >/dev/null 2>&1; then
   sudo apt-get update
-  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv
+  sudo DEBIAN_FRONTEND=noninteractive apt-get \
+    -o Dpkg::Options::="--force-confold" \
+    -o Dpkg::Options::="--force-confdef" \
+    install -y python3-venv
 fi
 
 # Docker Engine is often already listening on TCP :2375 on Cloud VMs, but the
 # image has no CLI and no docker.sock. Install CLI + compose + buildx only.
 if ! command -v docker >/dev/null 2>&1; then
   sudo apt-get update
-  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  sudo DEBIAN_FRONTEND=noninteractive apt-get \
+    -o Dpkg::Options::="--force-confold" \
+    -o Dpkg::Options::="--force-confdef" \
+    install -y \
     docker.io docker-compose-v2 docker-buildx
 fi
 
@@ -62,7 +68,10 @@ if ! command -v gcloud >/dev/null 2>&1; then
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
     | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list >/dev/null
   sudo apt-get update -qq
-  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y google-cloud-cli
+  sudo DEBIAN_FRONTEND=noninteractive apt-get \
+    -o Dpkg::Options::="--force-confold" \
+    -o Dpkg::Options::="--force-confdef" \
+    install -y google-cloud-cli
 fi
 
 if command -v npm >/dev/null 2>&1; then
@@ -80,6 +89,27 @@ if ! command -v cloudflared >/dev/null 2>&1; then
   sudo install -m 755 /tmp/cloudflared /usr/local/bin/cloudflared
 fi
 
+# website-page-research Phase 0 + Actor/worker scaffold (rsync, jq, curl).
+# Do not apt-install google-chrome here: the Cloud image already ships it.
+NEED_PKGS=()
+command -v rsync >/dev/null 2>&1 || NEED_PKGS+=(rsync)
+command -v jq >/dev/null 2>&1 || NEED_PKGS+=(jq)
+command -v curl >/dev/null 2>&1 || NEED_PKGS+=(curl)
+if ((${#NEED_PKGS[@]})); then
+  sudo apt-get update
+  sudo DEBIAN_FRONTEND=noninteractive apt-get \
+    -o Dpkg::Options::="--force-confold" \
+    -o Dpkg::Options::="--force-confdef" \
+    install -y "${NEED_PKGS[@]}"
+fi
+
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
-.venv/bin/pip install -e ".[dev]"
+.venv/bin/pip install -e ".[dev,recon]"
+
+# Playwright: prefer system Google Chrome (channel=chrome). Fetch bundled
+# Chromium only when Chrome is missing. Do not install Camoufox here.
+if ! command -v google-chrome >/dev/null 2>&1 \
+  && ! command -v google-chrome-stable >/dev/null 2>&1; then
+  .venv/bin/python -m playwright install --with-deps chromium
+fi

@@ -14,8 +14,10 @@ description: >-
 
 **Cloud Agent:** no AppleScript Chrome and no `/Users/kane`. Do not call `osascript`
 or follow [`../use-my-browser/SKILL.md`](../use-my-browser/SKILL.md) on this VM.
-Use the VM desktop / Playwright, or HTTP probes + `scripts/` in this skill.
-Write the report under `/tmp` or the workspace — not macOS Downloads.
+Phase 0: `scripts/http_contrast.sh` (curl, three UAs). Phase 1: serial
+`scripts/playwright_page_probe.py` against system Google Chrome (`channel=chrome`).
+Write the report under `/opt/cursor/artifacts/` or `/tmp` — not macOS Downloads.
+Inventory: `python3 scripts/check_recon_actor_env.py` from the repo root.
 
 The product of this skill is **not** a pretty Markdown essay. It is:
 
@@ -96,12 +98,27 @@ Do **not** start Phase 1 DOM archaeology before Phase 0 HTTP contrast. A 200 CSS
 
 ### Chrome + time
 
+**macOS (real Chrome session):**
+
 ```bash
 date '+%Y-%m-%d %H:%M:%S %Z'
 python3 ~/.cursor/skills/use-my-browser/scripts/chrome_js_bridge.py status
 python3 ~/.cursor/skills/use-my-browser/scripts/chrome_js_bridge.py js \
   'JSON.stringify({url:location.href,title:document.title,ready:document.readyState,len:document.body?.innerText?.length||0})'
 ```
+
+**Cloud Agent (this Ubuntu VM — no AppleScript):**
+
+```bash
+date '+%Y-%m-%d %H:%M:%S %Z'
+bash .cursor/skills/website-page-research/scripts/http_contrast.sh 'https://example.com/'
+.venv/bin/python .cursor/skills/website-page-research/scripts/playwright_page_probe.py \
+  --url 'https://example.com/' --js generic
+.venv/bin/python .cursor/skills/website-page-research/scripts/playwright_page_probe.py \
+  --url 'https://example.com/' --js rsc
+```
+
+One URL per process. Do not parallelize page-context probes.
 
 Confirm login/session is not stale before recon. After every navigation, **re-run the probe** (fetch hooks die on navigation).
 
@@ -157,17 +174,22 @@ Packs **add** groups; they do not rename these.
 Do not write a new probe from scratch. Copy and optionally add `EXTRA_KEYS`:
 
 ```bash
-SKILL_DIR="$HOME/.cursor/skills/website-page-research"   # same tree: ~/.agents/skills/website-page-research
+SKILL_DIR=".cursor/skills/website-page-research"   # Mac: ~/.cursor or ~/.agents/skills/website-page-research
 cp "$SKILL_DIR/scripts/generic_page_probe.js" /tmp/<site>_probe.js
 # edit EXTRA_KEYS at top, then:
+# macOS:
 python3 ~/.cursor/skills/use-my-browser/scripts/chrome_js_bridge.py file /tmp/<site>_probe.js
+# Cloud Agent:
+.venv/bin/python "$SKILL_DIR/scripts/playwright_page_probe.py" --url 'https://…' --js /tmp/<site>_probe.js
 ```
 
 Second pass on App Router / RSC:
 
 ```bash
 cp "$SKILL_DIR/scripts/rsc_keyword_grep.js" /tmp/<site>_rsc.js
-python3 ~/.cursor/skills/use-my-browser/scripts/chrome_js_bridge.py file /tmp/<site>_rsc.js
+# macOS: chrome_js_bridge.py file /tmp/<site>_rsc.js
+# Cloud Agent:
+.venv/bin/python "$SKILL_DIR/scripts/playwright_page_probe.py" --url 'https://…' --js /tmp/<site>_rsc.js
 ```
 
 The generic probe already returns: url/title/h1/ready/bodyLen, render family signals, `__NEXT_DATA__` **key shapes** (not the blob), RSC push count + concat size, JSON-LD types, `data-test*` inventory, class stems, controls, detail-link samples, resource host/path shapes, script keyword hits, cookie **names**, gate phrases, captcha iframe count, `EXTRA_KEYS` hits.
@@ -184,7 +206,8 @@ For every claimed path: **parse → walk → type-check → sample keys → 已�
 Against **each URL class** (Home, Search, Category, Detail — never infer Detail from Search 200):
 
 ```bash
-bash "$HOME/.cursor/skills/website-page-research/scripts/http_contrast.sh" 'https://example.com/path'
+bash .cursor/skills/website-page-research/scripts/http_contrast.sh 'https://example.com/path'
+# Mac equivalent: bash "$HOME/.cursor/skills/website-page-research/scripts/http_contrast.sh" '…'
 ```
 
 Three UAs: python-requests-like, plain curl, browser-like Chrome. Record status, `server`, `cf-ray` / `Cf-Mitigated`, bytes, whether listing-like HTML / hydration keys appear.
@@ -210,7 +233,10 @@ Record filter/sort encoding with examples. **Actually change** one filter; do no
 Path:
 
 ```text
+# macOS
 /Users/kane/Downloads/{Platform}页面调研分析报告_YYYY-MM-DD.md
+# Cloud Agent
+/opt/cursor/artifacts/{Platform}页面调研分析报告_YYYY-MM-DD.md
 ```
 
 Chinese Markdown. Use [templates/report-outline.md](templates/report-outline.md).

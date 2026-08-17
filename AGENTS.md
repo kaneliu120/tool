@@ -68,7 +68,7 @@ Cloud Agents **often do not inject** project skills into the available-skills li
 | `apify-actor-cloud-run-development` (+ redirects) | Yes as methodology; Kane's `~/Projects/google run worker` paths are **not** on this VM |
 | `apify-publish-tasks` | Yes; Console publish needs a browser (VM desktop, not Mac Chrome) |
 | `bright-data-riskbypass` / `camoufox-cloud-run` | Yes as docs |
-| `website-page-research` | Partial — no AppleScript Chrome |
+| `website-page-research` | Phase 0 `http_contrast.sh`; Phase 1 `playwright_page_probe.py` + system Chrome. No AppleScript |
 | `reverse-skill` | Router only — full pack not in this clone |
 | `use-my-browser` | **Stub only** — do not `osascript` |
 
@@ -116,7 +116,7 @@ Repo-managed config: `.cursor/environment.json`.
 
 | Phase | Script | Role |
 |---|---|---|
-| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `.venv`; `pip install -e ".[dev]"` |
+| `install` | `./.cursor/install.sh` | `python3-venv` if missing; Docker CLI; `gcloud` / `apify` / `cf` / `wrangler` if missing; `rsync`/`jq`; `.venv`; `pip install -e ".[dev,recon]"` (Playwright + `curl_cffi`) |
 | `start` | `./.cursor/start.sh` | Optional secret activation via `cloud-auth.sh`; idempotent mock gateway on `:8080`, then **returns**; sets `DOCKER_HOST` when Engine is on `:2375` |
 | `terminals` | `./.cursor/start.sh --attach` | Same gateway; tails `/tmp/rea-gateway.log` |
 
@@ -164,4 +164,38 @@ curl -sS http://127.0.0.1:8080/healthz
 .venv/bin/pytest -q
 ```
 
-`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome is on this image for VM desktop use, not as the product HTML provider.
+`GET /healthz` with `REA_INCLUDE_MOCK=1` includes `mock_fixture`. Live REA HTML still needs the Mac Chrome runner (`REA_MAC_RUNNER_URL`); do not default to Apify Xvfb. Google Chrome on this image is the **page-recon** browser (`playwright_page_probe.py` `channel=chrome`), not the REA Kasada HTML provider.
+
+### Page recon + Actor/worker toolchain (this VM)
+
+| Need | Cloud Agent |
+|---|---|
+| Phase 0 HTTP contrast | `bash .cursor/skills/website-page-research/scripts/http_contrast.sh URL` |
+| Phase 1 page probe | `.venv/bin/python .cursor/skills/website-page-research/scripts/playwright_page_probe.py --url URL --js generic` |
+| Inventory | `python3 scripts/check_recon_actor_env.py` |
+| Thin Actor / worker factory | Skill scripts under `.cursor/skills/apify-actor-cloud-run-development/scripts/` |
+| `~/Projects/google run worker` and `~/Projects/Apify Actors` | **Present on this VM** (2026-08-17): Apify `apify pull` 109 Actors + Cloud Run `build-source-location` zips 103 workers. **Not** a GitHub clone. Refresh: `python3 scripts/pull_actor_worker_peers.py` |
+| `gcloud` deploy (`woker-260722`) | User login **done** as `kaneliu10@gmail.com`; project `woker-260722`. Not ADC. Do not start another OAuth unless Kane asks |
+| Camoufox / Patchright worker runtimes | Not installed on the Agent snapshot (worker image / Mac worker repo) |
+
+Do **not** claim Mac Chrome recon works here. Do **not** install Camoufox into this Cloud snapshot. Random Apify smoke still uses `random_smoke_input.py` — never README prefills.
+
+### Worker / Actor peer trees
+
+`scaffold_worker.sh` / `scaffold_actor.sh` default roots:
+
+- `$HOME/Projects/google run worker/<peer>/`
+- `$HOME/Projects/Apify Actors/<peer>/`
+
+**This VM (2026-08-17):** downloaded from Apify + GCP, not GitHub.
+
+```bash
+python3 scripts/pull_actor_worker_peers.py
+# 109 Actors (105 have src/worker_client.py), 103 Cloud Run source zips
+# assert_cwd worker zillow-com / apartments-com / bayt-com — OK
+# assert_cwd actor zillow-group-scraper / walmart-scraper — OK
+```
+
+GitHub `kaneliu120/actor.git` is still **404** to this Agent’s GitHub App (installation only has `tool`). Do not call the HOME trees a git clone. Per-service Cloud Run zips omit `_shared/`; `scripts/pull_actor_worker_peers.py` **recovers** `_shared/` from copies already in worker `src/` (donor `airbnb-com`) and writes `sync_shared.sh`. That recovery is **not** Kane’s Mac git original — replace it if the laptop tree differs.
+
+Verified peers: `zillow-com` (http), `apartments-com` (camoufox), `bayt-com` (patchright), `zillow-group-scraper` (thin Actor). There is no live Apify actor named `zillow-scraper`; the factory peer on this account is `zillow-group-scraper`. Not-thin Apify pulls (no `src/worker_client.py`): `booking-airbnb-scraper`, `craigslist-housing-scraper`, `phone-number-intelligence`, `us-real-estate-scraper`.
