@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "command": "python3 .cursor/hooks/mem0_before_prompt.py",
+        "matcher": "UserPromptSubmit"
+      }
+    ],
+    "stop": [
+      {
+        "command": "python3 .cursor/hooks/mem0_stop_handoff.py",
+        "loop_limit": 40,
+        "timeout": 15
+      }
+    ],
+    "preCompact": [
+      {
+        "command": "python3 .cursor/hooks/mem0_precompact.py"
+      }
+    ]
+  }
+}

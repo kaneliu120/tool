@@ -1,0 +1,13 @@
+---
+description: Apify Actor online smoke/acceptance must use randomized inputs, not README examples
+alwaysApply: true
+---
+
+# Apify cloud smoke: randomized inputs
+
+When running online acceptance / smoke tests for Apify Actors (`apify call`, Console Test, post-push verify):
+
+- Do **not** reuse README examples, schema `prefill`/`default`, or fixed canaries (e.g. always `Austin, TX`, `maxResults: 3` or `10`).
+- Each run: generate a **fresh random-valid** input (location/query/filters appropriate to that Actor); keep result caps small (typically 2–5) for cost.
+- Prefer `--input-file` via `.cursor/skills/apify-actor-cloud-run-development/scripts/random_smoke_input.py` (opened coverage-matrix cells). Note the chosen input in the acceptance report.
+- Still assert success signals (`SUCCEEDED`, `workerBaseUrlSource=env` when applicable, dataset rows).

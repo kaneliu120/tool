@@ -1,0 +1,49 @@
+---
+description: Mandatory Mem0 long-term memory (brain-style handoff)
+alwaysApply: true
+---
+
+## Cloud Agent 路径（本仓库）
+本机钥匙串 / `ssh mem0` / `localhost:8888` **不可用**。优先：
+1. MCP `mem0-selfhost`（cursor.com/agents 已登记时）
+2. `python3 scripts/mem0ctl.py`（需要 Runtime Secret `MEM0_API_KEY`）
+不要用 `urllib` 打 `mem0-mcp.opendata.best`（Cloudflare 1010）。不要发明记忆。
+
+
+
+# Mem0 强制记忆（不可跳过）
+
+方法来源：Obsidian `~/Documents/Obsidian Vault/brain/`（Active Context / Session Log / Gotchas / Key Decisions / Patterns）+ 自托管 Mem0。
+
+## 任务开始 / 需要查询时
+1. 先读 skill：`.cursor/skills/mem0-selfhost/SKILL.md`
+2. **先 Mem0，再 Web/盲搜**：MCP `search` 或 `python3 scripts/mem0ctl.py search "<任务语义>" --top-k 8`
+3. 报错、决策、环境、偏好、历史坑点：默认先 `search`
+4. 查交接原文：`search ... --meta '{"kind":"handoff"}'` 或 `get <id>`；wiki/code/rag 用 MCP `search_knowledge`。本轮 `search` + `search_knowledge` 合计尽量不超过 3 次。档案笔记：`search ... --meta '{"source":"mem"}'`
+
+## 每轮收工（必须）
+用交接文档写入 Mem0（等同 brain Session Log / Active Context）：
+
+```bash
+python3 scripts/mem0ctl.py handoff \
+  --project '<项目名>' \
+  --verdict '一句话结论' \
+  --done '做了什么' \
+  --status '当前真实状态' \
+  --gotchas '坑点或无' \
+  --next '下一步' \
+  --evidence '路径/命令/验证'
+```
+
+稳定决策另写 `kind=decision`；可复用坑点另写 `kind=gotcha`（`add --raw-store --meta`）。
+
+## 汇报口吻（brain 铁律）
+结论 → 做了什么 → 当前状态 → 坑点/下一步。未经验证禁止「已上线/已闭环」。除专有名词外优先中文。
+
+## 禁止写入
+密钥、密码、cookie、完整凭证；可用仓库直接还原的大段代码；短暂 UI 状态。
+
+## 运维
+- Cloud Agent：`MEM0_API_KEY` Runtime Secret + 可选 HTTP MCP `mem0-selfhost`
+- 默认 `user_id=kane`
+- 静音收工催促：`MEM0_SILENT=1`（仅调试）

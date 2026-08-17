@@ -1,0 +1,25 @@
+{
+  "query": "MCP handoff",
+  "domain": "wiki",
+  "kind": "wiki.derived",
+  "cite_path": "mcp/server.py",
+  "cite_start": 137,
+  "cite_end": 166,
+  "api_names": [
+    "build_app",
+    "decision",
+    "delete",
+    "gotcha",
+    "handoff",
+    "health",
+    "healthz",
+    "list_memories",
+    "search",
+    "search_knowledge",
+    "server"
+  ],
+  "cite_gate": "ok",
+  "n_names": 11,
+  "worker_pr": "https://github.com/kaneliu120/mem0-extraction-worker/pull/6",
+  "tool_pr": "https://github.com/kaneliu120/tool/pull/9"
+}

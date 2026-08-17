@@ -1,0 +1,32 @@
+---
+description: Route Apify Actor + Cloud Run worker work to the unified personal skill
+alwaysApply: true
+---
+
+# Apify Actor + Cloud Run (unified skill)
+
+When building or refactoring an Apify Actor that scrapes via a hosted Cloud Run
+worker, working under `~/Projects/google run worker/`, or wiring
+`WORKER_BASE_URL` / `WORKER_AUTH` / free-tier limits / live Store migration:
+
+1. Read and follow **`apify-actor-cloud-run-development`**
+   (`.cursor/skills/apify-actor-cloud-run-development/SKILL.md`).
+2. Phase 0 recon contract is required (`website-page-research` one-pager or `templates/worker-contract.md`). Use `scripts/` gates (`assert_cwd.sh`, triple smoke, random `--input-file`). Pitfalls: `pitfalls.md`.
+3. Progressive files: `reference.md`, `engines.md`, `free-tier.md`, `migrate.md`, `egress-control.md`.
+4. Legacy skill names `cloud-run-apify-actor`, `migrate-apify-actor-worker`,
+   `apify-actor-free-tier-limits` are redirects only — do not expand them.
+
+Keep the Actor thin (Apify I/O, Standby, free-tier enforcement; PPE only when
+asked) and the Cloud Run worker thick (unlock, scrape, OpenAPI). Each Actor must
+cover the target site’s **all countries/regions, all product categories, and all
+in-scope services** — not MVP / single-market slices (see skill §1b). Unattended
+/ overnight runs do **develop + GCP deploy + Apify deploy + acceptance**, then
+stop for Kane to **confirm, set prices, Store-publish** (skill §6b). Do not put
+browser/Kasada unlock back into the Actor once a worker exists. Do not configure
+Store PPE/publish unless the user explicitly asks (live migration branch may
+publish while inheriting prices).
+
+Canonical docs also live at:
+
+- `~/Projects/Apify Actors/docs/CLOUD_RUN_ACTOR_DEVELOPMENT_STANDARD.md`
+- `~/Projects/google run worker/docs/CLOUD_RUN_ACTOR_DEVELOPMENT_STANDARD.md`

@@ -1,0 +1,26 @@
+{
+  "primaryMarket": "us",
+  "queryPool": ["replace-with-fresh-queries"],
+  "queryKey": "q",
+  "maxResults": 3,
+  "cells": [
+    {
+      "market": "us",
+      "mode": "search",
+      "status": "opened",
+      "template": { "q": "{{query}}", "market": "us", "maxResults": 3 }
+    },
+    {
+      "market": "uk",
+      "mode": "search",
+      "status": "opened",
+      "template": { "q": "{{query}}", "market": "uk", "maxResults": 3 }
+    },
+    {
+      "market": "au",
+      "mode": "search",
+      "status": "未验证",
+      "template": { "q": "{{query}}", "market": "au", "maxResults": 3 }
+    }
+  ]
+}
