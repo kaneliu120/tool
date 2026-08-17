@@ -1,0 +1,16 @@
+{
+  "date": "2026-08-17",
+  "k1_atlas_write": false,
+  "reason": "shadow code_chunks_v2 + voyage-code-3 ingest not applied; dry-run AST only",
+  "repo": "mem0-selfhost",
+  "symbol_count": 54,
+  "mcp_handoff": {
+    "path": "mcp/server.py",
+    "symbol_name": "handoff",
+    "start": 137,
+    "end": 166
+  },
+  "skip_tests": ["tests", "node_modules", ".venv", "__pycache__", ".git"],
+  "embed_model_intended": "voyage-code-3",
+  "default_code_chunks_untouched": true
+}

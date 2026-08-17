@@ -1,0 +1,22 @@
+{
+  "v1_symbols": [
+    "Cache",
+    "Cache.warm",
+    "greet",
+    "handoff"
+  ],
+  "v2_current_symbols": [
+    "Cache",
+    "Cache.warm",
+    "greet_user",
+    "handoff"
+  ],
+  "old_greet_still_current": false,
+  "l2_gate": "ok",
+  "ptos_gate": "reject:no_cites",
+  "ptos_reject_rate": 1.0,
+  "l1_count_v1": 4,
+  "l1_count_merged": 7,
+  "embed_model_l1": "voyage-code-3",
+  "embed_model_l2": "voyage-4-large"
+}
