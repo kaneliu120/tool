@@ -14,6 +14,7 @@ from src.free_tier import (
     enforce_free_tier,
 )
 from src.input_model import parse_input
+from src.rows import omit_nulls
 from src.worker_client import (
     call_worker,
     resolve_worker_endpoint,
@@ -62,6 +63,8 @@ async def _run() -> None:
     for row in items:
         if pushed >= free_plan.effective_max_results:
             break
+        if isinstance(row, dict):
+            row = omit_nulls(row)
         await Actor.push_data(row)
         pushed += 1
 

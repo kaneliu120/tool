@@ -61,3 +61,10 @@ def test_browserforge_pin_avoids_data_files_crash():
 
     req = Path(__file__).resolve().parents[1].joinpath("requirements.txt").read_text()
     assert "browserforge==1.2.3" in req
+
+
+def test_omit_nulls_drops_json_nulls():
+    from src.rows import omit_nulls
+
+    out = omit_nulls({"name": "Bloom Tiles", "developer": None, "ratingValue": None, "n": 0})
+    assert out == {"name": "Bloom Tiles", "n": 0}

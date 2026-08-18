@@ -4,6 +4,7 @@
   "description": "Google Play listing rows keyed by package id. Search/category/home/developer cards plus optional detail JSON-LD and data-safety summaries.",
   "fields": {
     "type": "object",
+    "additionalProperties": true,
     "properties": {
       "packageId": {
         "type": "string",
@@ -48,20 +49,20 @@
         "editor": "link"
       },
       "imageUrl": {
-        "type": "string",
+        "type": ["string", "null"],
         "title": "Image URL",
         "editor": "link"
       },
       "developer": {
-        "type": "string",
+        "type": ["string", "null"],
         "title": "Developer"
       },
       "ratingValue": {
-        "type": "number",
+        "type": ["number", "null"],
         "title": "Rating"
       },
       "installs": {
-        "type": "string",
+        "type": ["string", "null"],
         "title": "Installs"
       }
     }
