@@ -2,7 +2,7 @@
 
 Scrape the **[Google Play Store](https://play.google.com/store/apps)** without a Google account, unofficial SDK, or invented package IDs.
 
-Give the Actor a **keyword**, **category CODE**, **country (`gl`)**, or a live **package name** → get structured **Android app** rows: title, developer, rating, installs, price, IAP flags, screenshots, and optional **data-safety** summaries. Download **JSON, CSV, or Excel**, or pull the dataset through the **Apify API / Python / JavaScript**.
+Give the Actor a **keyword**, **category CODE**, **country (`gl`)**, or a live **package name** → get structured **Android app** rows: title, developer, rating, installs, price, IAP flags, screenshots, and optional **data-safety** summaries. Download **JSON, CSV, or Excel**, or pull the dataset through the **Apify API / Python / JavaScript**. Schedule runs, monitor them in Console, or pipe results into Make, n8n, Zapier, or MCP.
 
 This Actor is a **Google Play API alternative** for public listing pages: search, home, category (including FAMILY age chips), developer pages, app details (JSON-LD), and data-safety overviews. **183 storefronts** (`hl` + `gl` on `play.google.com`). Review *bodies* and login-walled data are **not** scraped.
 
@@ -12,7 +12,7 @@ Free Apify-plan users (Actor developer policy): up to **10 runs** and **200 resu
 
 ## What is Google Play Scraper?
 
-**Google Play Scraper** extracts public **Google Play Store** app data for ASO, competitor tracking, and Android market research.
+**Google Play Scraper** is a **Google Play Store scraper** that extracts public **Android app** data for **ASO**, competitor tracking, and market research.
 
 | You want | This Actor returns |
 | --- | --- |
@@ -24,6 +24,8 @@ Free Apify-plan users (Actor developer policy): up to **10 runs** and **200 resu
 | Data safety | Heading-level summary (shared / collected / practices) |
 
 Primary key: **package ID** (the `id=` on `play.google.com/store/apps/details?id=`). The Actor never invents ids.
+
+Pair it with [App Store Scraper](https://apify.com/lentic_clockss/apple-app-store-scraper) when you need **dual-store ASO** (Google Play + Apple App Store).
 
 ***
 
@@ -60,13 +62,13 @@ Primary key: **package ID** (the `id=` on `play.google.com/store/apps/details?id
 | Data safety | `/store/apps/datasafety` headings (partial field tree) |
 | Empty shelves | DATING / MEDICAL / some FAMILY_* return `status=empty` (0 rows), not a fake catalog |
 | No proxies to configure | Worker-owned egress (`WORKER_PROVIDES_PROXY`) |
-| Thin run | Default **1024 MB**. Standby + MCP/API ready |
+| Platform extras | Default **1024 MB**, Standby + MCP/API, schedules, webhooks, CSV / Excel / JSON export |
 
 ***
 
 ## What can you do with Google Play data?
 
-### 1. ASO keyword research
+### ASO keyword research
 
 **In plain English:** enter a search term such as `sudoku daily` and a storefront (`us`, `jp`, `kr`) → get the first pack of ranking apps with ratings.
 
@@ -74,29 +76,29 @@ Primary key: **package ID** (the `id=` on `play.google.com/store/apps/details?id
 
 **You get:** package ID, name, developer, rating, Play URL — ready for a keyword-rank spreadsheet.
 
-### 2. Category and country competitor tracking
+### Category and country competitor tracking
 
 **In plain English:** pull GAME, TOOLS, or FINANCE for Cyprus, Mexico, or Korea → see who is featured this week.
 
 **You give:** `mode=category`, `category=GAME`, `market=cy`
 
-### 3. App details, prices, and IAP
+### App details, prices, and IAP
 
 **In plain English:** turn list rows into full details (or pass live `packageIds` / detail URLs). Paid apps expose JSON-LD `offers.price`; free apps show `priceDisplay=Free`.
 
 Turn on `enrichDetails` after a search, or use `mode=detail` with ids from a previous run.
 
-### 4. Developer portfolios
+### Developer portfolios
 
 **In plain English:** copy the numeric id from a details page (`/store/apps/dev?id=…`) → list that publisher’s apps.
 
-### 5. Data-safety screening
+### Data-safety screening
 
 **In plain English:** fetch the public data-safety page for compliance or vendor review (`includeDataSafety` or `mode=datasafety`).
 
-### 6. Feed Python, n8n, Make, or an AI agent
+### Feed Python, n8n, Make, or an AI agent
 
-Run the Actor from the [Apify API](https://docs.apify.com/api/v2), Python client, or MCP. Results land in a dataset you can export or pipe into RAG / BI.
+Run the Actor from the [Apify API](https://docs.apify.com/api/v2), Python client, JavaScript client, or MCP. Results land in a dataset you can export or pipe into RAG / BI.
 
 ***
 
@@ -104,18 +106,18 @@ Run the Actor from the [Apify API](https://docs.apify.com/api/v2), Python client
 
 Use a **specialized Actor** when one exists for your site. Pair this Google Play scraper with the Apple App Store Actor for dual-store ASO.
 
-#### App Stores & ASO
+**App Stores & ASO**
 
 - [Google Play Scraper](https://apify.com/lentic_clockss/google-play-scraper)
 - [App Store Scraper | Charts, Apps, Reviews](https://apify.com/lentic_clockss/apple-app-store-scraper)
 
-#### General tools
+**General tools**
 
 - [Stealth Web Scraper](https://apify.com/lentic_clockss/stealth-web-scraper)
 - [Email Risk Validator](https://apify.com/lentic_clockss/email-risk-validator)
 - [Phone Number Intelligence](https://apify.com/lentic_clockss/phone-number-intelligence)
 
-#### Prefer a dedicated site scraper?
+**Prefer a dedicated site scraper?**
 
 **Jobs & Freelance**
 
@@ -175,7 +177,9 @@ Need a **custom** listing+detail scraper for another site? [Submit a custom scra
 
 ***
 
-## How to scrape Google Play Store
+## How to use
+
+### How to scrape Google Play Store
 
 1. Open this Actor and click **Try for free**
 2. Pick a **mode**: `search` (keyword), `category`, `home`, `developer`, `detail`, or `datasafety`
@@ -187,6 +191,37 @@ Need a **custom** listing+detail scraper for another site? [Submit a custom scra
 8. Download **JSON / CSV / Excel**, or read the dataset via API
 
 Empty `{}` input still runs (search default `q=flashlight`) so platform auto-tests succeed. Production jobs should use a real keyword and storefront.
+
+### How to extract Google Play data in Python
+
+Use the official client, then read the dataset:
+
+```python
+from apify_client import ApifyClient
+
+client = ApifyClient("<YOUR_API_TOKEN>")
+run = client.actor("lentic_clockss/google-play-scraper").call(
+    run_input={"mode": "search", "q": "tide chart", "market": "us", "maxResults": 10}
+)
+for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    print(item["name"], item["packageId"])
+```
+
+### How to scrape Google Play Store with JavaScript
+
+```javascript
+import { ApifyClient } from 'apify-client';
+
+const client = new ApifyClient({ token: '<YOUR_API_TOKEN>' });
+const run = await client.actor('lentic_clockss/google-play-scraper').call({
+    mode: 'search',
+    q: 'tide chart',
+    market: 'us',
+    maxResults: 10,
+});
+const { items } = await client.dataset(run.defaultDatasetId).listItems();
+console.log(items.map((row) => [row.name, row.packageId]));
+```
 
 ***
 
@@ -305,21 +340,6 @@ You can try the Actor with Apify’s free plan subject to the **10 runs / 200 re
 
 ## FAQ
 
-### How to scrape Google Play apps with Python?
-
-Use the official client, then read the dataset:
-
-```python
-from apify_client import ApifyClient
-
-client = ApifyClient("<YOUR_API_TOKEN>")
-run = client.actor("lentic_clockss/google-play-scraper").call(
-    run_input={"mode": "search", "q": "tide chart", "market": "us", "maxResults": 10}
-)
-for item in client.dataset(run["defaultDatasetId"]).iterate_items():
-    print(item["name"], item["packageId"])
-```
-
 ### Is there an official Google Play API?
 
 Google does not offer a public, complete Play Store listing API for third-party ASO. This Actor is a **Google Play Store scraper / API alternative** over public HTML + JSON-LD.
@@ -344,6 +364,23 @@ Play search catalog `c=games` returned HTTP 404 in measurement. Use `c=apps` and
 
 Many Store Actors focus on **uncapped reviews** or **top charts**. This one focuses on **183 storefronts**, first-pack **search / category / home**, honest empty shelves, JSON-LD **prices**, and **data-safety** — without forging `batchexecute` or inventing package names.
 
+| Need | This Actor |
+| --- | --- |
+| Keyword search + category + home across 183 `gl` | Yes |
+| App details, price, IAP, screenshots | Yes (`enrichDetails` or `mode=detail`) |
+| Data-safety headings | Yes |
+| Dual-store ASO with Apple App Store | Yes (pair Actor) |
+| Uncapped review bodies | No |
+| Top Free / Top Paid / Top Grossing charts | No (legacy `/collection/topselling_*` is empty ESF) |
+
+### Is it legal to scrape Google Play Store?
+
+The Actor only reads **public listing pages**. You are responsible for complying with Google Play terms, local law, and your own use case (research, ASO, internal analytics). Do not use the data to spam developers.
+
+### How do I integrate this Google Play scraper?
+
+Use the [Apify API](https://docs.apify.com/api/v2), [Python client](https://docs.apify.com/api/client/python), [JavaScript client](https://docs.apify.com/api/client/js), [MCP](https://docs.apify.com/integrations/mcp), schedules, or webhooks. Export **JSON, CSV, or Excel** from the dataset.
+
 ***
 
 ## Support
@@ -356,12 +393,12 @@ Issues and feature requests: open them on the Actor page or ping telegram [@kane
 
 Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a name to open the Store detail page.
 
-#### App Stores & ASO
+**App Stores & ASO**
 
 - [Google Play Scraper](https://apify.com/lentic_clockss/google-play-scraper)
 - [App Store Scraper | Charts, Apps, Reviews](https://apify.com/lentic_clockss/apple-app-store-scraper)
 
-#### Jobs & Freelance
+**Jobs & Freelance**
 
 - [LinkedIn Jobs Scraper](https://apify.com/lentic_clockss/linkedin-jobs-scraper)
 - [Bayt Jobs Scraper](https://apify.com/lentic_clockss/bayt-scraper)
@@ -375,7 +412,7 @@ Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a n
 - [SEEK Jobs Scraper](https://apify.com/lentic_clockss/seek-scraper)
 - [Upwork Jobs Scraper](https://apify.com/lentic_clockss/upwork-jobs-scraper)
 
-#### Real Estate
+**Real Estate**
 
 - [Zillow & Zumper Scraper](https://apify.com/lentic_clockss/us-real-estate-scraper)
 - [Realtor.com Scraper](https://apify.com/lentic_clockss/realtor-com-scraper)
@@ -404,7 +441,7 @@ Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a n
 - [SUUMO Scraper](https://apify.com/lentic_clockss/suumo-property-scraper)
 - [Zillow Group Scraper](https://apify.com/lentic_clockss/zillow-group-scraper)
 
-#### E-commerce
+**E-commerce**
 
 - [Shopee Search Scraper](https://apify.com/lentic_clockss/shopee-search-scraper)
 - [E-commerce Scraper](https://apify.com/lentic_clockss/ecommerce-scraper)
@@ -425,7 +462,7 @@ Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a n
 - [Temu Product Scraper](https://apify.com/lentic_clockss/temu-scraper)
 - [Walmart Product Scraper](https://apify.com/lentic_clockss/walmart-scraper)
 
-#### Travel & Stays
+**Travel & Stays**
 
 - [Booking.com & Airbnb Scraper](https://apify.com/lentic_clockss/booking-airbnb-scraper)
 - [Agoda Scraper](https://apify.com/lentic_clockss/agoda-scraper)
@@ -438,7 +475,7 @@ Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a n
 - [Trip.com Scraper](https://apify.com/lentic_clockss/trip-com-scraper)
 - [TripAdvisor Scraper](https://apify.com/lentic_clockss/tripadvisor-scraper)
 
-#### Social & Content
+**Social & Content**
 
 - [TikTok Scraper](https://apify.com/lentic_clockss/tiktok-scraper)
 - [Reddit Scraper](https://apify.com/lentic_clockss/reddit-scraper)
@@ -446,17 +483,17 @@ Public Actors from [lentic_clockss](https://apify.com/lentic_clockss). Click a n
 - [YouTube Research Scraper](https://apify.com/lentic_clockss/youtube-research-scraper)
 - [Hacker News Scraper](https://apify.com/lentic_clockss/hacker-news-scraper)
 
-#### Ads Intelligence
+**Ads Intelligence**
 
 - [Facebook Ad Library Scraper](https://apify.com/lentic_clockss/facebook-ad-library-scraper)
 - [Google Ads Transparency VN](https://apify.com/lentic_clockss/google-ads-transparency-center-vn)
 - [TikTok Ads Scraper](https://apify.com/lentic_clockss/tiktok-ads-top-ads-actor)
 
-#### Local & Maps
+**Local & Maps**
 
 - [Google Maps Scraper](https://apify.com/lentic_clockss/google-maps-scraper)
 
-#### General Tools
+**General Tools**
 
 - [Stealth Web Scraper](https://apify.com/lentic_clockss/stealth-web-scraper)
 - [Email Risk Validator](https://apify.com/lentic_clockss/email-risk-validator)
