@@ -54,3 +54,10 @@ def test_reject_http_remote(monkeypatch):
 def test_worker_provides_proxy(monkeypatch):
     monkeypatch.setenv("WORKER_PROVIDES_PROXY", "1")
     assert worker_provides_proxy() is True
+
+
+def test_browserforge_pin_avoids_data_files_crash():
+    from pathlib import Path
+
+    req = Path(__file__).resolve().parents[1].joinpath("requirements.txt").read_text()
+    assert "browserforge==1.2.3" in req
