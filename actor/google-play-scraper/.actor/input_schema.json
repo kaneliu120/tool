@@ -10,7 +10,8 @@
       "type": "string",
       "enum": ["search", "category", "home", "developer", "detail", "datasafety"],
       "default": "search",
-      "prefill": "search"
+      "prefill": "search",
+      "editor": "select"
     },
     "q": {
       "title": "Search query",
@@ -67,7 +68,8 @@
         "GAME_CASUAL",
         "GAME_EDUCATIONAL",
         "GAME_SIMULATION"
-      ]
+      ],
+      "editor": "select"
     },
     "developerId": {
       "title": "Developer id",
@@ -79,12 +81,14 @@
       "title": "Package ids",
       "description": "Live Play package names from a previous search (do not invent). Used for detail/datasafety.",
       "type": "array",
+      "editor": "stringList",
       "items": { "type": "string" }
     },
     "detailUrls": {
       "title": "Detail URLs",
       "description": "Live https://play.google.com/store/apps/details?id=… links.",
       "type": "array",
+      "editor": "stringList",
       "items": { "type": "string" }
     },
     "c": {
@@ -93,7 +97,8 @@
       "type": "string",
       "enum": ["apps", "games"],
       "default": "apps",
-      "prefill": "apps"
+      "prefill": "apps",
+      "editor": "select"
     },
     "market": {
       "title": "Market preset",
@@ -101,7 +106,8 @@
       "type": "string",
       "enum": ["us", "ph", "gb", "au", "jp", "tw", "de", "fr", "in", "br", "ca", "sg"],
       "default": "us",
-      "prefill": "us"
+      "prefill": "us",
+      "editor": "select"
     },
     "hl": {
       "title": "Language (hl)",
@@ -122,11 +128,13 @@
       "minimum": 1,
       "maximum": 1000,
       "default": 10,
-      "prefill": 10
+      "prefill": 10,
+      "editor": "number"
     },
     "enrichDetails": {
       "title": "Enrich list rows with detail JSON-LD",
       "type": "boolean",
+      "editor": "checkbox",
       "default": false,
       "prefill": false
     },
@@ -134,6 +142,7 @@
       "title": "Include data-safety summary",
       "description": "Fetches /store/apps/datasafety for each detail row (partial field tree).",
       "type": "boolean",
+      "editor": "checkbox",
       "default": false,
       "prefill": false
     },
@@ -141,6 +150,7 @@
       "title": "Include reviews overlay (not collected)",
       "description": "Review bodies are not scraped. Enabling only adds a warning (no batchexecute forge).",
       "type": "boolean",
+      "editor": "checkbox",
       "default": false,
       "prefill": false
     },
