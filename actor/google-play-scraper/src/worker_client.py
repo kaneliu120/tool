@@ -105,6 +105,10 @@ def call_worker(
     if not isinstance(data, dict):
         raise AcquisitionError("worker envelope is not an object")
     items = data.get("items")
-    if not isinstance(items, list) or len(items) < 1:
+    if not isinstance(items, list):
+        raise AcquisitionError("worker envelope items is not a list")
+    if len(items) < 1:
+        if data.get("status") == "empty":
+            return data
         raise NoRowsCollectedError("worker returned 0 items")
     return data

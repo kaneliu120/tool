@@ -479,6 +479,6675 @@
       }
     },
     {
+      "market": "ae",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ae",
+        "hl": "ar",
+        "gl": "AE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ae",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ae",
+        "hl": "ar",
+        "gl": "AE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ae",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ae",
+        "hl": "ar",
+        "gl": "AE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ag",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ag",
+        "hl": "en",
+        "gl": "AG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ag",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ag",
+        "hl": "en",
+        "gl": "AG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ag",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ag",
+        "hl": "en",
+        "gl": "AG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ai",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ai",
+        "hl": "en",
+        "gl": "AI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ai",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ai",
+        "hl": "en",
+        "gl": "AI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ai",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ai",
+        "hl": "en",
+        "gl": "AI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "al",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "al",
+        "hl": "en",
+        "gl": "AL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "al",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "al",
+        "hl": "en",
+        "gl": "AL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "al",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "al",
+        "hl": "en",
+        "gl": "AL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "am",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "am",
+        "hl": "en",
+        "gl": "AM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "am",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "am",
+        "hl": "en",
+        "gl": "AM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "am",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "am",
+        "hl": "en",
+        "gl": "AM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ao",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ao",
+        "hl": "en",
+        "gl": "AO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ao",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ao",
+        "hl": "en",
+        "gl": "AO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ao",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ao",
+        "hl": "en",
+        "gl": "AO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ar",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ar",
+        "hl": "es",
+        "gl": "AR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ar",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ar",
+        "hl": "es",
+        "gl": "AR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ar",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ar",
+        "hl": "es",
+        "gl": "AR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "at",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "at",
+        "hl": "de",
+        "gl": "AT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "at",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "at",
+        "hl": "de",
+        "gl": "AT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "at",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "at",
+        "hl": "de",
+        "gl": "AT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "az",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "az",
+        "hl": "az",
+        "gl": "AZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "az",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "az",
+        "hl": "az",
+        "gl": "AZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "az",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "az",
+        "hl": "az",
+        "gl": "AZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ba",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ba",
+        "hl": "en",
+        "gl": "BA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ba",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ba",
+        "hl": "en",
+        "gl": "BA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ba",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ba",
+        "hl": "en",
+        "gl": "BA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bb",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bb",
+        "hl": "en",
+        "gl": "BB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bb",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bb",
+        "hl": "en",
+        "gl": "BB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bb",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bb",
+        "hl": "en",
+        "gl": "BB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bd",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bd",
+        "hl": "en",
+        "gl": "BD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bd",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bd",
+        "hl": "en",
+        "gl": "BD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bd",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bd",
+        "hl": "en",
+        "gl": "BD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "be",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "be",
+        "hl": "fr",
+        "gl": "BE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "be",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "be",
+        "hl": "fr",
+        "gl": "BE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "be",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "be",
+        "hl": "fr",
+        "gl": "BE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bf",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bf",
+        "hl": "en",
+        "gl": "BF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bf",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bf",
+        "hl": "en",
+        "gl": "BF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bf",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bf",
+        "hl": "en",
+        "gl": "BF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bg",
+        "hl": "bg",
+        "gl": "BG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bg",
+        "hl": "bg",
+        "gl": "BG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bg",
+        "hl": "bg",
+        "gl": "BG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bh",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bh",
+        "hl": "ar",
+        "gl": "BH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bh",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bh",
+        "hl": "ar",
+        "gl": "BH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bh",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bh",
+        "hl": "ar",
+        "gl": "BH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bj",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bj",
+        "hl": "en",
+        "gl": "BJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bj",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bj",
+        "hl": "en",
+        "gl": "BJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bj",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bj",
+        "hl": "en",
+        "gl": "BJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bm",
+        "hl": "en",
+        "gl": "BM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bm",
+        "hl": "en",
+        "gl": "BM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bm",
+        "hl": "en",
+        "gl": "BM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bn",
+        "hl": "en",
+        "gl": "BN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bn",
+        "hl": "en",
+        "gl": "BN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bn",
+        "hl": "en",
+        "gl": "BN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bo",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bo",
+        "hl": "es",
+        "gl": "BO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bo",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bo",
+        "hl": "es",
+        "gl": "BO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bo",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bo",
+        "hl": "es",
+        "gl": "BO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bs",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bs",
+        "hl": "en",
+        "gl": "BS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bs",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bs",
+        "hl": "en",
+        "gl": "BS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bs",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bs",
+        "hl": "en",
+        "gl": "BS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bt",
+        "hl": "en",
+        "gl": "BT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bt",
+        "hl": "en",
+        "gl": "BT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bt",
+        "hl": "en",
+        "gl": "BT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bw",
+        "hl": "en",
+        "gl": "BW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bw",
+        "hl": "en",
+        "gl": "BW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bw",
+        "hl": "en",
+        "gl": "BW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "by",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "by",
+        "hl": "en",
+        "gl": "BY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "by",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "by",
+        "hl": "en",
+        "gl": "BY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "by",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "by",
+        "hl": "en",
+        "gl": "BY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "bz",
+        "hl": "en",
+        "gl": "BZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "bz",
+        "hl": "en",
+        "gl": "BZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "bz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "bz",
+        "hl": "en",
+        "gl": "BZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cd",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cd",
+        "hl": "en",
+        "gl": "CD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cd",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cd",
+        "hl": "en",
+        "gl": "CD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cd",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cd",
+        "hl": "en",
+        "gl": "CD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cf",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cf",
+        "hl": "en",
+        "gl": "CF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cf",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cf",
+        "hl": "en",
+        "gl": "CF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cf",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cf",
+        "hl": "en",
+        "gl": "CF",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cg",
+        "hl": "en",
+        "gl": "CG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cg",
+        "hl": "en",
+        "gl": "CG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cg",
+        "hl": "en",
+        "gl": "CG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ch",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ch",
+        "hl": "de",
+        "gl": "CH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ch",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ch",
+        "hl": "de",
+        "gl": "CH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ch",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ch",
+        "hl": "de",
+        "gl": "CH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ci",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ci",
+        "hl": "en",
+        "gl": "CI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ci",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ci",
+        "hl": "en",
+        "gl": "CI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ci",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ci",
+        "hl": "en",
+        "gl": "CI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cl",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cl",
+        "hl": "es",
+        "gl": "CL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cl",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cl",
+        "hl": "es",
+        "gl": "CL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cl",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cl",
+        "hl": "es",
+        "gl": "CL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cm",
+        "hl": "en",
+        "gl": "CM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cm",
+        "hl": "en",
+        "gl": "CM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cm",
+        "hl": "en",
+        "gl": "CM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "co",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "co",
+        "hl": "es",
+        "gl": "CO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "co",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "co",
+        "hl": "es",
+        "gl": "CO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "co",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "co",
+        "hl": "es",
+        "gl": "CO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cr",
+        "hl": "es",
+        "gl": "CR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cr",
+        "hl": "es",
+        "gl": "CR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cr",
+        "hl": "es",
+        "gl": "CR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cv",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cv",
+        "hl": "en",
+        "gl": "CV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cv",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cv",
+        "hl": "en",
+        "gl": "CV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cv",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cv",
+        "hl": "en",
+        "gl": "CV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cy",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cy",
+        "hl": "en",
+        "gl": "CY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cy",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cy",
+        "hl": "en",
+        "gl": "CY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cy",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cy",
+        "hl": "en",
+        "gl": "CY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "cz",
+        "hl": "cs",
+        "gl": "CZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "cz",
+        "hl": "cs",
+        "gl": "CZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "cz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "cz",
+        "hl": "cs",
+        "gl": "CZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "dk",
+        "hl": "da",
+        "gl": "DK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "dk",
+        "hl": "da",
+        "gl": "DK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "dk",
+        "hl": "da",
+        "gl": "DK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "dm",
+        "hl": "en",
+        "gl": "DM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "dm",
+        "hl": "en",
+        "gl": "DM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "dm",
+        "hl": "en",
+        "gl": "DM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "do",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "do",
+        "hl": "es",
+        "gl": "DO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "do",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "do",
+        "hl": "es",
+        "gl": "DO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "do",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "do",
+        "hl": "es",
+        "gl": "DO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "dz",
+        "hl": "ar",
+        "gl": "DZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "dz",
+        "hl": "ar",
+        "gl": "DZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "dz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "dz",
+        "hl": "ar",
+        "gl": "DZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ec",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ec",
+        "hl": "es",
+        "gl": "EC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ec",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ec",
+        "hl": "es",
+        "gl": "EC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ec",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ec",
+        "hl": "es",
+        "gl": "EC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ee",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ee",
+        "hl": "et",
+        "gl": "EE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ee",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ee",
+        "hl": "et",
+        "gl": "EE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ee",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ee",
+        "hl": "et",
+        "gl": "EE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "eg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "eg",
+        "hl": "ar",
+        "gl": "EG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "eg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "eg",
+        "hl": "ar",
+        "gl": "EG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "eg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "eg",
+        "hl": "ar",
+        "gl": "EG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "es",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "es",
+        "hl": "es",
+        "gl": "ES",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "es",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "es",
+        "hl": "es",
+        "gl": "ES",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "es",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "es",
+        "hl": "es",
+        "gl": "ES",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "et",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "et",
+        "hl": "en",
+        "gl": "ET",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "et",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "et",
+        "hl": "en",
+        "gl": "ET",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "et",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "et",
+        "hl": "en",
+        "gl": "ET",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fi",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "fi",
+        "hl": "fi",
+        "gl": "FI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fi",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "fi",
+        "hl": "fi",
+        "gl": "FI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fi",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "fi",
+        "hl": "fi",
+        "gl": "FI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fj",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "fj",
+        "hl": "en",
+        "gl": "FJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fj",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "fj",
+        "hl": "en",
+        "gl": "FJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fj",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "fj",
+        "hl": "en",
+        "gl": "FJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "fm",
+        "hl": "en",
+        "gl": "FM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "fm",
+        "hl": "en",
+        "gl": "FM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "fm",
+        "hl": "en",
+        "gl": "FM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ga",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ga",
+        "hl": "en",
+        "gl": "GA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ga",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ga",
+        "hl": "en",
+        "gl": "GA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ga",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ga",
+        "hl": "en",
+        "gl": "GA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gd",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gd",
+        "hl": "en",
+        "gl": "GD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gd",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gd",
+        "hl": "en",
+        "gl": "GD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gd",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gd",
+        "hl": "en",
+        "gl": "GD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ge",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ge",
+        "hl": "ka",
+        "gl": "GE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ge",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ge",
+        "hl": "ka",
+        "gl": "GE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ge",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ge",
+        "hl": "ka",
+        "gl": "GE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gh",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gh",
+        "hl": "en",
+        "gl": "GH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gh",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gh",
+        "hl": "en",
+        "gl": "GH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gh",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gh",
+        "hl": "en",
+        "gl": "GH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gm",
+        "hl": "en",
+        "gl": "GM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gm",
+        "hl": "en",
+        "gl": "GM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gm",
+        "hl": "en",
+        "gl": "GM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gn",
+        "hl": "en",
+        "gl": "GN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gn",
+        "hl": "en",
+        "gl": "GN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gn",
+        "hl": "en",
+        "gl": "GN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gq",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gq",
+        "hl": "en",
+        "gl": "GQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gq",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gq",
+        "hl": "en",
+        "gl": "GQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gq",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gq",
+        "hl": "en",
+        "gl": "GQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gr",
+        "hl": "el",
+        "gl": "GR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gr",
+        "hl": "el",
+        "gl": "GR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gr",
+        "hl": "el",
+        "gl": "GR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gt",
+        "hl": "es",
+        "gl": "GT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gt",
+        "hl": "es",
+        "gl": "GT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gt",
+        "hl": "es",
+        "gl": "GT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gw",
+        "hl": "en",
+        "gl": "GW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gw",
+        "hl": "en",
+        "gl": "GW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gw",
+        "hl": "en",
+        "gl": "GW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gy",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gy",
+        "hl": "en",
+        "gl": "GY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gy",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gy",
+        "hl": "en",
+        "gl": "GY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gy",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gy",
+        "hl": "en",
+        "gl": "GY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "hk",
+        "hl": "zh-HK",
+        "gl": "HK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "hk",
+        "hl": "zh-HK",
+        "gl": "HK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "hk",
+        "hl": "zh-HK",
+        "gl": "HK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "hn",
+        "hl": "es",
+        "gl": "HN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "hn",
+        "hl": "es",
+        "gl": "HN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "hn",
+        "hl": "es",
+        "gl": "HN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "hr",
+        "hl": "hr",
+        "gl": "HR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "hr",
+        "hl": "hr",
+        "gl": "HR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "hr",
+        "hl": "hr",
+        "gl": "HR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ht",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ht",
+        "hl": "en",
+        "gl": "HT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ht",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ht",
+        "hl": "en",
+        "gl": "HT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ht",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ht",
+        "hl": "en",
+        "gl": "HT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hu",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "hu",
+        "hl": "hu",
+        "gl": "HU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hu",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "hu",
+        "hl": "hu",
+        "gl": "HU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "hu",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "hu",
+        "hl": "hu",
+        "gl": "HU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "id",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "id",
+        "hl": "id",
+        "gl": "ID",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "id",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "id",
+        "hl": "id",
+        "gl": "ID",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "id",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "id",
+        "hl": "id",
+        "gl": "ID",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ie",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ie",
+        "hl": "en",
+        "gl": "IE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ie",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ie",
+        "hl": "en",
+        "gl": "IE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ie",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ie",
+        "hl": "en",
+        "gl": "IE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "il",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "il",
+        "hl": "he",
+        "gl": "IL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "il",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "il",
+        "hl": "he",
+        "gl": "IL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "il",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "il",
+        "hl": "he",
+        "gl": "IL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "iq",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "iq",
+        "hl": "ar",
+        "gl": "IQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "iq",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "iq",
+        "hl": "ar",
+        "gl": "IQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "iq",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "iq",
+        "hl": "ar",
+        "gl": "IQ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "is",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "is",
+        "hl": "is",
+        "gl": "IS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "is",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "is",
+        "hl": "is",
+        "gl": "IS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "is",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "is",
+        "hl": "is",
+        "gl": "IS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "it",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "it",
+        "hl": "it",
+        "gl": "IT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "it",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "it",
+        "hl": "it",
+        "gl": "IT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "it",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "it",
+        "hl": "it",
+        "gl": "IT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "jm",
+        "hl": "en",
+        "gl": "JM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "jm",
+        "hl": "en",
+        "gl": "JM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "jm",
+        "hl": "en",
+        "gl": "JM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jo",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "jo",
+        "hl": "en",
+        "gl": "JO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jo",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "jo",
+        "hl": "en",
+        "gl": "JO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jo",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "jo",
+        "hl": "en",
+        "gl": "JO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ke",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ke",
+        "hl": "en",
+        "gl": "KE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ke",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ke",
+        "hl": "en",
+        "gl": "KE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ke",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ke",
+        "hl": "en",
+        "gl": "KE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kg",
+        "hl": "en",
+        "gl": "KG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kg",
+        "hl": "en",
+        "gl": "KG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kg",
+        "hl": "en",
+        "gl": "KG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kh",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kh",
+        "hl": "km",
+        "gl": "KH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kh",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kh",
+        "hl": "km",
+        "gl": "KH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kh",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kh",
+        "hl": "km",
+        "gl": "KH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "km",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "km",
+        "hl": "en",
+        "gl": "KM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "km",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "km",
+        "hl": "en",
+        "gl": "KM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "km",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "km",
+        "hl": "en",
+        "gl": "KM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kn",
+        "hl": "en",
+        "gl": "KN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kn",
+        "hl": "en",
+        "gl": "KN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kn",
+        "hl": "en",
+        "gl": "KN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kr",
+        "hl": "ko",
+        "gl": "KR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kr",
+        "hl": "ko",
+        "gl": "KR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kr",
+        "hl": "ko",
+        "gl": "KR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kw",
+        "hl": "ar",
+        "gl": "KW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kw",
+        "hl": "ar",
+        "gl": "KW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kw",
+        "hl": "ar",
+        "gl": "KW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ky",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ky",
+        "hl": "en",
+        "gl": "KY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ky",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ky",
+        "hl": "en",
+        "gl": "KY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ky",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ky",
+        "hl": "en",
+        "gl": "KY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "kz",
+        "hl": "kk",
+        "gl": "KZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "kz",
+        "hl": "kk",
+        "gl": "KZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "kz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "kz",
+        "hl": "kk",
+        "gl": "KZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "la",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "la",
+        "hl": "lo",
+        "gl": "LA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "la",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "la",
+        "hl": "lo",
+        "gl": "LA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "la",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "la",
+        "hl": "lo",
+        "gl": "LA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lb",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lb",
+        "hl": "ar",
+        "gl": "LB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lb",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lb",
+        "hl": "ar",
+        "gl": "LB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lb",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lb",
+        "hl": "ar",
+        "gl": "LB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lc",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lc",
+        "hl": "en",
+        "gl": "LC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lc",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lc",
+        "hl": "en",
+        "gl": "LC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lc",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lc",
+        "hl": "en",
+        "gl": "LC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "li",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "li",
+        "hl": "en",
+        "gl": "LI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "li",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "li",
+        "hl": "en",
+        "gl": "LI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "li",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "li",
+        "hl": "en",
+        "gl": "LI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lk",
+        "hl": "si",
+        "gl": "LK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lk",
+        "hl": "si",
+        "gl": "LK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lk",
+        "hl": "si",
+        "gl": "LK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lr",
+        "hl": "en",
+        "gl": "LR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lr",
+        "hl": "en",
+        "gl": "LR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lr",
+        "hl": "en",
+        "gl": "LR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ls",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ls",
+        "hl": "en",
+        "gl": "LS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ls",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ls",
+        "hl": "en",
+        "gl": "LS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ls",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ls",
+        "hl": "en",
+        "gl": "LS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lt",
+        "hl": "lt",
+        "gl": "LT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lt",
+        "hl": "lt",
+        "gl": "LT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lt",
+        "hl": "lt",
+        "gl": "LT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lu",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lu",
+        "hl": "fr",
+        "gl": "LU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lu",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lu",
+        "hl": "fr",
+        "gl": "LU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lu",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lu",
+        "hl": "fr",
+        "gl": "LU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lv",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "lv",
+        "hl": "lv",
+        "gl": "LV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lv",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "lv",
+        "hl": "lv",
+        "gl": "LV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "lv",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "lv",
+        "hl": "lv",
+        "gl": "LV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ly",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ly",
+        "hl": "en",
+        "gl": "LY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ly",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ly",
+        "hl": "en",
+        "gl": "LY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ly",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ly",
+        "hl": "en",
+        "gl": "LY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ma",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ma",
+        "hl": "ar",
+        "gl": "MA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ma",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ma",
+        "hl": "ar",
+        "gl": "MA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ma",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ma",
+        "hl": "ar",
+        "gl": "MA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "md",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "md",
+        "hl": "en",
+        "gl": "MD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "md",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "md",
+        "hl": "en",
+        "gl": "MD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "md",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "md",
+        "hl": "en",
+        "gl": "MD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "me",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "me",
+        "hl": "en",
+        "gl": "ME",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "me",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "me",
+        "hl": "en",
+        "gl": "ME",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "me",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "me",
+        "hl": "en",
+        "gl": "ME",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mg",
+        "hl": "en",
+        "gl": "MG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mg",
+        "hl": "en",
+        "gl": "MG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mg",
+        "hl": "en",
+        "gl": "MG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mk",
+        "hl": "en",
+        "gl": "MK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mk",
+        "hl": "en",
+        "gl": "MK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mk",
+        "hl": "en",
+        "gl": "MK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ml",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ml",
+        "hl": "en",
+        "gl": "ML",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ml",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ml",
+        "hl": "en",
+        "gl": "ML",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ml",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ml",
+        "hl": "en",
+        "gl": "ML",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mm",
+        "hl": "en",
+        "gl": "MM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mm",
+        "hl": "en",
+        "gl": "MM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mm",
+        "hl": "en",
+        "gl": "MM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mn",
+        "hl": "en",
+        "gl": "MN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mn",
+        "hl": "en",
+        "gl": "MN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mn",
+        "hl": "en",
+        "gl": "MN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mo",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mo",
+        "hl": "en",
+        "gl": "MO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mo",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mo",
+        "hl": "en",
+        "gl": "MO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mo",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mo",
+        "hl": "en",
+        "gl": "MO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mr",
+        "hl": "en",
+        "gl": "MR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mr",
+        "hl": "en",
+        "gl": "MR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mr",
+        "hl": "en",
+        "gl": "MR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mt",
+        "hl": "en",
+        "gl": "MT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mt",
+        "hl": "en",
+        "gl": "MT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mt",
+        "hl": "en",
+        "gl": "MT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mu",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mu",
+        "hl": "en",
+        "gl": "MU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mu",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mu",
+        "hl": "en",
+        "gl": "MU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mu",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mu",
+        "hl": "en",
+        "gl": "MU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mv",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mv",
+        "hl": "en",
+        "gl": "MV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mv",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mv",
+        "hl": "en",
+        "gl": "MV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mv",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mv",
+        "hl": "en",
+        "gl": "MV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mw",
+        "hl": "en",
+        "gl": "MW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mw",
+        "hl": "en",
+        "gl": "MW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mw",
+        "hl": "en",
+        "gl": "MW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mx",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mx",
+        "hl": "es",
+        "gl": "MX",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mx",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mx",
+        "hl": "es",
+        "gl": "MX",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mx",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mx",
+        "hl": "es",
+        "gl": "MX",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "my",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "my",
+        "hl": "ms",
+        "gl": "MY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "my",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "my",
+        "hl": "ms",
+        "gl": "MY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "my",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "my",
+        "hl": "ms",
+        "gl": "MY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "mz",
+        "hl": "en",
+        "gl": "MZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "mz",
+        "hl": "en",
+        "gl": "MZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "mz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "mz",
+        "hl": "en",
+        "gl": "MZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "na",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "na",
+        "hl": "en",
+        "gl": "NA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "na",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "na",
+        "hl": "en",
+        "gl": "NA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "na",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "na",
+        "hl": "en",
+        "gl": "NA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ne",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ne",
+        "hl": "en",
+        "gl": "NE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ne",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ne",
+        "hl": "en",
+        "gl": "NE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ne",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ne",
+        "hl": "en",
+        "gl": "NE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ng",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ng",
+        "hl": "en",
+        "gl": "NG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ng",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ng",
+        "hl": "en",
+        "gl": "NG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ng",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ng",
+        "hl": "en",
+        "gl": "NG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ni",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ni",
+        "hl": "en",
+        "gl": "NI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ni",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ni",
+        "hl": "en",
+        "gl": "NI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ni",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ni",
+        "hl": "en",
+        "gl": "NI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nl",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "nl",
+        "hl": "nl",
+        "gl": "NL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nl",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "nl",
+        "hl": "nl",
+        "gl": "NL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nl",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "nl",
+        "hl": "nl",
+        "gl": "NL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "no",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "no",
+        "hl": "no",
+        "gl": "NO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "no",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "no",
+        "hl": "no",
+        "gl": "NO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "no",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "no",
+        "hl": "no",
+        "gl": "NO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "np",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "np",
+        "hl": "ne",
+        "gl": "NP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "np",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "np",
+        "hl": "ne",
+        "gl": "NP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "np",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "np",
+        "hl": "ne",
+        "gl": "NP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "nz",
+        "hl": "en",
+        "gl": "NZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "nz",
+        "hl": "en",
+        "gl": "NZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "nz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "nz",
+        "hl": "en",
+        "gl": "NZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "om",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "om",
+        "hl": "ar",
+        "gl": "OM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "om",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "om",
+        "hl": "ar",
+        "gl": "OM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "om",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "om",
+        "hl": "ar",
+        "gl": "OM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pa",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pa",
+        "hl": "es",
+        "gl": "PA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pa",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pa",
+        "hl": "es",
+        "gl": "PA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pa",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pa",
+        "hl": "es",
+        "gl": "PA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pe",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pe",
+        "hl": "es",
+        "gl": "PE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pe",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pe",
+        "hl": "es",
+        "gl": "PE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pe",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pe",
+        "hl": "es",
+        "gl": "PE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pg",
+        "hl": "en",
+        "gl": "PG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pg",
+        "hl": "en",
+        "gl": "PG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pg",
+        "hl": "en",
+        "gl": "PG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pk",
+        "hl": "en",
+        "gl": "PK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pk",
+        "hl": "en",
+        "gl": "PK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pk",
+        "hl": "en",
+        "gl": "PK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pl",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pl",
+        "hl": "pl",
+        "gl": "PL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pl",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pl",
+        "hl": "pl",
+        "gl": "PL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pl",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pl",
+        "hl": "pl",
+        "gl": "PL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pr",
+        "hl": "es",
+        "gl": "PR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pr",
+        "hl": "es",
+        "gl": "PR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pr",
+        "hl": "es",
+        "gl": "PR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ps",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ps",
+        "hl": "ar",
+        "gl": "PS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ps",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ps",
+        "hl": "ar",
+        "gl": "PS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ps",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ps",
+        "hl": "ar",
+        "gl": "PS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "pt",
+        "hl": "pt",
+        "gl": "PT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "pt",
+        "hl": "pt",
+        "gl": "PT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "pt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "pt",
+        "hl": "pt",
+        "gl": "PT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "py",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "py",
+        "hl": "es",
+        "gl": "PY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "py",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "py",
+        "hl": "es",
+        "gl": "PY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "py",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "py",
+        "hl": "es",
+        "gl": "PY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "qa",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "qa",
+        "hl": "ar",
+        "gl": "QA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "qa",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "qa",
+        "hl": "ar",
+        "gl": "QA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "qa",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "qa",
+        "hl": "ar",
+        "gl": "QA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ro",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ro",
+        "hl": "ro",
+        "gl": "RO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ro",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ro",
+        "hl": "ro",
+        "gl": "RO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ro",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ro",
+        "hl": "ro",
+        "gl": "RO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rs",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "rs",
+        "hl": "sr",
+        "gl": "RS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rs",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "rs",
+        "hl": "sr",
+        "gl": "RS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rs",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "rs",
+        "hl": "sr",
+        "gl": "RS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ru",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ru",
+        "hl": "ru",
+        "gl": "RU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ru",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ru",
+        "hl": "ru",
+        "gl": "RU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ru",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ru",
+        "hl": "ru",
+        "gl": "RU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "rw",
+        "hl": "en",
+        "gl": "RW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "rw",
+        "hl": "en",
+        "gl": "RW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "rw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "rw",
+        "hl": "en",
+        "gl": "RW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sa",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sa",
+        "hl": "ar",
+        "gl": "SA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sa",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sa",
+        "hl": "ar",
+        "gl": "SA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sa",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sa",
+        "hl": "ar",
+        "gl": "SA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sb",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sb",
+        "hl": "en",
+        "gl": "SB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sb",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sb",
+        "hl": "en",
+        "gl": "SB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sb",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sb",
+        "hl": "en",
+        "gl": "SB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sc",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sc",
+        "hl": "en",
+        "gl": "SC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sc",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sc",
+        "hl": "en",
+        "gl": "SC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sc",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sc",
+        "hl": "en",
+        "gl": "SC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "se",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "se",
+        "hl": "sv",
+        "gl": "SE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "se",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "se",
+        "hl": "sv",
+        "gl": "SE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "se",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "se",
+        "hl": "sv",
+        "gl": "SE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "si",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "si",
+        "hl": "sl",
+        "gl": "SI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "si",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "si",
+        "hl": "sl",
+        "gl": "SI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "si",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "si",
+        "hl": "sl",
+        "gl": "SI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sk",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sk",
+        "hl": "sk",
+        "gl": "SK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sk",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sk",
+        "hl": "sk",
+        "gl": "SK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sk",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sk",
+        "hl": "sk",
+        "gl": "SK",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sl",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sl",
+        "hl": "en",
+        "gl": "SL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sl",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sl",
+        "hl": "en",
+        "gl": "SL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sl",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sl",
+        "hl": "en",
+        "gl": "SL",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sn",
+        "hl": "en",
+        "gl": "SN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sn",
+        "hl": "en",
+        "gl": "SN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sn",
+        "hl": "en",
+        "gl": "SN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "so",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "so",
+        "hl": "en",
+        "gl": "SO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "so",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "so",
+        "hl": "en",
+        "gl": "SO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "so",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "so",
+        "hl": "en",
+        "gl": "SO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sr",
+        "hl": "en",
+        "gl": "SR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sr",
+        "hl": "en",
+        "gl": "SR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sr",
+        "hl": "en",
+        "gl": "SR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sv",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sv",
+        "hl": "en",
+        "gl": "SV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sv",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sv",
+        "hl": "en",
+        "gl": "SV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sv",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sv",
+        "hl": "en",
+        "gl": "SV",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sz",
+        "hl": "en",
+        "gl": "SZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sz",
+        "hl": "en",
+        "gl": "SZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sz",
+        "hl": "en",
+        "gl": "SZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tc",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tc",
+        "hl": "en",
+        "gl": "TC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tc",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tc",
+        "hl": "en",
+        "gl": "TC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tc",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tc",
+        "hl": "en",
+        "gl": "TC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "td",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "td",
+        "hl": "en",
+        "gl": "TD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "td",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "td",
+        "hl": "en",
+        "gl": "TD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "td",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "td",
+        "hl": "en",
+        "gl": "TD",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tg",
+        "hl": "en",
+        "gl": "TG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tg",
+        "hl": "en",
+        "gl": "TG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tg",
+        "hl": "en",
+        "gl": "TG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "th",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "th",
+        "hl": "th",
+        "gl": "TH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "th",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "th",
+        "hl": "th",
+        "gl": "TH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "th",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "th",
+        "hl": "th",
+        "gl": "TH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tj",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tj",
+        "hl": "en",
+        "gl": "TJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tj",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tj",
+        "hl": "en",
+        "gl": "TJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tj",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tj",
+        "hl": "en",
+        "gl": "TJ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tm",
+        "hl": "en",
+        "gl": "TM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tm",
+        "hl": "en",
+        "gl": "TM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tm",
+        "hl": "en",
+        "gl": "TM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tn",
+        "hl": "ar",
+        "gl": "TN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tn",
+        "hl": "ar",
+        "gl": "TN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tn",
+        "hl": "ar",
+        "gl": "TN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "to",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "to",
+        "hl": "en",
+        "gl": "TO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "to",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "to",
+        "hl": "en",
+        "gl": "TO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "to",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "to",
+        "hl": "en",
+        "gl": "TO",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tr",
+        "hl": "tr",
+        "gl": "TR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tr",
+        "hl": "tr",
+        "gl": "TR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tr",
+        "hl": "tr",
+        "gl": "TR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tt",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tt",
+        "hl": "en",
+        "gl": "TT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tt",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tt",
+        "hl": "en",
+        "gl": "TT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tt",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tt",
+        "hl": "en",
+        "gl": "TT",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tz",
+        "hl": "en",
+        "gl": "TZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tz",
+        "hl": "en",
+        "gl": "TZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tz",
+        "hl": "en",
+        "gl": "TZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ua",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ua",
+        "hl": "uk",
+        "gl": "UA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ua",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ua",
+        "hl": "uk",
+        "gl": "UA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ua",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ua",
+        "hl": "uk",
+        "gl": "UA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ug",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ug",
+        "hl": "en",
+        "gl": "UG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ug",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ug",
+        "hl": "en",
+        "gl": "UG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ug",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ug",
+        "hl": "en",
+        "gl": "UG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uy",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "uy",
+        "hl": "es",
+        "gl": "UY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uy",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "uy",
+        "hl": "es",
+        "gl": "UY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uy",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "uy",
+        "hl": "es",
+        "gl": "UY",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uz",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "uz",
+        "hl": "en",
+        "gl": "UZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uz",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "uz",
+        "hl": "en",
+        "gl": "UZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "uz",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "uz",
+        "hl": "en",
+        "gl": "UZ",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vc",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "vc",
+        "hl": "en",
+        "gl": "VC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vc",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "vc",
+        "hl": "en",
+        "gl": "VC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vc",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "vc",
+        "hl": "en",
+        "gl": "VC",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ve",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ve",
+        "hl": "es",
+        "gl": "VE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ve",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ve",
+        "hl": "es",
+        "gl": "VE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ve",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ve",
+        "hl": "es",
+        "gl": "VE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "vg",
+        "hl": "en",
+        "gl": "VG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "vg",
+        "hl": "en",
+        "gl": "VG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "vg",
+        "hl": "en",
+        "gl": "VG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vi",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "vi",
+        "hl": "en",
+        "gl": "VI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vi",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "vi",
+        "hl": "en",
+        "gl": "VI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vi",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "vi",
+        "hl": "en",
+        "gl": "VI",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vn",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "vn",
+        "hl": "vi",
+        "gl": "VN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vn",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "vn",
+        "hl": "vi",
+        "gl": "VN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vn",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "vn",
+        "hl": "vi",
+        "gl": "VN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vu",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "vu",
+        "hl": "en",
+        "gl": "VU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vu",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "vu",
+        "hl": "en",
+        "gl": "VU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "vu",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "vu",
+        "hl": "en",
+        "gl": "VU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ws",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ws",
+        "hl": "en",
+        "gl": "WS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ws",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ws",
+        "hl": "en",
+        "gl": "WS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ws",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ws",
+        "hl": "en",
+        "gl": "WS",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ye",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ye",
+        "hl": "en",
+        "gl": "YE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ye",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ye",
+        "hl": "en",
+        "gl": "YE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ye",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ye",
+        "hl": "en",
+        "gl": "YE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "za",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "za",
+        "hl": "en",
+        "gl": "ZA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "za",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "za",
+        "hl": "en",
+        "gl": "ZA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "za",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "za",
+        "hl": "en",
+        "gl": "ZA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zm",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "zm",
+        "hl": "en",
+        "gl": "ZM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zm",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "zm",
+        "hl": "en",
+        "gl": "ZM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zm",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "zm",
+        "hl": "en",
+        "gl": "ZM",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "zw",
+        "hl": "en",
+        "gl": "ZW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "zw",
+        "hl": "en",
+        "gl": "ZW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "zw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "zw",
+        "hl": "en",
+        "gl": "ZW",
+        "maxResults": 3
+      }
+    },
+    {
       "market": "us",
       "mode": "category-sports",
       "status": "opened",
@@ -883,6 +7552,32 @@
     },
     {
       "market": "us",
+      "mode": "category-application",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "APPLICATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-watch_face",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "WATCH_FACE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
       "mode": "category-game_action",
       "status": "opened",
       "template": {
@@ -1083,6 +7778,48 @@
       "template": {
         "mode": "category",
         "category": "GAME_WORD",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "family-age_range1",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FAMILY",
+        "age": "AGE_RANGE1",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "family-age_range2",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FAMILY",
+        "age": "AGE_RANGE2",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "family-age_range3",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FAMILY",
+        "age": "AGE_RANGE3",
         "market": "us",
         "hl": "en",
         "gl": "US",

@@ -24,6 +24,7 @@ class SearchRequest(BaseModel):
     enrichDetails: bool = False
     includeDataSafety: bool = False
     includeReviews: bool = False
+    age: str | None = None
     fields: list[str] | None = None
 
     @field_validator("maxResults")

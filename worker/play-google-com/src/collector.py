@@ -3,17 +3,19 @@
 from __future__ import annotations
 
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 from urllib.parse import urlencode
 
 from src import PLAY_ORIGIN, SCHEMA_VERSION, WORKER_NAME
 from src import egress_control_client
 from src.http_client import fetch_html
-from src.markets import catalog_status, category_status, resolve_market
+from src.markets import age_status, catalog_status, category_status, resolve_market
 from src.models import ListingsRequest, SearchRequest
 from src.parse import (
     details_url,
     extract_package_ids,
+    is_empty_list_page,
     is_negative_page,
     is_ready_detail,
     is_ready_list,
@@ -27,6 +29,7 @@ from src.proxy_provider import proxy_diagnostics
 logger = logging.getLogger(__name__)
 
 MAX_ENRICH = 20
+ENRICH_WORKERS = 4
 
 
 def _envelope(
@@ -119,8 +122,15 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
         if st == "未验证":
             warnings.append(f"category {code} 未验证")
         elif st == "empty":
-            warnings.append(f"category {code} measured empty on US first-pack (may still vary by gl)")
-        url = _play_url(f"/store/apps/category/{code}", {"hl": hl, "gl": gl})
+            warnings.append(f"category {code} measured empty on first-pack (HTTP 200, 0 live ids)")
+        params = {"hl": hl, "gl": gl}
+        age = (req.age or "").strip().upper() or None
+        if age:
+            ast = age_status(age)
+            if ast == "未验证":
+                warnings.append(f"FAMILY age {age} 未验证")
+            params["age"] = age
+        url = _play_url(f"/store/apps/category/{code}", params)
         channel = "category"
     elif req.mode == "home":
         url = _play_url("/store/apps", {"hl": hl, "gl": gl, "pli": "1"})
@@ -174,12 +184,18 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
             warnings=warnings + ["negative or empty Play HTML"],
         )
     if not is_ready_list(fetched.text):
+        empty = is_empty_list_page(fetched.text, status_code=fetched.status_code)
         return _envelope(
-            status="failed",
+            status="empty" if empty else "failed",
             items=[],
             diagnostics=diagnostics,
             provider=provider,
-            warnings=warnings + ["ready signal missing: no details?id= + AF_initDataCallback"],
+            warnings=warnings
+            + (
+                ["empty Play shelf: AF_initDataCallback with 0 live details?id="]
+                if empty
+                else ["ready signal missing: no details?id= + AF_initDataCallback"]
+            ),
         )
 
     items = parse_search_cards(fetched.text, channel=channel, hl=hl, gl=gl)[: req.maxResults]
@@ -188,7 +204,7 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
     elif req.includeDataSafety:
         warnings.append("includeDataSafety on list mode requires enrichDetails=true or /v1/listings")
 
-    status = "ok" if items else "failed"
+    status = "ok" if items else "empty"
     return _envelope(
         status=status,
         items=_project(items, req.fields),
@@ -198,6 +214,33 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
     )
 
 
+def _enrich_one(
+    row: dict[str, Any],
+    *,
+    hl: str,
+    gl: str,
+    include_safety: bool,
+) -> dict[str, Any]:
+    pkg = row.get("packageId") or row.get("listingId")
+    if not pkg:
+        return row
+    merged = dict(row)
+    fetched = fetch_html(details_url(str(pkg), hl, gl), hl=hl)
+    if is_ready_detail(fetched.text):
+        detail = parse_detail(fetched.text, package_id=str(pkg), hl=hl, gl=gl)
+        merged.update({k: v for k, v in detail.items() if v is not None})
+        merged["channel"] = row.get("channel") or "detail"
+    if include_safety:
+        safety = fetch_html(
+            f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}",
+            hl=hl,
+        )
+        merged["dataSafety"] = parse_datasafety(
+            safety.text, package_id=str(pkg), hl=hl, gl=gl
+        )
+    return merged
+
+
 def _enrich_details(
     items: list[dict[str, Any]],
     *,
@@ -205,28 +248,16 @@ def _enrich_details(
     gl: str,
     include_safety: bool,
 ) -> list[dict[str, Any]]:
-    out: list[dict[str, Any]] = []
-    for row in items[:MAX_ENRICH]:
-        pkg = row.get("packageId") or row.get("listingId")
-        if not pkg:
-            out.append(row)
-            continue
-        merged = dict(row)
-        fetched = fetch_html(details_url(str(pkg), hl, gl), hl=hl)
-        if is_ready_detail(fetched.text):
-            detail = parse_detail(fetched.text, package_id=str(pkg), hl=hl, gl=gl)
-            merged.update({k: v for k, v in detail.items() if v is not None})
-            merged["channel"] = row.get("channel") or "detail"
-        if include_safety:
-            safety = fetch_html(
-                f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}",
-                hl=hl,
-            )
-            merged["dataSafety"] = parse_datasafety(
-                safety.text, package_id=str(pkg), hl=hl, gl=gl
-            )
-        out.append(merged)
-    return out
+    subset = items[:MAX_ENRICH]
+    if len(subset) <= 1:
+        return [_enrich_one(row, hl=hl, gl=gl, include_safety=include_safety) for row in subset]
+    workers = min(ENRICH_WORKERS, len(subset))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futs = [
+            pool.submit(_enrich_one, row, hl=hl, gl=gl, include_safety=include_safety)
+            for row in subset
+        ]
+        return [fut.result() for fut in futs]
 
 
 def run_listings(req: ListingsRequest, *, channel: str = "detail") -> dict[str, Any]:

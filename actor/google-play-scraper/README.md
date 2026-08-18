@@ -6,7 +6,7 @@ Free Apify plan users: up to **10 runs** of this Actor and up to **200 results p
 
 ## Coverage
 
-Measured 2026-08-18 (same-engine `curl_cffi` first-pack). Presets: `us ph gb au jp tw de fr in br ca sg` — search `c=apps`, home, and GAME all opened. US category CODEs: 48 opened. Empty first-pack: `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`. `c=games` HTTP 404. Device chips, `gsr`, review bodies not collected. Detail JSON-LD includes paid `offers.price` (`priceDisplay` / `isPaid`).
+Measured 2026-08-18 (same-engine `curl_cffi` first-pack). **183** `gl` presets — search `c=apps`, home, and GAME all opened. US category CODEs: 50 opened (`APPLICATION`, `WATCH_FACE` included). Empty first-pack: `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`, deprecated `FAMILY_*`. FAMILY age chips `AGE_RANGE1/2/3` opened. `c=games` HTTP 404. Device chips, `gsr`, review bodies not collected. Detail JSON-LD includes paid `offers.price` (`priceDisplay` / `isPaid`) plus `screenshots` / `inAppPurchases`. Empty shelves return worker `status=empty` (Actor SUCCEEDED, 0 rows).
 
 ## Input
 
@@ -14,16 +14,17 @@ Measured 2026-08-18 (same-engine `curl_cffi` first-pack). Presets: `us ph gb au 
 - `q`: search query (default `flashlight` so empty `{}` can SUCCEEDED)
 - `category`: Play CODE (`GAME`, `SPORTS`, `GAME_WORD`, …)
 - `packageIds` / `detailUrls`: live links only
-- `market`: opened presets above, or other ISO via `hl`/`gl` (未验证 warning)
+- `market`: 183 opened ISO `gl` presets, or other ISO via `hl`/`gl` (未验证 warning)
 - `hl` / `gl`: override Play language/country
-- `enrichDetails`: fetch JSON-LD (rating, price, developer) for list rows
+- `age`: FAMILY age chip `AGE_RANGE1/2/3`
+- `enrichDetails`: fetch JSON-LD (rating, price, screenshots, IAP) for list rows
 - `maxResults`: 1–1000 (free plan capped at 200)
 
 Cloud acceptance uses a **fresh random** input from `coverage-matrix.json`, never this README.
 
 ## Output
 
-Preview: `name`, `type`, `status`, `country`, `authority`. Identity: `packageId` / `listingId`. Detail enrich adds JSON-LD rating, `price` / `priceCurrency` / `priceDisplay` / `isPaid`, installs, developer.
+Preview: `name`, `type`, `status`, `country`, `authority`. Identity: `packageId` / `listingId`. Detail enrich adds JSON-LD rating, `price` / `priceCurrency` / `priceDisplay` / `isPaid`, `screenshots`, `inAppPurchases`, installs, developer.
 
 ## Architecture
 

@@ -22,6 +22,7 @@ class ActorInput:
     enrich_details: bool
     include_data_safety: bool
     include_reviews: bool
+    age: str | None
     worker_base_url: str | None
     fields: list[str] | None
 
@@ -50,6 +51,8 @@ class ActorInput:
             payload["gl"] = self.gl
         if self.market:
             payload["market"] = self.market
+        if self.age:
+            payload["age"] = self.age
         if self.fields:
             payload["fields"] = self.fields
         payload.pop("proxyUrl", None)
@@ -96,6 +99,7 @@ def parse_input(raw: dict[str, Any] | None) -> ActorInput:
         enrich_details=bool(data.get("enrichDetails")),
         include_data_safety=bool(data.get("includeDataSafety")),
         include_reviews=bool(data.get("includeReviews")),
+        age=(data.get("age") or "").strip().upper() or None,
         worker_base_url=(data.get("workerBaseUrl") or "").strip() or None,
         fields=_as_list(data.get("fields")) or None,
     )

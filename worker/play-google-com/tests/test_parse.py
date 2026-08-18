@@ -4,6 +4,7 @@ import pytest
 
 from src.parse import (
     extract_package_ids,
+    is_empty_list_page,
     is_negative_page,
     is_ready_detail,
     is_ready_list,
@@ -67,6 +68,28 @@ def test_paid_offer_price_display():
     assert row["isPaid"] is True
 
 
+def test_detail_screenshots_and_iap():
+    ld = {
+        "@type": "SoftwareApplication",
+        "name": "Puzzle",
+        "screenshot": ["https://play-lh.googleusercontent.com/a", "https://play-lh.googleusercontent.com/b"],
+        "offers": [{"price": "0", "priceCurrency": "USD"}],
+    }
+    html = (
+        '<script type="application/ld+json">'
+        + __import__("json").dumps(ld)
+        + "</script>"
+        + '<span class="UIuSk">In-app purchases</span>'
+    )
+    row = parse_detail(html, package_id="com.example.puzzle", hl="en", gl="US")
+    assert row["screenshots"] == [
+        "https://play-lh.googleusercontent.com/a",
+        "https://play-lh.googleusercontent.com/b",
+    ]
+    assert row["inAppPurchases"] is True
+    assert row["isPaid"] is False
+
+
 def test_detail_header_chips():
     html = _read("detail_header.html") + _read("detail_updated.html")
     html = '<script type="application/ld+json">' + _read("detail_jsonld.json") + "</script>" + html
@@ -98,6 +121,13 @@ def test_negative_not_found():
     html = _read("not_found.html")
     assert is_negative_page(html, status_code=404)
     assert not is_ready_list(html)
+
+
+def test_empty_list_page():
+    html = "AF_initDataCallback({key:'ds:0'}); <title>Dating</title>"
+    assert is_empty_list_page(html, status_code=200)
+    assert not is_ready_list(html)
+    assert not is_negative_page(html, status_code=200)
 
 
 def test_package_from_url_live_only():

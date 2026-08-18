@@ -8,7 +8,7 @@ Thin scrape API for **Google Play** (`play.google.com`). Paired Actor: `actor/go
 | Region | `us-central1` (Play is global on one host) |
 | Engine | `curl_cffi` Chrome impersonate → first-pack HTML (`AF_initDataCallback` + `details?id=`) + detail JSON-LD |
 | Proxy | egress-control runtime config / `PROXY_URL` fallback. Actor `WORKER_PROVIDES_PROXY=1` |
-| Schema | `2026-08-18.1` |
+| Schema | `2026-08-18.2` |
 
 ## Engine decision
 
@@ -27,23 +27,17 @@ Recon (2026-08-17) + HTTP expansion (2026-08-18):
 
 Measured 2026-08-18 first-pack (`AF_initDataCallback` + live `details?id=`).
 
-| 市场 `hl`/`gl` | Search `c=apps` | Home | Category GAME | Detail JSON-LD | 闸门 | 状态 |
-| --- | --- | --- | --- | --- | --- | --- |
-| us en/US | 已验证 | 已验证 | 已验证 | 已验证（含付费 `offers.price`） | guest | 打开 |
-| ph zh-CN/PH | 已验证 | 已验证 | 已验证 | 已验证 | guest | 打开 |
-| gb en/GB | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| au en/AU | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| jp ja/JP | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| tw zh-TW/TW | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| de de/DE | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| fr fr/FR | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| in en/IN | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| br pt/BR | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| ca en/CA | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| sg en/SG | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
-| `c=games` | HTTP 404 | — | — | — | | 关闭 |
+| Surface | Status |
+| --- | --- |
+| **183 `gl` presets** (home + search `c=apps` + GAME) | 打开. UZ uses `hl=en` (`hl=uz` was an empty ESF shell). |
+| US category CODEs | 50 opened including `APPLICATION` and `WATCH_FACE` |
+| Empty first-pack (HTTP 200, 0 live ids) | `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`, deprecated `FAMILY_ACTION` / `FAMILY_CREATE` / `FAMILY_EDUCATION` |
+| FAMILY age chips `AGE_RANGE1/2/3` | 打开 (US) |
+| `c=games` | HTTP 404 关闭 |
+| Legacy `/store/apps/collection/topselling_*` | empty ESF, not a channel |
+| Device chips / `gsr` / review bodies | 未采集 |
 
-US `/store/apps/category/{CODE}`: **48 opened**. Empty first-pack (HTTP 200, 0 live ids): `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`. Device chips, cluster `gsr`, review bodies **未采集**. Other ISO `gl` still 未验证 (accepted with warning).
+Unlisted ISO `gl` still accepted with a 未验证 warning. Empty shelves return envelope `status=empty` (0 items), not `failed`.
 
 ## API
 
@@ -53,11 +47,12 @@ Headers: `Authorization: Bearer` and/or `X-Api-Key`
 
 Envelope: `{ status, items, diagnostics, provider, warnings, worker, schemaVersion }`
 
-Primary key: **package id**. Preview fields: `name`, `type`, `status`, `country`, `authority`. Detail enrich adds `price` / `priceCurrency` / `priceDisplay` / `isPaid`.
+Primary key: **package id**. Preview fields: `name`, `type`, `status`, `country`, `authority`. Detail enrich adds `price` / `priceCurrency` / `priceDisplay` / `isPaid` / `screenshots` / `inAppPurchases`.
 
 ## Ready / negative
 
 - List ready: `/store/apps/details?id=` + `AF_initDataCallback`
+- Empty shelf: `AF_initDataCallback` + 0 package ids (HTTP 200)
 - Detail ready: JSON-LD `@type=SoftwareApplication` or `itemprop=name`
 - Negative: `Not Found`, tiny body, no package ids. Substring `challenge` is **not** a Cloudflare page.
 

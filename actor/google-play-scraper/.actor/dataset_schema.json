@@ -80,6 +80,15 @@
       "isPaid": {
         "type": ["boolean", "null"],
         "title": "Is paid"
+      },
+      "inAppPurchases": {
+        "type": ["boolean", "null"],
+        "title": "In-app purchases"
+      },
+      "screenshots": {
+        "type": ["array", "null"],
+        "title": "Screenshots",
+        "items": { "type": "string" }
       }
     }
   },

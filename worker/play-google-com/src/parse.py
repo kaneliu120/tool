@@ -54,6 +54,7 @@ NAME_DIV_RE = re.compile(r'<div class="Epkrse[^"]*">([^<]+)</div>', re.I)
 DEV_SPAN_RE = re.compile(r'<span[^>]*class="[^"]*wMUdtb[^"]*"[^>]*>([^<]+)</span>', re.I)
 ICON_ALT_RE = re.compile(r'alt="Icon image ([^"]+)"', re.I)
 CONTAINS_ADS_RE = re.compile(r"Contains ads", re.I)
+IN_APP_RE = re.compile(r"In-app purchases|In-app products", re.I)
 H2_RE = re.compile(r"<h2[^>]*class=\"q1rIdc\"[^>]*>([^<]+)</h2>", re.I)
 
 NEGATIVE_TITLE_RE = re.compile(r"not found|unusual traffic|sorry", re.I)
@@ -126,6 +127,8 @@ def is_negative_page(html: str, *, status_code: int | None = None) -> bool:
     title = page_title(body)
     if NEGATIVE_TITLE_RE.search(title):
         return True
+    if "AF_initDataCallback" in body and not extract_package_ids(body):
+        return False
     if len(body) < 4000 and not extract_package_ids(body) and "SoftwareApplication" not in body:
         if NEGATIVE_TITLE_RE.search(body) or len(body) < 800:
             return True
@@ -134,6 +137,14 @@ def is_negative_page(html: str, *, status_code: int | None = None) -> bool:
 
 def is_ready_list(html: str) -> bool:
     return bool(extract_package_ids(html or "")) and "AF_initDataCallback" in (html or "")
+
+
+def is_empty_list_page(html: str, *, status_code: int | None = None) -> bool:
+    """HTTP 200 ESF shelf with no live details?id= cards (DATING / age-gated / locale shell)."""
+    if status_code not in (None, 200):
+        return False
+    body = html or ""
+    return "AF_initDataCallback" in body and not extract_package_ids(body)
 
 
 def is_ready_detail(html: str) -> bool:
@@ -239,6 +250,15 @@ def parse_json_ld(html: str) -> dict[str, Any] | None:
     return None
 
 
+def screenshot_urls(ld: dict[str, Any] | None) -> list[str]:
+    raw = (ld or {}).get("screenshot") or (ld or {}).get("screenshots")
+    if isinstance(raw, str) and raw.strip():
+        return [raw.strip()]
+    if isinstance(raw, list):
+        return [str(x).strip() for x in raw if str(x).strip()][:8]
+    return []
+
+
 def offer_price_fields(offer: dict[str, Any] | None) -> dict[str, Any]:
     offer = offer or {}
     raw = offer.get("price")
@@ -332,6 +352,8 @@ def parse_detail(html: str, *, package_id: str, hl: str, gl: str) -> dict[str, A
         "installs": unescape(downloads_m.group(1)).strip() if downloads_m else None,
         "updatedOn": unescape(updated_m.group(1)).strip() if updated_m else None,
         "containsAds": bool(CONTAINS_ADS_RE.search(html or "")),
+        "inAppPurchases": bool(IN_APP_RE.search(html or "")),
+        "screenshots": screenshot_urls(ld) or None,
         "description": ld.get("description"),
         "dataSafetyUrl": f"{PLAY_ORIGIN}/store/apps/datasafety?id={package_id}&hl={hl}&gl={gl}",
         "jsonLd": True if ld else False,

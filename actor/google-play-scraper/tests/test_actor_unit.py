@@ -3,6 +3,14 @@ from src.input_model import parse_input
 from src.worker_client import resolve_worker_endpoint, worker_provides_proxy
 
 
+def test_age_passes_to_worker():
+    cfg = parse_input({"mode": "category", "category": "FAMILY", "age": "AGE_RANGE1", "market": "kr"})
+    payload = cfg.to_worker_payload()
+    assert payload["age"] == "AGE_RANGE1"
+    assert payload["market"] == "kr"
+    assert payload["category"] == "FAMILY"
+
+
 def test_empty_input_defaults():
     cfg = parse_input({})
     assert cfg.mode == "search"
@@ -76,6 +84,46 @@ def test_actor_matrix_covers_secondary_and_enrich():
 
     matrix = json.loads(Path(__file__).resolve().parents[1].joinpath("coverage-matrix.json").read_text())
     markets = {c["market"] for c in matrix["cells"]}
-    assert {"us", "jp", "de", "br"} <= markets
+    assert {"us", "jp", "de", "br", "kr", "mx", "es", "ng", "uz"} <= markets
     assert any(c.get("template", {}).get("enrichDetails") for c in matrix["cells"])
     assert any(c.get("template", {}).get("category") == "GAME_WORD" for c in matrix["cells"])
+    assert any(c.get("template", {}).get("category") == "WATCH_FACE" for c in matrix["cells"])
+    assert any(c.get("template", {}).get("age") == "AGE_RANGE2" for c in matrix["cells"])
+
+
+def test_empty_worker_status_is_ok(monkeypatch):
+    from src.errors import NoRowsCollectedError
+    from src.worker_client import WorkerEndpoint, call_worker
+    import pytest
+
+    monkeypatch.setenv("WORKER_AUTH", "test-key")
+
+    class FakeResp:
+        def __init__(self, payload):
+            self.status_code = 200
+            self._payload = payload
+
+        def json(self):
+            return self._payload
+
+    class FakeClient:
+        payload = {"status": "empty", "items": []}
+
+        def __init__(self, *a, **k):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def post(self, *a, **k):
+            return FakeResp(self.payload)
+
+    monkeypatch.setattr("src.worker_client.httpx.Client", FakeClient)
+    data = call_worker(WorkerEndpoint("https://x.run.app", "env"), {"mode": "category"})
+    assert data["status"] == "empty"
+    FakeClient.payload = {"status": "failed", "items": []}
+    with pytest.raises(NoRowsCollectedError):
+        call_worker(WorkerEndpoint("https://x.run.app", "env"), {"mode": "search"})

@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import logging
+import threading
 from dataclasses import dataclass
 from typing import Any
 
 from src.proxy_provider import http_proxies
 
 logger = logging.getLogger(__name__)
+_TLS = threading.local()
 
 CHROME_UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -37,24 +39,35 @@ def _headers(hl: str | None = None) -> dict[str, str]:
     }
 
 
+def _curl_session():
+    cached = getattr(_TLS, "session", None)
+    if cached is not None:
+        return cached, _TLS.impersonate, None
+    from curl_cffi import requests as cf
+
+    last_err: str | None = None
+    session = None
+    impersonate = None
+    for cand in IMPERSONATE_CANDIDATES:
+        try:
+            session = cf.Session(impersonate=cand)
+            impersonate = cand
+            break
+        except Exception as exc:
+            last_err = str(exc)
+            session = None
+    if session is None:
+        raise RuntimeError(last_err or "curl_cffi impersonate failed")
+    _TLS.session = session
+    _TLS.impersonate = impersonate
+    return session, impersonate, last_err
+
+
 def fetch_html(url: str, *, timeout: float = 60.0, hl: str | None = None) -> FetchResult:
     proxies = http_proxies()
     last_err: str | None = None
     try:
-        from curl_cffi import requests as cf
-
-        impersonate = None
-        session = None
-        for cand in IMPERSONATE_CANDIDATES:
-            try:
-                session = cf.Session(impersonate=cand)
-                impersonate = cand
-                break
-            except Exception as exc:
-                last_err = str(exc)
-                session = None
-        if session is None:
-            raise RuntimeError(last_err or "curl_cffi impersonate failed")
+        session, impersonate, last_err = _curl_session()
         kw: dict[str, Any] = {
             "headers": _headers(hl),
             "timeout": timeout,

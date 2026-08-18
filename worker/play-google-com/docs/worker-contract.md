@@ -17,11 +17,12 @@ Paste source: `GooglePlay页面调研分析报告_2026-08-17.md` + Cloud Agent H
 
 | 市场 | Search `c=apps` | Home | Category | Detail | Overlay / extra | 闸门 | 状态 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| us/ph/gb/au/jp/tw/de/fr/in/br/ca/sg | 已验证 | 已验证 | GAME 已验证；US 另 47 CODE 已验证 | JSON-LD 已验证；付费 `offers.price` 已验证 | Developer 已验证；Data safety 部分；Reviews overlay 不扒正文 | guest | 打开 |
+| 183 ISO `gl` presets | 已验证 | 已验证 | GAME 已验证；US 另 49 CODE 已验证（含 APPLICATION / WATCH_FACE） | JSON-LD 已验证；付费 `offers.price` 已验证 | Developer 已验证；FAMILY `age=` 已验证；Data safety 部分；Reviews overlay 不扒正文 | guest | 打开 |
 | `c=games` | HTTP 404 | — | — | — | — | | 关闭 |
-| DATING / MEDICAL / LIBRARIES_AND_DEMO / GAME_CASINO | — | — | US first-pack 0 活链 | — | — | guest | empty |
+| DATING / MEDICAL / LIBRARIES_AND_DEMO / GAME_CASINO / FAMILY_ACTION / FAMILY_CREATE / FAMILY_EDUCATION | — | — | first-pack 0 活链 | — | — | guest | empty |
+| Legacy `collection/topselling_*` | — | empty ESF | — | — | — | guest | 关闭 |
 
-Device chips / cluster `gsr` **未验证**. Other ISO `gl` **未验证**.
+Device chips / cluster `gsr` **未验证**. Unlisted ISO `gl` **未验证**.
 
 ## Per-surface channel
 
@@ -34,24 +35,25 @@ Path / headers (names only): GET HTML; Accept-Language follows hl; batchexecute 
 Identity keys: package id
 Pagination: none (no page=); first pack 20–30 cards
 Ready signal: details?id= anchors + AF_initDataCallback
+Empty signal: AF_initDataCallback + 0 details?id= (HTTP 200)
 Negative signal: title Not Found / tiny body / no id=
 Gate: guest
 Suggested ladder rung: curl_cffi
-Validation: 已验证 (12 presets)
+Validation: 已验证 (183 presets)
 ```
 
 ```text
 Surface: Category
-Final URL template: /store/apps/category/{CODE}
+Final URL template: /store/apps/category/{CODE}[?age=AGE_RANGE*]
 Primary channel: same HTML family
 Ready signal: details?id= + AF_initDataCallback
-Validation: 48 US CODE 已验证; 4 empty first-pack
+Validation: 50 US CODE 已验证; 7 empty first-pack; FAMILY age chips 已验证
 ```
 
 ```text
 Surface: Detail / LDP
 Final URL template: /store/apps/details?id={package}
-Primary channel: JSON-LD SoftwareApplication + itemprop + chips (installs, ads) + offers.price
+Primary channel: JSON-LD SoftwareApplication + itemprop + chips (installs, ads, IAP) + offers.price + screenshot
 Ready signal: SoftwareApplication or itemprop=name
 Pagination: JSON-LD does not page
 Validation: 已验证（活链，不编包名；付费价 Terraria 4.99 USD 本会话）

@@ -1,5 +1,5 @@
 """play.google.com Cloud Run scrape worker."""
 
 WORKER_NAME = "play-google-com"
-SCHEMA_VERSION = "2026-08-18.1"
+SCHEMA_VERSION = "2026-08-18.2"
 PLAY_ORIGIN = "https://play.google.com"

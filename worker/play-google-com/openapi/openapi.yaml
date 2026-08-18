@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: play-google-com
-  version: "2026-08-18.1"
+  version: "2026-08-18.2"
   description: >
     Google Play Store scrape worker. First-pack HTML + JSON-LD.
     Does not forge batchexecute or invent package ids.
@@ -141,6 +141,10 @@ components:
         includeReviews:
           type: boolean
           default: false
+        age:
+          type: string
+          description: FAMILY age chip AGE_RANGE1/2/3 (5 and under / 6-8 / 9+)
+          enum: [AGE_RANGE1, AGE_RANGE2, AGE_RANGE3]
         fields:
           type: array
           items:
@@ -180,7 +184,7 @@ components:
       properties:
         status:
           type: string
-          enum: [ok, partial, failed, blocked]
+          enum: [ok, partial, empty, failed, blocked]
         items:
           type: array
           items:
