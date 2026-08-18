@@ -1,0 +1,127 @@
+{
+  "actorSpecification": 1,
+  "title": "Google Play apps",
+  "description": "Google Play listing rows keyed by package id. Search/category/home/developer cards plus optional detail JSON-LD and data-safety summaries.",
+  "fields": {
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+      "packageId": {
+        "type": "string",
+        "title": "Package ID",
+        "description": "Play package name (primary key)"
+      },
+      "listingId": {
+        "type": "string",
+        "title": "Listing ID"
+      },
+      "name": {
+        "type": "string",
+        "title": "Name"
+      },
+      "type": {
+        "type": "string",
+        "title": "Record type"
+      },
+      "status": {
+        "type": "string",
+        "title": "Status"
+      },
+      "country": {
+        "type": "string",
+        "title": "Country"
+      },
+      "authority": {
+        "type": "string",
+        "title": "Authority"
+      },
+      "listingType": {
+        "type": "string",
+        "title": "Listing type"
+      },
+      "channel": {
+        "type": "string",
+        "title": "Channel"
+      },
+      "listingUrl": {
+        "type": "string",
+        "title": "Listing URL",
+        "editor": "link"
+      },
+      "imageUrl": {
+        "type": ["string", "null"],
+        "title": "Image URL",
+        "editor": "link"
+      },
+      "developer": {
+        "type": ["string", "null"],
+        "title": "Developer"
+      },
+      "ratingValue": {
+        "type": ["number", "null"],
+        "title": "Rating"
+      },
+      "installs": {
+        "type": ["string", "null"],
+        "title": "Installs"
+      },
+      "price": {
+        "type": ["string", "null"],
+        "title": "Price"
+      },
+      "priceCurrency": {
+        "type": ["string", "null"],
+        "title": "Price currency"
+      },
+      "priceDisplay": {
+        "type": ["string", "null"],
+        "title": "Price display"
+      },
+      "isPaid": {
+        "type": ["boolean", "null"],
+        "title": "Is paid"
+      },
+      "inAppPurchases": {
+        "type": ["boolean", "null"],
+        "title": "In-app purchases"
+      },
+      "screenshots": {
+        "type": ["array", "null"],
+        "title": "Screenshots",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "name",
+          "packageId",
+          "developer",
+          "ratingValue",
+          "installs",
+          "priceDisplay",
+          "country",
+          "channel",
+          "listingUrl"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "name": { "label": "Name" },
+          "packageId": { "label": "Package" },
+          "developer": { "label": "Developer" },
+          "ratingValue": { "label": "Rating" },
+          "installs": { "label": "Installs" },
+          "priceDisplay": { "label": "Price" },
+          "country": { "label": "Country" },
+          "channel": { "label": "Channel" },
+          "listingUrl": { "label": "URL", "format": "link" }
+        }
+      }
+    }
+  }
+}

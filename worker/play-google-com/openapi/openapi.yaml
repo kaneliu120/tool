@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: play-google-com
+  version: "2026-08-18.2"
+  description: >
+    Google Play Store scrape worker. First-pack HTML + JSON-LD.
+    Does not forge batchexecute or invent package ids.
+servers:
+  - url: /
+security:
+  - ApiKeyAuth: []
+  - BearerAuth: []
+tags:
+  - name: public
+  - name: scrape
+paths:
+  /health:
+    get:
+      tags: [public]
+      security: []
+      summary: Liveness
+      responses:
+        "200":
+          description: ok
+  /openapi.json:
+    get:
+      tags: [public]
+      security: []
+      summary: OpenAPI JSON
+      responses:
+        "200":
+          description: spec
+  /openapi.yaml:
+    get:
+      tags: [public]
+      security: []
+      summary: OpenAPI YAML
+      responses:
+        "200":
+          description: spec
+  /docs:
+    get:
+      tags: [public]
+      security: []
+      summary: Swagger UI
+      responses:
+        "200":
+          description: html
+  /v1/categories:
+    get:
+      tags: [scrape]
+      summary: Play category codes (matrix statuses)
+      responses:
+        "200":
+          description: envelope
+        "401":
+          description: missing or invalid API key
+  /v1/search:
+    post:
+      tags: [scrape]
+      summary: Search, category, home, or developer first-pack
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchRequest"
+      responses:
+        "200":
+          description: envelope
+        "401":
+          description: missing or invalid API key
+  /v1/listings:
+    post:
+      tags: [scrape]
+      summary: Detail / datasafety for live package ids
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ListingsRequest"
+      responses:
+        "200":
+          description: envelope
+        "401":
+          description: missing or invalid API key
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum: [search, category, home, developer, detail, datasafety]
+          default: search
+        q:
+          type: string
+        category:
+          type: string
+          description: Play category CODE (GAME, SPORTS, …)
+        developerId:
+          type: string
+          description: Numeric /store/apps/dev?id=
+        packageIds:
+          type: array
+          items:
+            type: string
+        detailUrls:
+          type: array
+          items:
+            type: string
+        c:
+          type: string
+          default: apps
+        hl:
+          type: string
+        gl:
+          type: string
+        market:
+          type: string
+        maxResults:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 1000
+        enrichDetails:
+          type: boolean
+          default: false
+        includeDataSafety:
+          type: boolean
+          default: false
+        includeReviews:
+          type: boolean
+          default: false
+        age:
+          type: string
+          description: FAMILY age chip AGE_RANGE1/2/3 (5 and under / 6-8 / 9+)
+          enum: [AGE_RANGE1, AGE_RANGE2, AGE_RANGE3]
+        fields:
+          type: array
+          items:
+            type: string
+    ListingsRequest:
+      type: object
+      properties:
+        packageIds:
+          type: array
+          items:
+            type: string
+        detailUrls:
+          type: array
+          items:
+            type: string
+        hl:
+          type: string
+        gl:
+          type: string
+        market:
+          type: string
+        maxResults:
+          type: integer
+          default: 10
+        includeDataSafety:
+          type: boolean
+          default: false
+        includeReviews:
+          type: boolean
+          default: false
+        fields:
+          type: array
+          items:
+            type: string
+    Envelope:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [ok, partial, empty, failed, blocked]
+        items:
+          type: array
+          items:
+            type: object
+        diagnostics:
+          type: object
+        provider:
+          type: string
+        warnings:
+          type: array
+          items:
+            type: string
+        worker:
+          type: string
+        schemaVersion:
+          type: string
