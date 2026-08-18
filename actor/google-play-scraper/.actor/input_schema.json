@@ -133,6 +133,7 @@
     },
     "enrichDetails": {
       "title": "Enrich list rows with detail JSON-LD",
+      "description": "After search/category/home, fetch each app details page JSON-LD (rating, price, developer). Off by default to keep list smoke cheap.",
       "type": "boolean",
       "editor": "checkbox",
       "default": false,
