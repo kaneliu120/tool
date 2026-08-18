@@ -3,7 +3,7 @@
   "name": "google-play-scraper",
   "title": "Google Play Scraper",
   "description": "Scrape Google Play search, categories, app details, developer pages, and data-safety summaries via a Cloud Run worker. Package id is the primary key. Does not invent app ids or scrape review bodies.",
-  "version": "0.0.1",
+  "version": "0.1",
   "buildTag": "latest",
   "dockerfile": "./Dockerfile",
   "input": "./.actor/input_schema.json",
@@ -21,9 +21,7 @@
   "maxMemoryMbytes": 4096,
   "environmentVariables": {
     "WORKER_BASE_URL": {
-      "description": "Cloud Run worker origin (https://*.run.app)",
-      "value": "",
-      "isSecret": false
+      "value": "https://play-google-com-977720205770.us-central1.run.app"
     },
     "WORKER_AUTH": {
       "description": "Worker API key (Bearer / X-Api-Key)",
