@@ -1,16 +1,70 @@
 {
   "actorSpecification": 1,
+  "title": "Google Play apps",
+  "description": "Google Play listing rows keyed by package id. Search/category/home/developer cards plus optional detail JSON-LD and data-safety summaries.",
   "fields": {
-    "packageId": { "type": "string", "description": "Play package name (primary key)" },
-    "name": { "type": "string" },
-    "type": { "type": "string" },
-    "status": { "type": "string" },
-    "country": { "type": "string" },
-    "authority": { "type": "string" },
-    "listingUrl": { "type": "string" },
-    "developer": { "type": "string" },
-    "ratingValue": { "type": "number" },
-    "installs": { "type": "string" }
+    "type": "object",
+    "properties": {
+      "packageId": {
+        "type": "string",
+        "title": "Package ID",
+        "description": "Play package name (primary key)"
+      },
+      "listingId": {
+        "type": "string",
+        "title": "Listing ID"
+      },
+      "name": {
+        "type": "string",
+        "title": "Name"
+      },
+      "type": {
+        "type": "string",
+        "title": "Record type"
+      },
+      "status": {
+        "type": "string",
+        "title": "Status"
+      },
+      "country": {
+        "type": "string",
+        "title": "Country"
+      },
+      "authority": {
+        "type": "string",
+        "title": "Authority"
+      },
+      "listingType": {
+        "type": "string",
+        "title": "Listing type"
+      },
+      "channel": {
+        "type": "string",
+        "title": "Channel"
+      },
+      "listingUrl": {
+        "type": "string",
+        "title": "Listing URL",
+        "editor": "link"
+      },
+      "imageUrl": {
+        "type": "string",
+        "title": "Image URL",
+        "editor": "link"
+      },
+      "developer": {
+        "type": "string",
+        "title": "Developer"
+      },
+      "ratingValue": {
+        "type": "number",
+        "title": "Rating"
+      },
+      "installs": {
+        "type": "string",
+        "title": "Installs"
+      }
+    }
   },
   "views": {
     "overview": {
