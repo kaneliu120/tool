@@ -5,18 +5,18 @@ Thin scrape API for **Google Play** (`play.google.com`). Paired Actor: `actor/go
 | | |
 | --- | --- |
 | Service / `workerId` | `play-google-com` |
-| Region | `us-central1` (Play is global on one host; US market opened) |
+| Region | `us-central1` (Play is global on one host) |
 | Engine | `curl_cffi` Chrome impersonate → first-pack HTML (`AF_initDataCallback` + `details?id=`) + detail JSON-LD |
 | Proxy | egress-control runtime config / `PROXY_URL` fallback. Actor `WORKER_PROVIDES_PROXY=1` |
-| Schema | `2026-08-17.1` |
+| Schema | `2026-08-18.1` |
 
 ## Engine decision
 
-Recon (2026-08-17) + this session HTTP:
+Recon (2026-08-17) + HTTP expansion (2026-08-18):
 
 | Source | Finding |
 | --- | --- |
-| Phase 0 channel | Same-origin HTML 200 ESF, no Cloudflare, no `__NEXT_DATA__` / RSC. JSON-LD only on detail. |
+| Phase 0 channel | Same-origin HTML 200 ESF, no Cloudflare, no `__NEXT_DATA__` / RSC. JSON-LD on detail including `offers.price`. |
 | A historical | No source Play worker. Kane HTTP floor = `curl_cffi` (zillow/daft class). |
 | B GitHub | curl_cffi TLS impersonation; do not add Scrapling/Firecrawl/Crawlee. |
 | C public | Impersonated HTTP first; browser only on measured blocks. |
@@ -25,14 +25,25 @@ Recon (2026-08-17) + this session HTTP:
 
 ## Coverage matrix
 
-| 市场/host | Search `c=apps` | Category | Detail | Overlay | 闸门 | 状态 |
+Measured 2026-08-18 first-pack (`AF_initDataCallback` + live `details?id=`).
+
+| 市场 `hl`/`gl` | Search `c=apps` | Home | Category GAME | Detail JSON-LD | 闸门 | 状态 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `gl=PH` `hl=zh-CN` | 已验证 | GAME 已验证 | 已验证 | Reviews 已验证（不采集正文） | guest | 打开 |
-| `gl=US` `hl=en` | 已验证 | GAME + SPORTS 已验证 | 已验证 JSON-LD | Developer 已验证；Data safety 部分 | guest | 打开 |
-| 其他 `gl` | 未验证 | 未验证 | 未验证 | 未验证 | guest? | 未验证 |
+| us en/US | 已验证 | 已验证 | 已验证 | 已验证（含付费 `offers.price`） | guest | 打开 |
+| ph zh-CN/PH | 已验证 | 已验证 | 已验证 | 已验证 | guest | 打开 |
+| gb en/GB | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| au en/AU | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| jp ja/JP | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| tw zh-TW/TW | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| de de/DE | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| fr fr/FR | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| in en/IN | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| br pt/BR | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| ca en/CA | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
+| sg en/SG | 已验证 | 已验证 | 已验证 | 同引擎 | guest | 打开 |
 | `c=games` | HTTP 404 | — | — | — | | 关闭 |
 
-Home `/store/apps` (US) 已验证。Device chips、cluster `gsr`、付费价 **未验证**。`gl` 可传任意 ISO 国家码；未打开市场会带 warning。
+US `/store/apps/category/{CODE}`: **48 opened**. Empty first-pack (HTTP 200, 0 live ids): `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`. Device chips, cluster `gsr`, review bodies **未采集**. Other ISO `gl` still 未验证 (accepted with warning).
 
 ## API
 
@@ -42,7 +53,7 @@ Headers: `Authorization: Bearer` and/or `X-Api-Key`
 
 Envelope: `{ status, items, diagnostics, provider, warnings, worker, schemaVersion }`
 
-Primary key: **package id**. Preview fields: `name`, `type`, `status`, `country`, `authority`.
+Primary key: **package id**. Preview fields: `name`, `type`, `status`, `country`, `authority`. Detail enrich adds `price` / `priceCurrency` / `priceDisplay` / `isPaid`.
 
 ## Ready / negative
 
@@ -57,5 +68,5 @@ SKILL=.cursor/skills/apify-actor-cloud-run-development
 bash "$SKILL/scripts/assert_cwd.sh" worker worker/play-google-com
 bash "$SKILL/scripts/print_deploy_plan.sh" --region us-central1 --env-file /tmp/play-google-com-env.yaml worker/play-google-com
 bash "$SKILL/scripts/register_egress_worker.sh" play-google-com --from-peer zillow-com --print-key
-# then gcloud run deploy from this directory; never --set-env-vars wipe
+# later deploys: gcloud run deploy --source=. from this directory; never --set-env-vars wipe
 ```

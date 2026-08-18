@@ -64,6 +64,22 @@
       "installs": {
         "type": ["string", "null"],
         "title": "Installs"
+      },
+      "price": {
+        "type": ["string", "null"],
+        "title": "Price"
+      },
+      "priceCurrency": {
+        "type": ["string", "null"],
+        "title": "Price currency"
+      },
+      "priceDisplay": {
+        "type": ["string", "null"],
+        "title": "Price display"
+      },
+      "isPaid": {
+        "type": ["boolean", "null"],
+        "title": "Is paid"
       }
     }
   },
@@ -77,6 +93,7 @@
           "developer",
           "ratingValue",
           "installs",
+          "priceDisplay",
           "country",
           "channel",
           "listingUrl"
@@ -90,6 +107,7 @@
           "developer": { "label": "Developer" },
           "ratingValue": { "label": "Rating" },
           "installs": { "label": "Installs" },
+          "priceDisplay": { "label": "Price" },
           "country": { "label": "Country" },
           "channel": { "label": "Channel" },
           "listingUrl": { "label": "URL", "format": "link" }

@@ -68,3 +68,14 @@ def test_omit_nulls_drops_json_nulls():
 
     out = omit_nulls({"name": "Bloom Tiles", "developer": None, "ratingValue": None, "n": 0})
     assert out == {"name": "Bloom Tiles", "n": 0}
+
+
+def test_actor_matrix_covers_secondary_and_enrich():
+    import json
+    from pathlib import Path
+
+    matrix = json.loads(Path(__file__).resolve().parents[1].joinpath("coverage-matrix.json").read_text())
+    markets = {c["market"] for c in matrix["cells"]}
+    assert {"us", "jp", "de", "br"} <= markets
+    assert any(c.get("template", {}).get("enrichDetails") for c in matrix["cells"])
+    assert any(c.get("template", {}).get("category") == "GAME_WORD" for c in matrix["cells"])

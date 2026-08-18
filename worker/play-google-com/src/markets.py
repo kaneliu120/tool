@@ -1,6 +1,6 @@
 """Play markets, catalogs, and category codes from the recon contract.
 
-Opened cells are session-measured (report 2026-08-17 + this Cloud Agent HTTP).
+Opened cells are session-measured (report 2026-08-17 + Cloud Agent HTTP 2026-08-18).
 Unlisted gl/hl values are accepted as ISO/BCP-47 but stay 未验证.
 """
 
@@ -9,78 +9,78 @@ from __future__ import annotations
 from typing import Any
 
 # Site geography for Cloud Run: Play is global on play.google.com; US is the
-# opened secondary market and Google HQ. Region = us-central1.
+# primary opened market and Google HQ. Region = us-central1.
 
 MARKET_PRESETS: dict[str, dict[str, str]] = {
     "us": {"hl": "en", "gl": "US", "status": "opened"},
     "ph": {"hl": "zh-CN", "gl": "PH", "status": "opened"},
-    "gb": {"hl": "en", "gl": "GB", "status": "未验证"},
-    "au": {"hl": "en", "gl": "AU", "status": "未验证"},
-    "jp": {"hl": "ja", "gl": "JP", "status": "未验证"},
-    "tw": {"hl": "zh-TW", "gl": "TW", "status": "未验证"},
-    "de": {"hl": "de", "gl": "DE", "status": "未验证"},
-    "fr": {"hl": "fr", "gl": "FR", "status": "未验证"},
-    "in": {"hl": "en", "gl": "IN", "status": "未验证"},
-    "br": {"hl": "pt", "gl": "BR", "status": "未验证"},
-    "ca": {"hl": "en", "gl": "CA", "status": "未验证"},
-    "sg": {"hl": "en", "gl": "SG", "status": "未验证"},
+    "gb": {"hl": "en", "gl": "GB", "status": "opened"},
+    "au": {"hl": "en", "gl": "AU", "status": "opened"},
+    "jp": {"hl": "ja", "gl": "JP", "status": "opened"},
+    "tw": {"hl": "zh-TW", "gl": "TW", "status": "opened"},
+    "de": {"hl": "de", "gl": "DE", "status": "opened"},
+    "fr": {"hl": "fr", "gl": "FR", "status": "opened"},
+    "in": {"hl": "en", "gl": "IN", "status": "opened"},
+    "br": {"hl": "pt", "gl": "BR", "status": "opened"},
+    "ca": {"hl": "en", "gl": "CA", "status": "opened"},
+    "sg": {"hl": "en", "gl": "SG", "status": "opened"},
 }
 
-# App taxonomy seen on Home HTML (shape) plus GAME_* from GAME page.
-# GAME and SPORTS pages were opened this session; others 未验证 until fetched.
+# US /store/apps/category/{CODE} first-pack measured 2026-08-18.
+# empty = HTTP 200 but 0 live details?id= cards (age/region shelf).
 CATEGORY_CODES: dict[str, str] = {
     "GAME": "opened",
     "SPORTS": "opened",
-    "TRAVEL_AND_LOCAL": "partial",  # seen on Maps LDP, page itself 未逐个打开
-    "FAMILY": "shape",
-    "VIDEO_PLAYERS": "shape",
-    "WEATHER": "shape",
-    "FOOD_AND_DRINK": "shape",
-    "EDUCATION": "shape",
-    "COMICS": "shape",
-    "BOOKS_AND_REFERENCE": "shape",
-    "SOCIAL": "shape",
-    "LIFESTYLE": "shape",
-    "ENTERTAINMENT": "shape",
-    "PHOTOGRAPHY": "shape",
-    "PRODUCTIVITY": "shape",
-    "SHOPPING": "shape",
-    "ART_AND_DESIGN": "未验证",
-    "AUTO_AND_VEHICLES": "未验证",
-    "BEAUTY": "未验证",
-    "BUSINESS": "未验证",
-    "COMMUNICATION": "未验证",
-    "DATING": "未验证",
-    "EVENTS": "未验证",
-    "FINANCE": "未验证",
-    "HEALTH_AND_FITNESS": "未验证",
-    "HOUSE_AND_HOME": "未验证",
-    "LIBRARIES_AND_DEMO": "未验证",
-    "MAPS_AND_NAVIGATION": "未验证",
-    "MEDICAL": "未验证",
-    "MUSIC_AND_AUDIO": "未验证",
-    "NEWS_AND_MAGAZINES": "未验证",
-    "PARENTING": "未验证",
-    "PERSONALIZATION": "未验证",
-    "TOOLS": "未验证",
-    "ANDROID_WEAR": "未验证",
-    "GAME_ACTION": "partial",
-    "GAME_ADVENTURE": "partial",
-    "GAME_ARCADE": "partial",
-    "GAME_BOARD": "partial",
-    "GAME_CASUAL": "partial",
-    "GAME_EDUCATIONAL": "partial",
-    "GAME_SIMULATION": "partial",
-    "GAME_STRATEGY": "未验证",
-    "GAME_RACING": "未验证",
-    "GAME_ROLE_PLAYING": "未验证",
-    "GAME_CASINO": "未验证",
-    "GAME_CARD": "未验证",
-    "GAME_MUSIC": "未验证",
-    "GAME_PUZZLE": "未验证",
-    "GAME_SPORTS": "未验证",
-    "GAME_TRIVIA": "未验证",
-    "GAME_WORD": "未验证",
+    "TRAVEL_AND_LOCAL": "opened",
+    "FAMILY": "opened",
+    "VIDEO_PLAYERS": "opened",
+    "WEATHER": "opened",
+    "FOOD_AND_DRINK": "opened",
+    "EDUCATION": "opened",
+    "COMICS": "opened",
+    "BOOKS_AND_REFERENCE": "opened",
+    "SOCIAL": "opened",
+    "LIFESTYLE": "opened",
+    "ENTERTAINMENT": "opened",
+    "PHOTOGRAPHY": "opened",
+    "PRODUCTIVITY": "opened",
+    "SHOPPING": "opened",
+    "ART_AND_DESIGN": "opened",
+    "AUTO_AND_VEHICLES": "opened",
+    "BEAUTY": "opened",
+    "BUSINESS": "opened",
+    "COMMUNICATION": "opened",
+    "DATING": "empty",
+    "EVENTS": "opened",
+    "FINANCE": "opened",
+    "HEALTH_AND_FITNESS": "opened",
+    "HOUSE_AND_HOME": "opened",
+    "LIBRARIES_AND_DEMO": "empty",
+    "MAPS_AND_NAVIGATION": "opened",
+    "MEDICAL": "empty",
+    "MUSIC_AND_AUDIO": "opened",
+    "NEWS_AND_MAGAZINES": "opened",
+    "PARENTING": "opened",
+    "PERSONALIZATION": "opened",
+    "TOOLS": "opened",
+    "ANDROID_WEAR": "opened",
+    "GAME_ACTION": "opened",
+    "GAME_ADVENTURE": "opened",
+    "GAME_ARCADE": "opened",
+    "GAME_BOARD": "opened",
+    "GAME_CASUAL": "opened",
+    "GAME_EDUCATIONAL": "opened",
+    "GAME_SIMULATION": "opened",
+    "GAME_STRATEGY": "opened",
+    "GAME_RACING": "opened",
+    "GAME_ROLE_PLAYING": "opened",
+    "GAME_CASINO": "empty",
+    "GAME_CARD": "opened",
+    "GAME_MUSIC": "opened",
+    "GAME_PUZZLE": "opened",
+    "GAME_SPORTS": "opened",
+    "GAME_TRIVIA": "opened",
+    "GAME_WORD": "opened",
 }
 
 SEARCH_CATALOGS: dict[str, str] = {
@@ -96,6 +96,14 @@ OPENED_MODES = (
     "developer",
     "datasafety",
 )
+
+SMOKE_QUERY_POOL = [
+    "tide chart",
+    "k-pop karaoke",
+    "bus arrival",
+    "sudoku daily",
+    "blood pressure log",
+]
 
 
 def resolve_market(
@@ -149,3 +157,88 @@ def categories_payload() -> list[dict[str, str]]:
             }
         )
     return rows
+
+
+def build_coverage_matrix() -> dict[str, Any]:
+    """Opened cells only — random_smoke_input.py samples this document."""
+    cells: list[dict[str, Any]] = []
+    for market, row in MARKET_PRESETS.items():
+        if row.get("status") != "opened":
+            continue
+        tmpl_market = {
+            "market": market,
+            "hl": row["hl"],
+            "gl": row["gl"],
+            "maxResults": 3,
+        }
+        cells.append(
+            {
+                "market": market,
+                "mode": "search",
+                "status": "opened",
+                "template": {
+                    "q": "{{query}}",
+                    "mode": "search",
+                    "c": "apps",
+                    **tmpl_market,
+                },
+            }
+        )
+        cells.append(
+            {
+                "market": market,
+                "mode": "home",
+                "status": "opened",
+                "template": {"mode": "home", **tmpl_market},
+            }
+        )
+        cells.append(
+            {
+                "market": market,
+                "mode": "category",
+                "status": "opened",
+                "template": {"mode": "category", "category": "GAME", **tmpl_market},
+            }
+        )
+    for code, status in CATEGORY_CODES.items():
+        if status != "opened" or code == "GAME":
+            continue
+        cells.append(
+            {
+                "market": "us",
+                "mode": f"category-{code.lower()}",
+                "status": "opened",
+                "template": {
+                    "mode": "category",
+                    "category": code,
+                    "market": "us",
+                    "hl": "en",
+                    "gl": "US",
+                    "maxResults": 3,
+                },
+            }
+        )
+    cells.append(
+        {
+            "market": "us",
+            "mode": "search-enrich",
+            "status": "opened",
+            "template": {
+                "q": "{{query}}",
+                "mode": "search",
+                "c": "apps",
+                "market": "us",
+                "hl": "en",
+                "gl": "US",
+                "enrichDetails": True,
+                "maxResults": 2,
+            },
+        }
+    )
+    return {
+        "primaryMarket": "us",
+        "queryPool": list(SMOKE_QUERY_POOL),
+        "queryKey": "q",
+        "maxResults": 3,
+        "cells": cells,
+    }

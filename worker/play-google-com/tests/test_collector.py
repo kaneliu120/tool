@@ -23,5 +23,6 @@ def test_collector_mocked_search(monkeypatch):
     env = collector.run_search(SearchRequest(q="notes", maxResults=5, market="us"))
     assert env["status"] == "ok"
     assert env["worker"] == "play-google-com"
+    assert env["schemaVersion"] == "2026-08-18.1"
     assert env["items"][0]["listingId"] == "com.google.android.keep"
     assert parse_search_cards(html, channel="search", hl="en", gl="US")

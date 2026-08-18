@@ -118,6 +118,8 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
         st = category_status(code)
         if st == "未验证":
             warnings.append(f"category {code} 未验证")
+        elif st == "empty":
+            warnings.append(f"category {code} measured empty on US first-pack (may still vary by gl)")
         url = _play_url(f"/store/apps/category/{code}", {"hl": hl, "gl": gl})
         channel = "category"
     elif req.mode == "home":
@@ -148,7 +150,7 @@ def run_search(req: SearchRequest) -> dict[str, Any]:
         url = _play_url("/store/search", {"q": q, "c": req.c or "apps", "hl": hl, "gl": gl})
         channel = "search"
 
-    fetched = fetch_html(url)
+    fetched = fetch_html(url, hl=hl)
     diagnostics: dict[str, Any] = {
         "url": fetched.url,
         "httpStatus": fetched.status_code,
@@ -210,14 +212,15 @@ def _enrich_details(
             out.append(row)
             continue
         merged = dict(row)
-        fetched = fetch_html(details_url(str(pkg), hl, gl))
+        fetched = fetch_html(details_url(str(pkg), hl, gl), hl=hl)
         if is_ready_detail(fetched.text):
             detail = parse_detail(fetched.text, package_id=str(pkg), hl=hl, gl=gl)
             merged.update({k: v for k, v in detail.items() if v is not None})
             merged["channel"] = row.get("channel") or "detail"
         if include_safety:
             safety = fetch_html(
-                f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}"
+                f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}",
+                hl=hl,
             )
             merged["dataSafety"] = parse_datasafety(
                 safety.text, package_id=str(pkg), hl=hl, gl=gl
@@ -255,7 +258,7 @@ def run_listings(req: ListingsRequest, *, channel: str = "detail") -> dict[str, 
     for pkg in ids:
         if channel == "datasafety":
             url = f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}"
-            fetched = fetch_html(url)
+            fetched = fetch_html(url, hl=hl)
             provider = "curl" if fetched.provider.startswith("curl") else fetched.provider.split(":")[0]
             last_diag = {
                 "url": fetched.url,
@@ -269,7 +272,7 @@ def run_listings(req: ListingsRequest, *, channel: str = "detail") -> dict[str, 
             continue
 
         url = details_url(pkg, hl, gl)
-        fetched = fetch_html(url)
+        fetched = fetch_html(url, hl=hl)
         provider = "curl" if fetched.provider.startswith("curl") else fetched.provider.split(":")[0]
         last_diag = {
             "url": fetched.url,
@@ -283,7 +286,10 @@ def run_listings(req: ListingsRequest, *, channel: str = "detail") -> dict[str, 
         row = parse_detail(fetched.text, package_id=pkg, hl=hl, gl=gl)
         row["channel"] = channel
         if req.includeDataSafety:
-            safety = fetch_html(f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}")
+            safety = fetch_html(
+                f"{PLAY_ORIGIN}/store/apps/datasafety?id={pkg}&hl={hl}&gl={gl}",
+                hl=hl,
+            )
             row["dataSafety"] = parse_datasafety(safety.text, package_id=pkg, hl=hl, gl=gl)
         items.append(row)
 

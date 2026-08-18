@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: play-google-com
-  version: "2026-08-17.1"
+  version: "2026-08-18.1"
   description: >
     Google Play Store scrape worker. First-pack HTML + JSON-LD.
     Does not forge batchexecute or invent package ids.

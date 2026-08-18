@@ -58,6 +58,15 @@ def test_json_ld_maps():
     assert ld["name"] == "Google Maps"
 
 
+def test_paid_offer_price_display():
+    html = '<script type="application/ld+json">' + _read("paid_offer.json") + "</script>"
+    row = parse_detail(html, package_id="com.and.games505.TerrariaPaid", hl="en", gl="US")
+    assert row["price"] == "4.99"
+    assert row["priceCurrency"] == "USD"
+    assert row["priceDisplay"] == "USD 4.99"
+    assert row["isPaid"] is True
+
+
 def test_detail_header_chips():
     html = _read("detail_header.html") + _read("detail_updated.html")
     html = '<script type="application/ld+json">' + _read("detail_jsonld.json") + "</script>" + html
@@ -70,6 +79,7 @@ def test_detail_header_chips():
     assert row["contentRating"] == "Everyone"
     assert row["jsonLd"] is True
     assert row["priceDisplay"] == "Free"
+    assert row["isPaid"] is False
 
 
 def test_datasafety_headings():

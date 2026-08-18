@@ -6,29 +6,24 @@ Free Apify plan users: up to **10 runs** of this Actor and up to **200 results p
 
 ## Coverage
 
-| Market | Search `c=apps` | Category | Detail | Extra | Status |
-| --- | --- | --- | --- | --- | --- |
-| US `hl=en&gl=US` | opened | GAME, SPORTS opened | opened (JSON-LD) | developer opened; data safety partial | opened |
-| PH `hl=zh-CN&gl=PH` | opened | GAME opened | opened | reviews overlay observed (bodies not collected) | opened |
-| Other `gl` | 未验证 | 未验证 | 未验证 | 未验证 | 未验证 |
-
-`c=games` returned HTTP 404 this session. Device chips, cluster `gsr`, and paid prices stay 未验证.
+Measured 2026-08-18 (same-engine `curl_cffi` first-pack). Presets: `us ph gb au jp tw de fr in br ca sg` — search `c=apps`, home, and GAME all opened. US category CODEs: 48 opened. Empty first-pack: `DATING`, `MEDICAL`, `LIBRARIES_AND_DEMO`, `GAME_CASINO`. `c=games` HTTP 404. Device chips, `gsr`, review bodies not collected. Detail JSON-LD includes paid `offers.price` (`priceDisplay` / `isPaid`).
 
 ## Input
 
 - `mode`: search (default), category, home, developer, detail, datasafety
 - `q`: search query (default `flashlight` so empty `{}` can SUCCEEDED)
-- `category`: Play CODE (`GAME`, `SPORTS`, …)
+- `category`: Play CODE (`GAME`, `SPORTS`, `GAME_WORD`, …)
 - `packageIds` / `detailUrls`: live links only
-- `market`: `us` or `ph` (opened) or other presets (未验证)
+- `market`: opened presets above, or other ISO via `hl`/`gl` (未验证 warning)
 - `hl` / `gl`: override Play language/country
+- `enrichDetails`: fetch JSON-LD (rating, price, developer) for list rows
 - `maxResults`: 1–1000 (free plan capped at 200)
 
 Cloud acceptance uses a **fresh random** input from `coverage-matrix.json`, never this README.
 
 ## Output
 
-Preview: `name`, `type`, `status`, `country`, `authority`. Identity: `packageId` / `listingId`. Detail enrich adds JSON-LD rating, price, installs, developer.
+Preview: `name`, `type`, `status`, `country`, `authority`. Identity: `packageId` / `listingId`. Detail enrich adds JSON-LD rating, `price` / `priceCurrency` / `priceDisplay` / `isPaid`, installs, developer.
 
 ## Architecture
 

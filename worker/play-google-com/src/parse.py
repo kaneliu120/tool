@@ -10,6 +10,8 @@ from urllib.parse import parse_qs, urljoin, urlparse
 
 from src import PLAY_ORIGIN
 
+FREE_PRICES = {"0", "0.0", "0.00"}
+
 PACKAGE_RE = re.compile(
     r"/store/apps/details(?:/[^\"'?#]*)?\?id=([a-zA-Z0-9_.]+)",
     re.I,
@@ -237,6 +239,29 @@ def parse_json_ld(html: str) -> dict[str, Any] | None:
     return None
 
 
+def offer_price_fields(offer: dict[str, Any] | None) -> dict[str, Any]:
+    offer = offer or {}
+    raw = offer.get("price")
+    price = str(raw) if raw is not None else None
+    currency = offer.get("priceCurrency")
+    is_paid = bool(price) and price not in FREE_PRICES
+    if price is None:
+        display = None
+    elif not is_paid:
+        display = "Free"
+    elif currency:
+        display = f"{currency} {price}"
+    else:
+        display = price
+    return {
+        "price": price,
+        "priceCurrency": currency,
+        "priceDisplay": display,
+        "isPaid": is_paid,
+        "availability": offer.get("availability"),
+    }
+
+
 def parse_detail(html: str, *, package_id: str, hl: str, gl: str) -> dict[str, Any]:
     ld = parse_json_ld(html) or {}
     author = ld.get("author") if isinstance(ld.get("author"), dict) else {}
@@ -265,8 +290,7 @@ def parse_detail(html: str, *, package_id: str, hl: str, gl: str) -> dict[str, A
         icon = icon_m.group(1)
     elif isinstance(ld.get("image"), str):
         icon = ld.get("image")
-    price = str(offer.get("price")) if offer.get("price") is not None else None
-    currency = offer.get("priceCurrency")
+    price_fields = offer_price_fields(offer if isinstance(offer, dict) else {})
     rating_value = None
     if agg.get("ratingValue") is not None:
         try:
@@ -301,10 +325,7 @@ def parse_detail(html: str, *, package_id: str, hl: str, gl: str) -> dict[str, A
         "ratingValue": rating_value,
         "ratingCount": rating_count,
         "ratingCountDisplay": reviews_m.group(0) if reviews_m else None,
-        "price": price,
-        "priceCurrency": currency,
-        "priceDisplay": "Free" if price in {"0", "0.0", "0.00"} else price,
-        "availability": offer.get("availability"),
+        **price_fields,
         "contentRating": ld.get("contentRating") or None,
         "applicationCategory": app_cat,
         "operatingSystem": ld.get("operatingSystem"),

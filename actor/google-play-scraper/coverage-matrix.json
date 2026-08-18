@@ -1,11 +1,11 @@
 {
   "primaryMarket": "us",
   "queryPool": [
-    "flashlight",
-    "period tracker",
-    "subway timetable",
-    "ocr scanner",
-    "language tutor"
+    "tide chart",
+    "k-pop karaoke",
+    "bus arrival",
+    "sudoku daily",
+    "blood pressure log"
   ],
   "queryKey": "q",
   "maxResults": 3,
@@ -18,6 +18,31 @@
         "q": "{{query}}",
         "mode": "search",
         "c": "apps",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
         "market": "us",
         "hl": "en",
         "gl": "US",
@@ -39,12 +64,427 @@
       }
     },
     {
-      "market": "us",
+      "market": "ph",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ph",
+        "hl": "zh-CN",
+        "gl": "PH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ph",
       "mode": "category",
       "status": "opened",
       "template": {
         "mode": "category",
         "category": "GAME",
+        "market": "ph",
+        "hl": "zh-CN",
+        "gl": "PH",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gb",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "gb",
+        "hl": "en",
+        "gl": "GB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gb",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "gb",
+        "hl": "en",
+        "gl": "GB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "gb",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "gb",
+        "hl": "en",
+        "gl": "GB",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "au",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "au",
+        "hl": "en",
+        "gl": "AU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "au",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "au",
+        "hl": "en",
+        "gl": "AU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "au",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "au",
+        "hl": "en",
+        "gl": "AU",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jp",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "jp",
+        "hl": "ja",
+        "gl": "JP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jp",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "jp",
+        "hl": "ja",
+        "gl": "JP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "jp",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "jp",
+        "hl": "ja",
+        "gl": "JP",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tw",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "tw",
+        "hl": "zh-TW",
+        "gl": "TW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tw",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "tw",
+        "hl": "zh-TW",
+        "gl": "TW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "tw",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "tw",
+        "hl": "zh-TW",
+        "gl": "TW",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "de",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "de",
+        "hl": "de",
+        "gl": "DE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "de",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "de",
+        "hl": "de",
+        "gl": "DE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "de",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "de",
+        "hl": "de",
+        "gl": "DE",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fr",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "fr",
+        "hl": "fr",
+        "gl": "FR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fr",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "fr",
+        "hl": "fr",
+        "gl": "FR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "fr",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "fr",
+        "hl": "fr",
+        "gl": "FR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "in",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "in",
+        "hl": "en",
+        "gl": "IN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "in",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "in",
+        "hl": "en",
+        "gl": "IN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "in",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "in",
+        "hl": "en",
+        "gl": "IN",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "br",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "br",
+        "hl": "pt",
+        "gl": "BR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "br",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "br",
+        "hl": "pt",
+        "gl": "BR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "br",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "br",
+        "hl": "pt",
+        "gl": "BR",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ca",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "ca",
+        "hl": "en",
+        "gl": "CA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ca",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "ca",
+        "hl": "en",
+        "gl": "CA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "ca",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "ca",
+        "hl": "en",
+        "gl": "CA",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sg",
+      "mode": "search",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "sg",
+        "hl": "en",
+        "gl": "SG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sg",
+      "mode": "home",
+      "status": "opened",
+      "template": {
+        "mode": "home",
+        "market": "sg",
+        "hl": "en",
+        "gl": "SG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "sg",
+      "mode": "category",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME",
+        "market": "sg",
+        "hl": "en",
+        "gl": "SG",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-sports",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "SPORTS",
         "market": "us",
         "hl": "en",
         "gl": "US",
@@ -53,14 +493,615 @@
     },
     {
       "market": "us",
-      "mode": "home",
+      "mode": "category-travel_and_local",
       "status": "opened",
       "template": {
-        "mode": "home",
+        "mode": "category",
+        "category": "TRAVEL_AND_LOCAL",
         "market": "us",
         "hl": "en",
         "gl": "US",
         "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-family",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FAMILY",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-video_players",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "VIDEO_PLAYERS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-weather",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "WEATHER",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-food_and_drink",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FOOD_AND_DRINK",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-education",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "EDUCATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-comics",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "COMICS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-books_and_reference",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "BOOKS_AND_REFERENCE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-social",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "SOCIAL",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-lifestyle",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "LIFESTYLE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-entertainment",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "ENTERTAINMENT",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-photography",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "PHOTOGRAPHY",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-productivity",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "PRODUCTIVITY",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-shopping",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "SHOPPING",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-art_and_design",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "ART_AND_DESIGN",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-auto_and_vehicles",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "AUTO_AND_VEHICLES",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-beauty",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "BEAUTY",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-business",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "BUSINESS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-communication",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "COMMUNICATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-events",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "EVENTS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-finance",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "FINANCE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-health_and_fitness",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "HEALTH_AND_FITNESS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-house_and_home",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "HOUSE_AND_HOME",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-maps_and_navigation",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "MAPS_AND_NAVIGATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-music_and_audio",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "MUSIC_AND_AUDIO",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-news_and_magazines",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "NEWS_AND_MAGAZINES",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-parenting",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "PARENTING",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-personalization",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "PERSONALIZATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-tools",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "TOOLS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-android_wear",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "ANDROID_WEAR",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_action",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_ACTION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_adventure",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_ADVENTURE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_arcade",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_ARCADE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_board",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_BOARD",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_casual",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_CASUAL",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_educational",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_EDUCATIONAL",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_simulation",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_SIMULATION",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_strategy",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_STRATEGY",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_racing",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_RACING",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_role_playing",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_ROLE_PLAYING",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_card",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_CARD",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_music",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_MUSIC",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_puzzle",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_PUZZLE",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_sports",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_SPORTS",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_trivia",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_TRIVIA",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "category-game_word",
+      "status": "opened",
+      "template": {
+        "mode": "category",
+        "category": "GAME_WORD",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "maxResults": 3
+      }
+    },
+    {
+      "market": "us",
+      "mode": "search-enrich",
+      "status": "opened",
+      "template": {
+        "q": "{{query}}",
+        "mode": "search",
+        "c": "apps",
+        "market": "us",
+        "hl": "en",
+        "gl": "US",
+        "enrichDetails": true,
+        "maxResults": 2
       }
     }
   ]

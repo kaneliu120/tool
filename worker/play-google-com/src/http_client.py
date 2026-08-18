@@ -27,15 +27,17 @@ class FetchResult:
     error: str | None = None
 
 
-def _headers() -> dict[str, str]:
+def _headers(hl: str | None = None) -> dict[str, str]:
+    lang = (hl or "en").replace("_", "-")
+    primary = lang.split("-")[0]
     return {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Language": f"{lang},{primary};q=0.8,en;q=0.5",
         "User-Agent": CHROME_UA,
     }
 
 
-def fetch_html(url: str, *, timeout: float = 60.0) -> FetchResult:
+def fetch_html(url: str, *, timeout: float = 60.0, hl: str | None = None) -> FetchResult:
     proxies = http_proxies()
     last_err: str | None = None
     try:
@@ -54,7 +56,7 @@ def fetch_html(url: str, *, timeout: float = 60.0) -> FetchResult:
         if session is None:
             raise RuntimeError(last_err or "curl_cffi impersonate failed")
         kw: dict[str, Any] = {
-            "headers": _headers(),
+            "headers": _headers(hl),
             "timeout": timeout,
             "allow_redirects": True,
         }
@@ -80,7 +82,7 @@ def fetch_html(url: str, *, timeout: float = 60.0) -> FetchResult:
         kwargs: dict[str, Any] = {
             "timeout": timeout,
             "follow_redirects": True,
-            "headers": _headers(),
+            "headers": _headers(hl),
         }
         try:
             client_cm = httpx.Client(**kwargs, proxy=proxy_url)
